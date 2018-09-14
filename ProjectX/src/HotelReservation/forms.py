@@ -1,8 +1,8 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.models import User
-from .models import UserProfile
 from django.forms.widgets import PasswordInput, TextInput
+
 
 
 class contactForm(forms.Form):
@@ -26,47 +26,25 @@ class contactForm(forms.Form):
 		}
 	))
 
-class DateForm(forms.Form):
-    Start_Date_Form = forms.DateField(label='', widget=forms.DateInput(attrs={
-    	'class':'datepicker',
-    	'placeholder': 'Start Date',
-    	'style': 'font-family: cursive; width: 250px; font-size: 20px; height: 30px; position: relative; color: #000; border-radius: 10px; border: none; padding: 0 10px; position: relative; top: -50px; left: 89px;',
 
-    }))
-    End_Date_Form = forms.DateField(label='', widget=forms.DateInput(attrs={
-    	'class':'datepicker',
-    	'placeholder': 'End Date',
-    	'style': 'font-family: cursive; width: 250px; font-size: 20px; height: 30px; position: relative; color: #000; border-radius: 10px; border: none; padding: 0 10px; position: relative; top: -45px; left: 89px;',
-
-    }))
-
-    Num_Adult = [tuple([x,x]) for x in range(1,21)]
-    num_adult = forms.IntegerField(label='', widget=forms.Select(choices=Num_Adult,
-    	attrs={
-    		'class': 'num_adult',
-    		'style': 'font-size: 20px; width: 250px; border: none; font-family: cursive; position: relative; top: -10px; left: 90px; padding: 0 10px;'
-    	}
-    ))
-
-    Num_Children = [tuple([x,x]) for x in range(1,21)]
-    num_children = forms.IntegerField(label='', widget=forms.Select(choices=Num_Children,
-    	attrs={
-    		'class': 'num_children',
-    		'style': 'font-size: 20px; width: 250px; border: none; font-family: cursive; position: relative; top: 35px; left: 90px; padding: 0 10px;'
-    	}
-    ))
 
 class SignUpForm(UserCreationForm):
     username = forms.CharField(max_length=30, required=False, help_text='', widget=forms.TextInput(
         attrs={
-            'style': 'width: 200px;',
+            'style': 'width: 300px;'
         }
     ))
-    first_name = forms.CharField(max_length=30, required=False, help_text='')
+    first_name = forms.CharField(max_length=30, required=False, help_text='', widget=forms.TextInput(
+
+    ))
     last_name = forms.CharField(max_length=30, required=False, help_text='')
-    email_address = forms.EmailField(max_length=254, help_text='')
-    password1 = forms.CharField(max_length=32, widget=forms.PasswordInput())
-    password2 = forms.CharField(max_length=32, widget=forms.PasswordInput())
+    email_address = forms.EmailField(max_length=254, required=False, widget=forms.TextInput(
+
+    ))
+    password1 = forms.CharField(label='Password', max_length=32, widget=forms.PasswordInput(
+
+    ))
+    password2 = forms.CharField(label='Password Confirmation', max_length=32, widget=forms.PasswordInput())
 
     class Meta:
         model = User
@@ -82,17 +60,25 @@ class SignUpForm(UserCreationForm):
                 "password and confirm_password does not match"
             )
 
+    def email_verify(self):
+        if email_address == user.email_address:
+            return forms.ValidationError('Yo')
+
+    def save(self, commit=True):
+        user = super(SignUpForm, self).save(commit=False)
+        user.email = self.cleaned_data['email_address']
+
+        if commit: 
+            user.save()
+
+        return user
+
+
 class LogInForm(AuthenticationForm):
-    username = forms.CharField(widget=TextInput(attrs={'class':'validate','placeholder': 'Email'}))
-    password = forms.CharField(widget=PasswordInput(attrs={'placeholder':'Password'}))
+    username = forms.CharField(widget=forms.TextInput())
+    password = forms.CharField(widget=forms.PasswordInput())
 
     class Meta:
         model = User
-        fields = ('username', 'password',)    
-
-    def __init__(self, *args, **kwargs):
-        super(LogInForm,self).__init__(*args,**kwargs)
-        self.fields['username'].widget.attrs.update({'class':'form-control','placeholder':'Username'})
-        self.fields['password'].widget.attrs.update({'class':'form-control','placeholder':'Password'})
-
+        fields = ('username', 'password',)
 

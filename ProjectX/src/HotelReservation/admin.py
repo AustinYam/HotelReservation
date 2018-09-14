@@ -1,10 +1,8 @@
 from django.contrib import admin
 
 # Register your models here.
-from .models import UserProfile
+from .models import HotelList, Reservation
 
-class UserProfileAdmin(admin.ModelAdmin):
-	class Meta:
-		model = UserProfile
 
-admin.site.register(UserProfile, UserProfileAdmin)
+admin.site.register(HotelList)
+admin.site.register(Reservation)

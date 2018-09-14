@@ -1,0 +1,263 @@
+ {% extends 'base.html' %}
+
+{% block head %}
+<title>Hotel List</title>
+{% endblock %}
+
+{% block content %}
+
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+
+<!--JavaScript-->
+<script type="text/javascript">
+  
+</script>
+
+<!--StyleSheet-->
+<style type="text/css">
+.white-wrapper{
+
+}
+
+.each-list{
+	width: 350px; 
+	height: 500px; 
+	position: relative; 
+	left: 55px; 
+	background: rgba(111,111,111,0.7); 
+	float: left; 
+	margin-left: 20px;
+}
+
+.paginationcover{
+	width: 400px;
+	height: 60px;
+	float: left;
+	position: absolute;
+	top: 580px;
+	left: 513px;
+	display: inline-block;
+	text-decoration: none;
+	z-index: 10;
+	border: none;
+	list-style-type: none;
+}
+
+.next-page-arrow, .disabled-previous, .page, .nothing, .previous-page-arrow, .disabled-next{
+	float: left;
+	background: #fff;
+	text-align: center;
+}
+
+.previous-page-arrow, .disabled-previous, .previous-page-arrow:hover, .disabled-previous:hover{
+ 	position: relative;
+ 	left: -440px;
+ 	top: -290px;
+ 	height: 100px;
+ 	line-height: 100px;
+ 	width: 50px;
+ 	color: white;
+ 	background: white;
+ 	font-size: 45px;
+ 	border: none;
+ 	text-decoration: none;
+ 
+}
+
+.previous-page-arrow span, .disabled-previous span{
+	width: 40px; 
+	height: 40px; 
+	position: absolute; 
+	top: 30px; left: 15px; 
+	border-bottom: 3px solid #151515; 
+	border-left: 3px solid #151515; 
+	cursor: pointer; 
+	transform: rotate(45deg); 
+	transition: 0.5s;
+}
+
+.previous-page-arrow span:hover, .disabled-previous span:hover{
+	background: rgba(0,0,0,0.2);
+}
+
+.next-page-arrow, .disabled-next, .next-page-arrow:hover, .disabled-next:hover{
+	position: relative;
+ 	left: 495px;
+ 	top: -290px;
+ 	height: 100px;
+ 	line-height: 100px;
+ 	width: 50px;
+ 	color: white;
+ 	font-size: 45px;
+ 	border: none;
+ 	background: white;
+ 	text-decoration: none;
+}
+
+.next-page-arrow span, .disabled-next span{
+	width: 40px; 
+	height: 40px; 
+	position: absolute; 
+	top: 30px; left: -5px; 
+	border-bottom: 3px solid #151515; 
+	border-left: 3px solid #151515; 
+	cursor: pointer; 
+	background: white;
+	transform: rotate(-135deg); 
+	z-index: 1.5;
+	transition: 0.5s;
+}
+
+.next-page-arrow span:hover, .disabled-next span:hover{
+	background: rgba(0,0,0,0.2);
+}
+
+.page, .nothing{
+	position: relative;
+	left: -90px;
+	line-height: 45px;
+	top: 5px;
+	top: 30px;
+	margin-left: 10px;
+	width: 50px;
+	height: 50px;
+	background: #FADBD8;
+	color: black;
+	font-family: cursive;
+	border-radius: 50%;
+	transition: 0.5s;
+}
+
+.nothing:hover{
+	background: #A93226;
+	color: white;
+	transition: 0.5s;
+}
+
+.page, .page:hover{
+	background: #A93226;
+	color: white;
+	transition: 0.5s
+}
+
+.description{
+	width: 350px;
+	height: 240px;
+	background: #fff;
+	border: 1px solid #000;
+	padding: 10px;
+	font-family: cursive;
+	font-size: 16px;
+	font-weight: bold;
+}
+
+
+.button3 {
+  width: 100px;
+  height: 50px;
+  position: relative;
+  left: 10px;
+  color: #fff;
+  font-family: cursive;
+  border-radius: 4px;
+  text-align: center;
+  cursor: pointer;
+  border: none;
+  transition: all 0.5s;
+  top: -60px;
+  left: 230px;
+  background: #CD5C5C;
+}
+
+.button3 span {
+  cursor: pointer;
+  border: none;
+  display: inline-block;
+  font-family: cursive;
+  position: relative;
+  transition: 0.5s;
+
+}
+
+.button3 span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.button3:hover span {
+  padding-right: 15px;
+
+}
+
+.button3:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+
+</style>
+
+<div class="hotel-list-wrapper">
+	<img src="{% static 'img/hotel-background2.jpg' %}" style="width: 100%; height: 726px; position: absolute; z-index: -1;">
+
+	<div class="white-wrapper" style="width: 1237px; height: 650px; z-index: 2; background: white; position: absolute; left: 100px; top: 35px; box-shadow: 0 25px 30px rgba(0,0,0,0.5); ">
+		<h1 style="font-family: cursive; text-align: center;">Hotel List
+			<div style="width: 70px; height: 1px; background: #CD5C5C; position: relative; top: -20px;z-index: 2.5; text-align: center; left: 450px;"></div>
+			<div style="width: 70px; height: 1px; background: #CD5C5C; position: relative; top: -20px;z-index: 2.5; text-align: center; left: 720px;"></div>
+		</h1>
+		{% if users %}
+			{% for hotellist in users %}
+				<div class="each-list">
+					<div class="picture-showcase">
+						<img  style="width: 350px; height: 260px;" src="{{ hotellist.image.url }}">
+						<h6 class="hotel-name-holder" style="width: 350px; height: 65px; background: rgba(0,0,0,0.4); position: absolute; top: 185px; color: #fff; font-family: cursive; padding: 10px; font-size: 16px;">{{ hotellist.hotel_name }}</h6>
+						<h6 class="room-price" style="color: #fff; height: 45px; position: absolute; top: 228px; padding: 10px; line-height: 20px; font-family: cursive; font-size: 20px; left: 240px; background: #EC7063;" >${{ hotellist.price }}</h6>
+					</div>
+
+					<div class="description">Decription:
+						<p class="real-decription" style="text-indent: 10px; font-weight: normal;">{{ hotellist.description }}</p>
+
+						<div class="line-separate" style="width: 180px; height: 1px; background: #F39C12; position: absolute; left: 20px; top: 460px;"></div>
+						<img src="https://png.icons8.com/metro/50/000000/single-bed.png" style="width: 20px; height: 20px; position: absolute; left: 25px; top: 465px;">
+						<h6 style="position: absolute; left: 50px; top: 455px; font-size: 15px; font-family: cursive; ">{{ hotellist.single_bed }}</h6>
+						<img src="https://png.icons8.com/metro/50/000000/bedroom.png" style="width: 17px; height: 17px; position: absolute; left: 65px; top: 465px;">
+						<h6 style="position: absolute; left: 90px; top: 455px; font-size: 15px; font-family: cursive; ">{{ hotellist.double_bed }}</h6>
+					</div>
+					<a href="{% url 'reservation' %}"><button class="button3"><span>Book</span></button></a>
+				</div>
+			{% endfor %}
+		{% else %}
+			<p style="font-family: cursive; font-size: 20px; text-align: center;">There are nothing here! Please contact with admin</p>
+		{% endif %}
+	</div>
+
+	{% if users.has_other_pages %}
+		<ul class="paginationcover">
+	    	{% if users.has_previous %}
+	      		<li><a class="previous-page-arrow" href="?page={{ users.previous_page_number }}"><span></span></a></li>
+	    	{% else %}
+	      		<li class="disabled-previous"><span style="text-decoration: none;"></span></li>
+	    	{% endif %}
+	    	
+	    	{% for i in users.paginator.page_range %}
+	      		{% if users.number == i %}
+	        		<li class="page"><span style="text-decoration: none;">{{ i }} <span class="sr-only">(current)</span></span></li>
+	      		{% else %}
+	        		<li><a class="nothing" style="text-decoration: none;" href="?page={{ i }}">{{ i }}</a></li>
+	      		{% endif %}
+	    	{% endfor %}
+	    	
+	    	{% if users.has_next %}
+	      		<li><a class="next-page-arrow" href="?page={{ users.next_page_number }}"><span></span></a></li>
+	    	{% else %}
+	      		<li class="disabled-next"><span style="text-decoration: none;"></span></li>
+	    	{% endif %}
+	  	</ul>
+	{% endif %}
+</div>
+
+{% endblock %}

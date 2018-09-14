@@ -28,6 +28,7 @@ body {
   font-family: cursive;
   position: relative;
   transition: 0.5s;
+  font-size: 15px;
 }
 
 .button1 span:after {

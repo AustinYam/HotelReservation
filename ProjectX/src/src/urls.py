@@ -25,15 +25,20 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', views.home, name='home'),
     url(r'^home/', views.home, name='home'),
-    url(r'^contact/', views.contact, name='contact'),
+    url(r'^contact/$', views.contact, name='contact'),
+
+    # Registration & Authentication URLs
     url(r'^signup/$', views.signup, name='signup'),
     url(r'^login/$', login, {'template_name': 'login.html'}, name='login'),
-    url(r'^logout/$', logout, {'template_name': 'home.html'}, name='logout'),
+    url(r'^logout/$', logout, {'template_name': 'logout.html'}, name='logout'),
 
+    url(r'^hotel-list/$', views.hotellist_view, name='hotel-list'),
+    url(r'^reservation/$', views.reservation_view, name='reservation'),
+    url(r'^mybooking/$', views.mybooking_view, name='mybooking')
 
+]+ static(settings.MEDIA_URL, document_root= settings.MEDIA_ROOT)
 
-]
-
+# Debug the static file.
 if settings.DEBUG:
 	urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 	urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
