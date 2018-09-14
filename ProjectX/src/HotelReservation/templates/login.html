@@ -1,0 +1,510 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+
+<style type="text/css">
+.button1{
+	width: 200px;
+	height: 40px;
+	font-size: 20px;
+	position: relative;
+
+
+}
+
+.button1:hover{
+	background: #CB4335;
+	position: relative;
+}
+.body-panda{
+	background: #fff;
+  	position: absolute;
+  	top: 200px;
+  	left: -20px;
+  	border-radius: 100px 100px 100px 100px / 126px 126px 96px 96px;
+  	width: 250px; 
+  	height: 282px;
+  	box-shadow: 0 5px 10px rgba(0,0,0,.3);
+  	position: absolute;
+  	top: 270px;
+  	left: 600px;
+  	z-index: 1;
+}
+.login-board{
+	box-shadow: 0 5px 10px rgba(0,0,0,.3);
+	transition: 0.5s;
+}
+.login-board:hover{
+	box-shadow: 0 5px 10px rgba(0,0,0,.5);
+	transition: 0.5s;
+}
+/* Panda Hands */
+.left-hand{
+	background: #000;
+	position: absolute;
+	z-index: 2;
+	width: 70px;
+	height: 70px;
+	border-radius: 50%;
+	top: 180px;
+	left: 580px;
+
+}
+
+.finger1{
+	width: 15px;
+	height: 20px;
+	border-radius: 40px 40px 39px 40px / 26px 26px 63px 63px ;
+	background: #000;
+	position: absolute;
+	box-shadow: 0 5px 10px rgba(0,0,0,.5);
+	top: 190px;
+	left: 580px;
+	z-index: 10;
+	transform: rotate(-55deg);
+}
+.finger2{
+	width: 15px;
+	height: 30px;
+	border-radius: 40px 40px 39px 40px / 26px 26px 63px 63px ;
+	background: #000;
+	position: absolute;
+	box-shadow: 0 5px 10px rgba(0,0,0,.5);
+	top: 175px;
+	left: 590px;
+	z-index: 10;
+	transform: rotate(-45deg);
+}
+.finger3{
+	width: 15px;
+	height: 35px;
+	border-radius: 40px 40px 39px 40px / 26px 26px 63px 63px ;
+	background: #000;
+	position: absolute;
+	box-shadow: 0 5px 10px rgba(0,0,0,.5);
+	top: 170px;
+	left: 605px;
+	z-index: 10;
+	transform: rotate(-20deg);
+}
+.finger4{
+	width: 15px;
+	height: 30px;
+	border-radius: 40px 40px 39px 40px / 26px 26px 63px 63px ;
+	background: #000;
+	position: absolute;
+	box-shadow: 0 5px 10px rgba(0,0,0,.5);
+	top: 175px;
+	left: 620px;
+	z-index: 10;
+	transform: rotate(10deg);
+}
+
+.finger5{
+	width: 20px;
+	height: 20px;
+	border-radius: 40px 40px 39px 40px / 26px 26px 63px 63px ;
+	background: #000;
+	position: absolute;
+	box-shadow: 0 5px 10px rgba(0,0,0,.5);
+	top: 185px;
+	left: 630px;
+	z-index: 10;
+	transform: rotate(45deg);
+}
+
+
+.right-hand{
+	background: #000;
+	position: absolute;
+	z-index: 2;
+	width: 70px;
+	height: 70px;
+	border-radius: 50%;
+	top: 240px;
+	left: 870px;
+}
+
+.right-finger1{
+	width: 20px;
+	height: 20px;
+	border-radius: 40px 40px 39px 40px / 26px 26px 63px 63px ;
+	background: #000;
+	position: absolute;
+	box-shadow: 0 5px 10px rgba(0,0,0,.5);
+	top: 242px;
+	left: 910px;
+	z-index: 10;
+	transform: rotate(45deg);
+}
+.right-finger2{
+	width: 15px;
+	height: 30px;
+	border-radius: 40px 40px 39px 40px / 26px 26px 63px 63px ;
+	background: #000;
+	position: absolute;
+	box-shadow: 0 5px 10px rgba(0,0,0,.5);
+	top: 250px;
+	left: 922px;
+	z-index: 10;
+	transform: rotate(65deg);
+}
+.right-finger3{
+	width: 15px;
+	height: 35px;
+	border-radius: 40px 40px 39px 40px / 26px 26px 63px 63px ;
+	background: #000;
+	position: absolute;
+	box-shadow: 0 5px 10px rgba(0,0,0,.5);
+	top: 260px;
+	left: 920px;
+	z-index: 10;
+	transform: rotate(89deg);
+}
+
+.right-finger4{
+	width: 15px;
+	height: 30px;
+	border-radius: 40px 40px 39px 40px / 26px 26px 63px 63px ;
+	background: #000;
+	position: absolute;
+	box-shadow: 0 5px 10px rgba(0,0,0,.5);
+	top: 275px;
+	left: 920px;
+	z-index: 10;
+	transform: rotate(110deg);
+}
+
+.right-finger5{
+	width: 15px;
+	height: 20px;
+	border-radius: 40px 40px 39px 40px / 26px 26px 63px 63px ;
+	background: #000;
+	position: absolute;
+	box-shadow: 0 5px 10px rgba(0,0,0,.5);
+	top: 294px;
+	left: 915px;
+	z-index: 10;
+	transform: rotate(125deg);
+}
+/* Panda Feet */
+.left-foot{
+	top: 360px;
+  	left: -80px;
+  	position: absolute;
+  	background: #000;
+  	z-index: 14;
+  	box-shadow: 0 5px 5px rgba(0,0,0,.2);
+	border-radius: 40px 40px 39px 40px / 26px 26px 63px 63px;
+  	width: 82px; 
+  	height: 120px;
+  	z-index: 9;
+  	top: 450px;
+  	left: 580px;
+  	transform: rotate(-20deg);
+}
+
+.fluffy1{
+	width: 15px;
+	height: 30px;
+	border-radius: 40px 40px 39px 40px / 26px 26px 63px 63px ;
+	background: #5D6D7E;
+	position: absolute;
+	z-index: 10; 
+	top: 15px;
+	left: 10px;
+	transform: rotate(-25deg);
+}
+
+.fluffy2{
+	width: 15px;
+	height: 30px;
+	border-radius: 40px 40px 39px 40px / 26px 26px 63px 63px ;
+	background: #5D6D7E;
+	position: absolute;
+	z-index: 10; 
+	top: 8px;
+	left: 33px;
+	transform: rotate(-6deg);
+}
+
+.fluffy3{
+	width: 15px;
+	height: 30px;
+	border-radius: 40px 40px 39px 40px / 26px 26px 63px 63px ;
+	background: #5D6D7E;
+	position: absolute;
+	z-index: 10; 
+	top: 15px;
+	left: 56px;
+	transform: rotate(16deg);
+}
+
+.fluffy4{
+	width: 35px;
+	height: 60px;
+	border-radius: 40px 40px 39px 40px / 26px 26px 63px 63px ;
+	background: #5D6D7E;
+	position: absolute;
+	z-index: 10; 
+	top: 50px;
+	left: 25px;
+	transform: rotate(0deg);
+}
+
+.right-fluffy1{
+	width: 15px;
+	height: 30px;
+	border-radius: 40px 40px 39px 40px / 26px 26px 63px 63px ;
+	background: #5D6D7E;
+	position: absolute;
+	z-index: 10; 
+	top: 15px;
+	left: 10px;
+	transform: rotate(-20deg);
+}
+.right-fluffy2{
+	width: 15px;
+	height: 30px;
+	border-radius: 40px 40px 39px 40px / 26px 26px 63px 63px ;
+	background: #5D6D7E;
+	position: absolute;
+	z-index: 10; 
+	top: 5px;
+	left: 35px;
+}
+.right-fluffy3{
+	width: 15px;
+	height: 30px;
+	border-radius: 40px 40px 39px 40px / 26px 26px 63px 63px ;
+	background: #5D6D7E;
+	position: absolute;
+	z-index: 10; 
+	top: 15px;
+	left: 60px;
+	transform: rotate(25deg);
+}
+.right-fluffy4{
+	width: 35px;
+	height: 60px;
+	border-radius: 40px 40px 39px 40px / 26px 26px 63px 63px ;
+	background: #5D6D7E;
+	position: absolute;
+	z-index: 10; 
+	top: 50px;
+	left: 25px;
+}
+.right-foot{
+	top: 360px;
+  	left: -80px;
+  	position: absolute;
+  	background: #000;
+  	z-index: 1400;
+  	box-shadow: 0 5px 5px rgba(0,0,0,.2);
+	border-radius: 40px 40px 39px 40px / 26px 26px 63px 63px ;
+  	width: 82px; 
+  	height: 120px;
+  	z-index: 7;
+  	left: 785px;
+  	top: 450px;
+  	transform: rotate(20deg);
+}
+
+/* -- Panda Head -- */
+#face-wrap {
+  margin: 160px auto 0;
+  width: 160px;
+  position: absolute;
+}
+
+#face {
+  position: relative;
+  width: 190px;
+  height: 160px;
+  border-radius: 80px;
+  background: #fff;
+  top: -70px;
+  left: 700px;
+  box-shadow: 0 5px 5px rgba(0,0,0,.2);
+  transform: rotate(45deg);
+  -webkit-transform: rotate(15deg);
+  -moz-transform: rotate(15deg);
+  -o-transform: rotate(15deg);
+  z-index: 2;
+}
+
+
+/* -- ZZZzzzz -- */
+.z {
+  position: absolute;
+  color: black;
+  font-family: arial;
+  font-size: 0;
+  font-weight: bold;
+  font-family: cursive;
+}
+
+.left-eye-shade{
+  	background: #000;
+  	width: 45px;
+  	height: 70px;
+  	margin: 10px;
+  	position: absolute;
+  	top: 35px;
+  	left: 25px;
+  	rotate: 220deg;
+  	border-radius: 25px / 9px 29px 45px 45px;
+  	z-index: 2;
+  	transform: rotate(60deg);
+  	top: -50px;
+  	left: 710px;
+}
+
+.right-eye-shade{
+	background: #000;
+	width: 45px;
+  	height: 70px;
+  	margin: 10px;
+  	position: absolute;
+  	top: 35px;
+  	left: 25px;
+  	rotate: 220deg;
+  	border-radius: 25px / 9px 29px 45px 45px;
+  	z-index: 2;
+  	transform: scaleX(-1) rotate(45deg);
+  	top: -30px;
+  	left: 799px;
+}
+
+/* eyes */
+.left-eye-curve{
+	width:50px; height:40px;  
+ 	border:solid 2px #fff;
+  	border-color:#fff transparent transparent transparent;
+  	border-radius: 70%/50px 40px 0 0;
+  	position: absolute;
+  	top: -30px;
+  	left: 732px;
+  	transform: scaleY(-1) rotate(-30deg);
+  	z-index: 9;	
+}
+
+.right-eye-curve{
+	width:50px; height:40px;  
+ 	border:solid 2px #fff;
+  	border-color:#fff transparent transparent transparent;
+  	border-radius: 70%/50px 40px 0 0;
+  	position: absolute;
+  	top: -10px;
+  	left: 795px;
+  	transform: scaleY(-1) rotate(0deg);
+  	z-index: 9;	
+}
+
+
+</style>
+
+<!--Panda Face-->
+
+<div id="face-wrap">
+  	<div id="face" class=" body"></div>
+
+ 	<div class="left-ear" style="background: #000; border-radius: 50%; width: 70px; height: 70px; position: absolute; top: -110px; left: 705px; z-index: 1;"></div>
+  	<div class="right-ear" style="background: #000; border-radius: 50%; width: 70px; height: 70px; position: absolute; top: -60px; left: 860px;z-index: 1;"></div>
+
+  	<div class="left-eye-shade"></div>
+  	<div class="left-eye-curve"></div>
+  	<div class="right-eye-shade"></div>
+  	<div class="right-eye-curve"></div>
+
+  	<div class="nose" style="background: #000; width: 30px; height: 30px; border-radius: 50%; position: absolute; z-index: 2; top: 30px; left: 760px;"></div>
+
+
+  <!--Function for the snoring-->
+  <script type="text/javascript">
+	//Pig face position
+	var elmFace = $("#face").offset();
+
+	function snore() {
+	  //Create Z
+	  var elm = document.createElement("span");
+	  //Text
+	  elm.innerText = "Z";
+	  //Set attributes
+	  elm.setAttribute("class", "z");
+	  //Get positions
+	  posTop = elmFace.top + 20;
+	  posLeft = elmFace.left + ($("#face").width()/2) + 75;
+	  aniTop = posTop - 160;
+	  aniLeft = (posLeft-40) + Math.round(Math.random()*90);
+	  //Style/position it
+	  $(elm).css({
+	    "top": posTop,
+	     "left": posLeft
+	  });
+	  //Append
+	  $("body").append(elm);
+	  //Animate
+	  $(elm).animate({
+	    "top": aniTop,
+	    "left": aniLeft,
+	    "font-size": "60px",
+	     "opacity": 0
+	    },
+	    5000, //Duration
+	    function() { //Function
+	      $(this).remove(); //Remove
+	  });
+	}
+
+	setInterval(snore, 1000);
+	snore();
+</script>
+</div>
+
+<!--Panda Body-->
+
+<div class="body-panda"></div>
+
+<div class="left-hand"></div>
+<div class="finger1"></div>
+<div class="finger2"></div>
+<div class="finger3"></div>
+<div class="finger4"></div>
+<div class="finger5"></div>
+
+<div class="right-hand"></div>
+<div class="right-finger1"></div>
+<div class="right-finger2"></div>
+<div class="right-finger3"></div>
+<div class="right-finger4"></div>
+<div class="right-finger5"></div>
+
+<div class="left-foot">
+	<div class="fluffy1"></div>
+	<div class="fluffy2"></div>
+	<div class="fluffy3"></div>
+	<div class="fluffy4"></div>
+</div>
+<div class="right-foot">
+	<div class="right-fluffy1"></div>
+	<div class="right-fluffy2"></div>
+	<div class="right-fluffy3"></div>
+	<div class="right-fluffy4"></div>
+</div>
+
+<div style="width: 100%; height: 720px; background: #F59292; position: relative; ">
+	<div class="login-board" style="width: 400px; padding: 30px; height: 300px; background: #fff; position: relative; top: 200px; left: 520px; z-index: 2; border-radius: 20px;">
+		<h2 style="font-family: cursive; color: #DB0909; text-align: center;">Sign In</h2>
+		<form label="" method="post" action="{% url 'login' %}" style="font-family: cursive; text-align: center;">
+		  {% csrf_token %}
+		  {{ form.as_p }}
+		  <button class="button1" type="submit" style="vertical-align:middle;"><span>Log in</span></button>
+		</form>	
+	</div>
+</div>
+
+{% endblock %}

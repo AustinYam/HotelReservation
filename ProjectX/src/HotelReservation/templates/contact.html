@@ -1,0 +1,457 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Contact</title>
+{% endblock %}
+
+{% block content %}
+
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/contact.css' %}">
+
+<style type="text/css">
+	.pimg1{
+		background: url('{% static 'img/hotel.jpg' %}');
+		min-height: 800px;
+	}
+	.pimg2{
+		background: url('{% static 'img/image.jpeg' %}');
+		min-height: 500px;
+	}
+
+	.pimg1, .pimg2{
+  		position:relative;
+  		background-position:center;
+  		background-size:cover;
+  		background-repeat:no-repeat;
+  		background-attachment:fixed;
+	}
+	/*animation element*/
+
+	.animation-element {
+	  	position: relative;
+	}
+
+	.animation-element.slide-right{
+		opacity: 0;
+	  	-moz-transition: all 500ms linear;
+	  	-webkit-transition: all 500ms linear;
+	  	-o-transition: all 500ms linear;
+	  	transition: all 500ms linear;
+	  	-moz-transform: translate3d(-700px, 0px, 200px);
+	  	-webkit-transform: translate3d(-700px, 0px, 0px);
+	  	-o-transform: translate(-700px, 0px);
+	  	-ms-transform: translate(-700px, 0px);
+	  	transform: translate3d(100px, 0px, -100px);
+	}
+
+	.animation-element.slide-right.in-view{
+		opacity: 1;
+	  	-moz-transform: translate3d(0px, 0px, 0px);
+	  	-webkit-transform: translate3d(0px, 0px, 0px);
+	  	-o-transform: translate(0px, 0px);
+	  	-ms-transform: translate(0px, 0px);
+	  	transform: translate3d(0px, 0px, 0px);
+	}
+	/*animation element sliding left*/
+
+	.animation-element.slide-left {
+	  	left: -200px;
+	  	-moz-transition: all 1000ms linear;
+	  	-webkit-transition: all 1000ms linear;
+	  	-o-transition: all 1000ms linear;
+	  	transition: all 1000ms linear;
+	  	-moz-transform: translate3d(-700px, 0px, 200px);
+	  	-webkit-transform: translate3d(-700px, 0px, 0px);
+	  	-o-transform: translate(-700px, 0px);
+	  	-ms-transform: translate(-700px, 0px);
+	  	transform: translate3d(-700px, 0px, 0px);
+	}
+
+	.animation-element.slide-left.in-view {
+	  	left: 455px;
+	  	-moz-transform: translate3d(0px, 0px, 0px);
+	  	-webkit-transform: translate3d(0px, 0px, 0px);
+	  	-o-transform: translate(0px, 0px);
+	  	-ms-transform: translate(0px, 0px);
+	  	transform: translate3d(0px, 0px, 0px);
+	}
+	/* animation slide left styled for testimonials*/
+
+	.animation-element.slide-left.testimonial {
+	  	float: left;
+	  	width: 47%;
+	  	background: #F5F5F5;
+	  	font-family: cursive;
+	  	padding: 15px;
+	  	box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.2);
+	}
+	.animation-element.slide-left.testimonial:hover,
+	.animation-element.slide-left.testimonial:active{
+	  	box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.25);
+	}
+
+
+	@media screen and (max-width: 678px){
+	  	.animation-element.slide-left.testimonial,
+	  	.animation-element.slide-left.testimonial:nth-of-type(odd),
+	  	.animation-element.slide-left.testimonial:nth-of-type(even){
+	   		width: 100%;
+	    	margin: 0px 0px 20px 0px;
+	  	}
+
+	  	.animation-element.slide-left.testimonial img{
+	    	width: 85px;
+	    	height: 85px;
+	    	margin-bottom: 5px;
+	  	}
+	}	
+	
+	.button8 {
+		position: relative; 
+		top: 250px; 
+		left: 150px;width: 50px; 
+		height: 50px; 
+		border-radius: 50%; 
+		color: #fff; 
+		background: rgba(0,0,0,0.6);
+		border: 2px solid #FFA07A;
+		transition: all 0.3s ease;
+	}
+
+	.button8:hover {background-color: #3e8e41}
+
+#return-to-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: rgb(0, 0, 0);
+    background: rgba(236, 112, 99, 0.7);
+    width: 50px;
+    height: 50px;
+    display: block;
+    text-decoration: none;
+    -webkit-border-radius: 35px;
+    -moz-border-radius: 35px;
+    border-radius: 50%;
+    display: none;
+    transform: rotate(-180deg);
+    -webkit-transition: all 0.3s linear;
+    -moz-transition: all 0.3s ease;
+    -ms-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+}
+#return-to-top i {
+    color: #fff;
+    margin: 0;
+    position: relative;
+    left: 16px;
+    transform: rotate(-180deg);
+    top: 13px;
+    font-size: 19px;
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -ms-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+}
+#return-to-top:hover {
+    background: rgba(192, 57, 43, 0.9);
+    transform: rotate(0deg);
+}
+#return-to-top:hover i {
+    color: #fff;
+}
+</style>
+
+<div class="pimg1">
+	
+	<script type="text/javascript">
+		$(document).ready(function() {
+
+			//window and animation items
+			var animation_elements = $.find('.animation-element');
+					  var web_window = $(window);
+
+					  //check to see if any animation containers are currently in view
+					  function check_if_in_view() {
+					    //get current window information
+					    var window_height = web_window.height();
+					    var window_top_position = web_window.scrollTop();
+					    var window_bottom_position = (window_top_position + window_height);
+
+					    $.each(animation_elements, function() {
+
+					      var element = $(this);
+					      var element_height = $(element).outerHeight();
+					      var element_top_position = $(element).offset().top;
+					      var element_bottom_position = (element_top_position + element_height);
+
+					      if ((element_bottom_position >= window_top_position) && (element_top_position <= window_bottom_position)) {
+					        element.addClass('in-view');
+					      } else {
+					        element.removeClass('in-view');
+					      }
+					    });
+
+					}
+
+					$(window).on('scroll resize', function() {
+					    check_if_in_view()
+					})
+					$(window).trigger('scroll');
+
+				});
+			</script>
+
+			<h1 style="color: #fff; position: relative; top: 250px; font-family: cursive; font-size: 70px; text-align: center;">Contact</h1>
+			<p style="color: #fff; position: relative; top:255px; text-align: center; font-family: cursive; font-size: 25px; padding: 0px 50px;">We Will Get Back To You As Soon As Possible. Please press the button for more information.</p>
+
+			<button class="button8"><a href="#" style="text-decoration: none; color: #fff; width: 100px; font-family: cursive;">?</a></button>
+
+			    <!-- testimonial one -->
+			<div class="animation-element slide-left testimonial" style="width: 550px; height: 350px; top: 600px; transition: 0.8s; box-shadow: 0 25px 30px rgba(0,0,0,0.5); background: #151515; color: #fff; border-top: 3px solid #FFA07A;">
+
+			    <h4 style="text-align: center; font-family: cursive; padding: 10px;">About Us</h4>
+			    <p style="font-size: 15px; padding: 0px 20px; top: -10px; position: relative;">Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.</p>
+			</div>
+</div>
+
+
+
+<section style="width: 450px; height: 350px;">
+	<!--put team member here-->
+</section>
+
+<div class="pimg2">
+	<div class="ptext">
+		<span class="border">
+
+		</span>
+	</div>
+</div>
+
+<!---Map-->
+<div style="position: relative; top: 630px;">
+	<div id="map"></div>
+	<script>
+		function initMap() {
+			var currentInfoWindow = null; 
+			// Create a Map
+			var map = new google.maps.Map(document.getElementById('map'), {
+				center: {lat: -34.397, lng: 150.644},
+      	    	zoom: 8
+       	 	});
+			// Add the marker on the map.
+	        var marker = new google.maps.Marker({
+	          	position: {lat: -34.397, lng: 150.644},
+	          	animation: google.maps.Animation.DROP,
+	          	map: map,
+	        });
+
+	        var contentString = '<h6 style="font-weight: bold; font-family: cursive; text-align: center;">Name of the Hotel</h6>'+'<p style="font-family: cursive; "><b style="font-weight: bold;">Address:</b> 2568 S King Rd, San Jose, CA 95122.</p>'+'<p style="font-family: cursive; top: -17px; position: relative;"><b style="font-family: cursive; font-weight: bold;">Phone:</b> +1 (408)-952-9901.</p>' + '<p style="font-family: cursive; top: -34px; position: relative;"><b style="font-family: cursive; font-weight: bold;">Openning Time:</b> Monday-Friday: 9:00am-12:00am</p>'+'<p style="font-family: cursive; top: -49px; position: relative;"><b style="font-family: cursive; font-weight: bold;">Weekends:</b> Saturday-Sunday: 10:00pm-5:00am</p>'
+
+       		var infowindow = new google.maps.InfoWindow({
+         	 	content: contentString
+        	});
+
+       		infowindow.open(map, marker);
+   	 	}
+   	 	
+	</script>
+
+	<!--Change its API key, when it runs out of 30 days trial.-->
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB00pHYqC4PlmcndunF_NqMyqfvohWv0do&callback=initMap"
+    async defer></script>
+</div>
+
+<div class="container" style="position: relative; top: -500px;">
+	{% if confirm_message %}
+	<h1 style=" position: relative; top: 290px; padding: 0px 20px; font-family: cursive; text-align: center; width: 200px; border-bottom: 1px solid #FAD7A0; left: 450px;"> {{ title }} </h1>
+	<p style="font-family: cursive; position: relative; text-align: center; font-size: 16px; top: 295px;"> {{ confirm_message }} </p>
+	{% endif %}
+
+	{% if form %}
+	<form method="POST" action="" style="position: relative; top: 100px; width: 1300px; padding: 20px 20px; height: 600px; left: -100px; border-top: 1px solid #F08080;"> {% csrf_token %} 
+		<h3 class="title-for-contact">Leave Us Some Messages</h3>
+		<p class="sub-title-for-contact">Enjoy Your Day After You Are Done</p>
+		{{ form.as_p }}
+		<button type="Send Message" class="button" style="vertical-align: middle; border: none;"><span>Send Message</span></button>
+<!--
+		<script type="text/javascript">
+			$('#alert-button').click(function(){
+				swal({
+					title: "Thank You For Your Time!",
+					text: "Click the button when you finish!",
+					icon: "success",
+					button: "Alright",
+				});
+			});
+
+		</script>
+-->
+
+
+		<div style=" width: 300px; height: 515px; border: 1px solid #FFA07A; float: right; position: relative; top: -460px; left: -95px; border-radius: 15px; padding: 30px 50px;">
+
+			<div class="animation-element slide-right testimonial" style="width: 200px; height: 450px; background: #F5B7B1; float: right; position: relative; left: 0px; border-radius: 15px; padding: 25px 25px;">
+				<h6 style="font-family: cursive; color: #000; text-align: center; position: relative; border-bottom: 1px solid #F08080; width: 150px;">Email Us</h6>
+				<div class="email-link" style="font-family: cursive; text-align: center; padding-bottom: 20px;"><a style="color: #fff; text-decoration: none;" href="mailto:lavashort@gmail.com">lavashort@gmail.com</a></div>
+
+
+				<h6 style="font-family: cursive; color: #000; text-align: center; position: relative; border-bottom: 1px solid #F08080; width: 150px;">Phone Us</h6>
+				<div class="email-link" style="font-family: cursive; text-align: center; padding-bottom: 20px;"><a style="color: #fff; text-decoration: none;" href="tel:4089529901">+1 (408)-952-9901</a></div>
+
+				<h6 style="font-family: cursive; color: #000; text-align: center; position: relative; border-bottom: 1px solid #F08080; width: 150px;">Address</h6>
+
+				<div class="email-link" style="font-family: cursive; text-align: center; padding-bottom: 20px;"><a style="color: #fff; text-decoration: none;">2568 S King Rd, San Jose, CA 95122</a></div>
+
+				<h6 style="font-family: cursive; color: #000; text-align: center; position: relative; border-bottom: 1px solid #F08080; width: 150px;">Social Media</h6>
+
+				<div class="social-media" style="">
+					<a href="#" class=""></a>
+					<a href="#" class=""></a>
+					<a href="#" class=""></a>
+				</div>
+
+			</div>
+
+		</div>
+	</form>
+	{% endif %}
+</div>
+
+
+<!--Footer-->
+<footer style="margin: 0; padding: 0; border-top: 4px solid #FAD7A0; position: absolute; background:  #151515; width: 100%; height: 376px; top: 2750px;">
+	<div style="position: absolute; width: 1000px; top: 50px; height: 100px; box-sizing: border-box; left: 240px; float: left; padding: 0 10px;  box-sizing: border-box;">
+		<div class="brief-about-us" style=" width: 200px; padding: 5px 0px; left: -20px;top: 4px; position: absolute; ">
+			<!--Sub-title-->
+			<h5 style="color: #FAD7A0; text-align: center; position: relative; width: 200px;font-size: 16px; font-family: cursive;">About Us</h5>
+			<p class="information" style="position: relative; width: 200px; font-family: cursive; font-size: 15px; color: #fff; list-style: none;">Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.</p>
+		</div>
+
+		<div class="sub-contact-information" style="border-left: 1px solid #FAD7A0; width: 400px; border-right: 1px solid #FAD7A0; padding: 10px 0px; left: 277px;  position: absolute;">
+			<!--Subtitle-->
+			<h5 style="color: #FAD7A0; text-align: center; position: relative; width: 400px; font-size: 16px; font-family: cursive;">Information</h5>
+			<p style="color: #fff; font-family: cursive; text-align: center; width: 400px; padding: 5px 10px;">2568 S King Rd, San Jose, CA 95122</i></p>
+			<p style="text-align: center; position: relative; width: 400px; font-family: cursive; color: #fff; list-style: none; top: -15px;"><a href="mailto:lavshort@gmail.com" style="text-decoration: none; color: #fff;padding: 10px 10px;"><span>&#9993;</span> lavashort@gmail.com</a></p>
+			<p style="text-align: center; position: relative; width: 400px; font-family: cursive; color: #fff; top: -25px; list-style: none;"><a href="tel:4089529901" style="text-decoration: none; color: #fff; padding: 15px 10px;"><span>&#9990;</span> +1 (408)-952-9901</a></p>
+
+		</div>
+
+		<div class="openning-hour-section" style="width: 200px; padding: 10px 0px; left: 757px; position: absolute; ">
+			<!--Subtitle-->
+			<h5 style="color: #FAD7A0; text-align: center; position: relative; width: 200px; font-family: cursive;">Openning Hours</h5>
+			
+			<p class="morning-booking-time" style="text-align: center; position: relative; width: 200px; font-family: cursive; color: #fff; list-style: none;">Monday-Friday: 9:00am-12:00am</p>
+			<p class="evening-booking-time" style=" text-align: center; position: relative; top: -15px; width: 200px; font-family: cursive; color: #fff; list-style: none;">Saturday-Sunday: 10:00pm-5:00am</p>
+		</div>
+	</div>-->
+		
+	<!---Copyright-->
+	<p style="color: #fff; font-size: 12px; position: relative; top: 310px;  text-align: center; font-family: cursive;">Copyright &copy; 2017. All rights reserved.</p>
+
+	<div style="width: 260px; position: relative; top: 300px; left: 588px; height: 1px; background: #FFA07A"></div>
+</footer>
+
+<a href="javascript:" id="return-to-top"><i class="icon-chevron-up"></i>
+<script type="text/javascript">
+  $(window).scroll(function() {
+      if ($(this).scrollTop() >= 50) {    
+          $('#return-to-top').fadeIn(200);  
+      } else {
+          $('#return-to-top').fadeOut(200);
+      }
+  });
+  $('#return-to-top').click(function() {   
+      $('body,html').animate({
+          scrollTop : 0                   
+      }, 500);
+  });
+  </script>
+</a>
+
+<nav>
+	<div class="logo"><a href="">Logo</a></div>
+	<ul class="menu-main">
+	   	<li class="home"><a href="{% url 'home' %}">Home</a></li>
+
+	   	<li class="page"><a href="#">Page</a>
+	   		<div class="menu-sub">
+	            <div class="menu-col-1">
+	                <h3 class="menu-category">Generals</h3>
+	                <ul>
+	                   	<li class="sub-l"><a href="">Link 1</a></li>
+	                    <li class="sub-l"><a href="">Link 2</a></li>
+	                    <li class="sub-l"><a href="">Link 3</a></li>
+	                    <li class="sub-l"><a href="">Link 4</a></li>
+	                    <li class="sub-l"><a href="">Link 5</a></li>
+	                </ul>
+	            </div>
+
+	            <div class="menu-col-2">
+	                <h3 class="menu-category">Fast Services</h3>
+	                <ul>
+	                   	<li class="sub-l"><a href="">Link 1</a></li>
+	                    <li class="sub-l"><a href="">Link 2</a></li>
+	                   	<li class="sub-l"><a href="">Link 3</a></li>
+	                   	<li class="sub-l"><a href="">Link 4</a></li>
+	                   	<li class="sub-l"><a href="">Link 5</a></li>
+	            	</ul>
+	            </div>
+
+	            <div class="menu-col-3">
+	                <h3 class="menu-category">About</h3>
+	                <ul>
+	                	<li class="sub-l"><a href="">Link 1</a></li>
+	                  	<li class="sub-l"><a href="">Link 2</a></li>
+	                    <li class="sub-l"><a href="">Link 3</a></li>
+	                    <li class="sub-l"><a href="">Link 4</a></li>
+	                    <li class="sub-l"><a href="">Link 5</a></li>
+	                </ul>
+	            </div>
+
+	            <div class="menu-col-4">
+	                <h3 class="menu-category">Team Members</h3>
+	                <ul>
+	                  	<li class="sub-l"><a href="">Link 1</a></li>
+	                  	<li class="sub-l"><a href="">Link 2</a></li>
+	                  	<li class="sub-l"><a href="">Link 3</a></li>
+	                  	<li class="sub-l"><a href="">Link 4</a></li>
+	                  	<li class="sub-l"><a href="">Link 5</a></li>
+	              	</ul>
+	            </div>
+	        </div>
+	    </li>
+
+	    <li class="Room"><a href="#">Trips & Tours</a>
+	        <ul class="room-sub">
+	            <li><a href="">Single Room</a></li>
+	            <li><a href="">Search Availability</a></li>
+	            <li><a href="">Wedding Room</a></li>
+	        </ul>
+	    </li>
+
+	    <li class="Dinning"><a href="#">Dinings & Bars</a>
+	        <ul>
+	           	<li><a href="">Bar</a></li>
+	           	<li><a href="">Buffet</a></li>
+	            <li><a href="">Breakfast</a></li>
+	            <li><a href="">Lunch</a></li>
+	            <li><a href="">Dinner</a></li>
+	            <li><a href="">Wedding</a></li>	
+	       	</ul>
+	    </li>
+
+	    <li class="ammeties"><a href="#">Ammeties</a></li>
+
+	    <li class="contact"><a href="{% url 'contact' %}">Contact</a></li>
+
+		<button class="button1" style="vertical-align:middle; border: none;"><span>Book Room</span></button>
+	</ul>
+</nav>
+
+
+{% endblock %}
