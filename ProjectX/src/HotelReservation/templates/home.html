@@ -539,7 +539,7 @@
 
 <div class="authentication">
   {% if user.is_authenticated %}
-    <button class="button2"><a href="{% url 'logout' %}" style="text-decoration: none; color: #fff; float: left; width: 100%; height: 100%; line-height: 60px;">See Ya</a></button>
+    <button class="button2"><a href="{% url 'logout' %}" style="text-decoration: none; color: #fff; float: left; width: 100%; height: 100%; line-height: 60px;">Log out</a></button>
     <div class="tag1">
       <h6 class="text1">{{ user.username }}</h6>
     </div>
@@ -663,7 +663,7 @@
 
 
 <div>
-  <a class="weatherwidget-io" href="https://forecast7.com/en/37d34n121d89/san-jose/?unit=us" data-label_1="SAN JOSE" data-label_2="WEATHER" data-font="Georgia" data-icons="Climacons Animated" data-mode="Current" data-theme="original" data-basecolor="#9f1619" style="position: relative; top: 605px; width: 100%; font-family: cursive;" >SAN JOSE WEATHER</a>
+  <a class="weatherwidget-io" href="https://forecast7.com/en/37d34n121d89/san-jose/?unit=us" data-label_1="SAN JOSE" data-label_2="WEATHER" data-font="Georgia" data-icons="Climacons Animated" data-mode="Current" data-theme="original" data-basecolor="#9f1619" style="position: relative; top: 480px; width: 100%; font-family: cursive;" >SAN JOSE WEATHER</a>
 <script>
 !function(d,s,id){
   var js,fjs=d.getElementsByTagName(s)[0];
@@ -678,7 +678,7 @@
 </div>
 
 <div>
-  <a class="weatherwidget-io" href="https://forecast7.com/en/37d34n121d89/san-jose/?unit=us" data-label_1="SAN JOSE" data-label_2="WEATHER" data-icons="Climacons Animated" data-theme="original" data-basecolor="#ea8a8c" data-highcolor="#ffdf00" data-cloudcolor="#ffffff" data-cloudfill="#fdfdfc" data-raincolor="#b1beed" style="width: 100%; position: relative; top: 78px;" >SAN JOSE WEATHER</a>
+  <a class="weatherwidget-io" href="https://forecast7.com/en/37d34n121d89/san-jose/?unit=us" data-label_1="SAN JOSE" data-label_2="WEATHER" data-icons="Climacons Animated" data-theme="original" data-basecolor="#ea8a8c" data-highcolor="#ffdf00" data-cloudcolor="#ffffff" data-cloudfill="#fdfdfc" data-raincolor="#b1beed" style="width: 100%; position: relative; top: 480px;" >SAN JOSE WEATHER</a>
 <script>
 !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src='https://weatherwidget.io/js/widget.min.js';fjs.parentNode.insertBefore(js,fjs);}}(document,'script','weatherwidget-io-js');
 </script>
@@ -871,7 +871,7 @@
               </div>
           </div>
       </li>
-
+      <!--
       <li class="Room"><a href="#">Rooms & Trips</a>
           <ul class="room-sub">
               <li><a href="">Single Room</a></li>
@@ -890,12 +890,12 @@
               <li><a href="">Wedding</a></li> 
           </ul>
       </li>
-
+      -->
       <li class="ammeties"><a href="#">Ammeties</a></li>
 
       <li class="contact"><a href="{% url 'contact' %}">Contact</a></li>
 
-      <a href="{% url 'reservation' %}" style="position: relative; top: -10px; left: -10px;"><button class="button1"><span style="font-size: 15px;">Book Now</span></button></a>
+      <!--<a href="{% url 'booking' %}" style="position: relative; top: -10px; left: -10px;"><button class="button1"><span style="font-size: 15px;">Book Now</span></button></a>-->
   </ul>
 </nav>
 {% endblock %}

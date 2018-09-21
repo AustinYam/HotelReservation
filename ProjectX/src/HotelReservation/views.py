@@ -3,20 +3,23 @@ from django.core.mail import send_mail
 from django.conf import settings
 from django.contrib.auth import login, authenticate, logout
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.urls import reverse
 
 from .forms import contactForm
 #from .forms import DateForm
 from .forms import SignUpForm
-from .forms import LogInForm
 
-from .models import HotelList, Reservation
 
+
+
+from .models import HotelList, Room
+
+from django.contrib.auth.decorators import login_required
 import smtplib
 
 
 # Create your views here.
 def home(request):
-
 	context = {}
 	templates = 'home.html'
 	return render(request, templates, context)
@@ -59,30 +62,13 @@ def signup(request):
         form = SignUpForm()
     return render(request, 'signup.html', {'form': form})
 
-def login_view(request):
-	if request.method == 'POST':
-		form = LogInForm(request.POST or None)
 
-		if form.is_valid():
-			user = form.get_user()
-			login(request, user)
-			return redirect('home.html')
-	else:
-		form = LogInForm()
-	return render(request, 'login.html', {'form':form})
-
-
-
-
-def logout_view(request):
-	if request.method == 'POST':
-		logout(request)
-		return redirect('home')
 
 
 
 def hotellist_view(request):
 	all_hotel_views = HotelList.objects.all()
+
 	page = request.GET.get('page', 1)
 
 	# Limitation 
@@ -98,11 +84,29 @@ def hotellist_view(request):
 
 	return render(request, 'hotellist.html', {'users':users})
 
+@login_required(login_url="login")
+def booking_room_view(request, pk):
+	
+	if pk:
+		thehotel = HotelList.objects.get(pk=pk)
+		room = Room.objects.filter(hotel=thehotel)
+
+		page = request.GET.get('page', 1)
+		
+		# Limitation 
+		paginator = Paginator(room, 3)
+
+		# Check to see whether or not the page is an integer.
+		try:
+			rooms = paginator.page(page)
+		except PageNotAnInteger:
+			rooms = paginator.page(1)
+		except EmptyPage:
+			rooms = paginator.page(paginator.num_pages)
+	
+	return render(request, 'booking.html', {'room':rooms, 'thehotel':thehotel})
 
 def reservation_view(request):
-	leavereq = Reservation.objects.all()
-	return render(request, 'reservation.html', {'leavereq': leavereq})
-
-
-def mybooking_view(request):
-	return render(request, 'mybooking.html', {})
+	templates = ''
+	context = {''}
+	return render(request, templates, context)

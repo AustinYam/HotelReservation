@@ -17,7 +17,7 @@
 }
 .background-sign-up{
   width: 100%;
-  height: 800px;
+  height: 700px;
   position: absolute;
   background: #F59292;
 }
@@ -28,10 +28,21 @@
   height: 600px;
   background: #fff;
   position: absolute;
-  top: 100px;
+  top: 45px;
   left: 100px;
+  transition: 0.5s ease;
+  border-radius: 30px;
 }
 
+.signup-wrapper:hover{
+  box-shadow: 0 5px 10px rgba(0,0,0,.3);
+  transition: 0.5s ease;
+}
+
+.username:hover{
+  box-shadow: 0 5px 10px rgba(0,0,0,.3);
+  transition: 0.5s;
+}
 
 </style>
 <div class="background-sign-up">
@@ -51,7 +62,7 @@
           {% endfor %}
         </p>
       {% endfor %}
-      <a href="{% url 'reservation' %}" style="position: relative; top: 10px; left: 80px;"><button type="submit" class="button1"><span style="font-size: 15px;">Register</span></button></a>
+      <a href="{% url 'login' %}" style="position: relative; top: 10px; left: 80px;"><button type="submit" class="button1"><span style="font-size: 15px;">Register</span></button></a>
     </form> 
   </div>
 </div>

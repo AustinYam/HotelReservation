@@ -18,6 +18,7 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.conf.urls import url, include
 from django.contrib.auth.views import login, logout
+from django.contrib.auth import views as auth_views
 
 from HotelReservation import views
 
@@ -30,12 +31,17 @@ urlpatterns = [
     # Registration & Authentication URLs
     url(r'^signup/$', views.signup, name='signup'),
     url(r'^login/$', login, {'template_name': 'login.html'}, name='login'),
-    url(r'^logout/$', logout, {'template_name': 'logout.html'}, name='logout'),
+    url(r'^logout/$', logout, {'template_name': 'login.html'}, name='logout'),
+    url(r'^password_reset/$', auth_views.password_reset, {'template_name': 'password_reset_form.html'}, name='password_reset'),
+    url(r'^password_reset/done/$', auth_views.password_reset_done, {'template_name': 'password_reset_done.html'}, name='password_reset_done'),
+    url(r'^reset/(?P<uidb64>[0-9A-Za-z_\-]+)/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/$', auth_views.password_reset_confirm, {'template_name': 'password_reset_confirm.html'}, name='password_reset_confirm'),
+    url(r'^reset/done/$', auth_views.password_reset_complete, {'template_name': 'password_reset_complete.html'}, name='password_reset_complete'),
 
     url(r'^hotel-list/$', views.hotellist_view, name='hotel-list'),
-    url(r'^reservation/$', views.reservation_view, name='reservation'),
-    url(r'^mybooking/$', views.mybooking_view, name='mybooking')
+    url(r'^booking-room/$', views.booking_room_view, name='booking'),
+    url(r'^booking-room/(?P<pk>[0-9]+)/$', views.booking_room_view, name='booking_with_pk'),
 
+    url(r'^reservation/$', views.reservation_view, name='reservation'),
 ]+ static(settings.MEDIA_URL, document_root= settings.MEDIA_ROOT)
 
 # Debug the static file.

@@ -20,6 +20,8 @@
 
 }
 
+
+
 .each-list{
 	width: 350px; 
 	height: 500px; 
@@ -44,7 +46,7 @@
 	list-style-type: none;
 }
 
-.next-page-arrow, .disabled-previous, .page, .nothing, .previous-page-arrow, .disabled-next{
+.next-page-arrow, .disabled-previous, .paging, .nothing, .previous-page-arrow, .disabled-next{
 	float: left;
 	background: #fff;
 	text-align: center;
@@ -113,7 +115,7 @@
 	background: rgba(0,0,0,0.2);
 }
 
-.page, .nothing{
+.paging, .nothing{
 	position: relative;
 	left: -90px;
 	line-height: 45px;
@@ -135,7 +137,7 @@
 	transition: 0.5s;
 }
 
-.page, .page:hover{
+.paging, .paging:hover{
 	background: #A93226;
 	color: white;
 	transition: 0.5s
@@ -214,20 +216,23 @@
 				<div class="each-list">
 					<div class="picture-showcase">
 						<img  style="width: 350px; height: 260px;" src="{{ hotellist.image.url }}">
-						<h6 class="hotel-name-holder" style="width: 350px; height: 65px; background: rgba(0,0,0,0.4); position: absolute; top: 185px; color: #fff; font-family: cursive; padding: 10px; font-size: 16px;">{{ hotellist.hotel_name }}</h6>
-						<h6 class="room-price" style="color: #fff; height: 45px; position: absolute; top: 228px; padding: 10px; line-height: 20px; font-family: cursive; font-size: 20px; left: 240px; background: #EC7063;" >${{ hotellist.price }}</h6>
+						<div style="width: 350px; height: 65px; background: rgba(0,0,0,0.4); position: absolute; top: 195px; ">
+							<h6 class="hotel-name-holder" style="color: #fff; font-family: cursive; padding: 0px 10px; font-size: 16px;">{{ hotellist.hotel_name }}</h6>
+							<h6 class="hotel-address" style="color: #fff; font-family: cursive; padding: 0px 10px; font-size: 12px;">{{ hotellist.address }}, {{ hotellist.city }}, {{ hotellist.state }} {{ hotellist.zip_code }}</h6>
+						</div>
+					<!--<h6 class="room-price" style="color: #fff; height: 45px; position: absolute; top: 228px; padding: 10px; line-height: 20px; font-family: cursive; font-size: 20px; left: 240px; background: #EC7063;" >${{ hotellist.price }}</h6>-->
 					</div>
 
 					<div class="description">Decription:
 						<p class="real-decription" style="text-indent: 10px; font-weight: normal;">{{ hotellist.description }}</p>
 
 						<div class="line-separate" style="width: 180px; height: 1px; background: #F39C12; position: absolute; left: 20px; top: 460px;"></div>
-						<img src="https://png.icons8.com/metro/50/000000/single-bed.png" style="width: 20px; height: 20px; position: absolute; left: 25px; top: 465px;">
+						<!--<img src="https://png.icons8.com/metro/50/000000/single-bed.png" style="width: 20px; height: 20px; position: absolute; left: 25px; top: 465px;">
 						<h6 style="position: absolute; left: 50px; top: 455px; font-size: 15px; font-family: cursive; ">{{ hotellist.single_bed }}</h6>
 						<img src="https://png.icons8.com/metro/50/000000/bedroom.png" style="width: 17px; height: 17px; position: absolute; left: 65px; top: 465px;">
-						<h6 style="position: absolute; left: 90px; top: 455px; font-size: 15px; font-family: cursive; ">{{ hotellist.double_bed }}</h6>
+						<h6 style="position: absolute; left: 90px; top: 455px; font-size: 15px; font-family: cursive; ">{{ hotellist.double_bed }}</h6>-->
 					</div>
-					<a href="{% url 'reservation' %}"><button class="button3"><span>Book</span></button></a>
+					<a href="{% url 'booking_with_pk' pk=hotellist.pk %}"><button class="button3"><span>Book</span></button></a>
 				</div>
 			{% endfor %}
 		{% else %}
@@ -245,7 +250,7 @@
 	    	
 	    	{% for i in users.paginator.page_range %}
 	      		{% if users.number == i %}
-	        		<li class="page"><span style="text-decoration: none;">{{ i }} <span class="sr-only">(current)</span></span></li>
+	        		<li class="paging"><span style="text-decoration: none;">{{ i }} <span class="sr-only">(current)</span></span></li>
 	      		{% else %}
 	        		<li><a class="nothing" style="text-decoration: none;" href="?page={{ i }}">{{ i }}</a></li>
 	      		{% endif %}

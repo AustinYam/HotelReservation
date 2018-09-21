@@ -23,6 +23,8 @@ EMAIL_HOST_USER = 'lavashort@gmail.com'
 EMAIL_HOST_PASSWORD = 'Crystallam123'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.0/howto/deployment/checklist/
 
@@ -138,12 +140,9 @@ if DEBUG:
 
 LOGIN_REDIRECT_URL = '/home/'
 
-LOGOUT_REDIRECT_URL = '/home/'
+LOGOUT_REDIRECT_URL = '/login/'
 
-EMAIL_BACKEND = "django.core.mail.backends.filebased.EmailBackend"
+EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 
 EMAIL_FILE_PATH =os.path.join(BASE_DIR, "send_emails")
-
-
-
 
