@@ -4,7 +4,7 @@
 }
 
 form h1, h3.title-for-contact, p.sub-title-for-contact{
-	font-family: cursive;
+	font-family: sans-serif;
 	position: relative;
 	left: 0;
   text-align: center;
@@ -24,7 +24,7 @@ form h1, h3.title-for-contact, p.sub-title-for-contact{
   left: 10px;
 	color: #fff;
 	background: #FA8072;
-	font-family: cursive;
+	font-family: sans-serif;
   border-radius: 4px;
   text-align: center;
   cursor: pointer;
@@ -36,7 +36,7 @@ form h1, h3.title-for-contact, p.sub-title-for-contact{
   cursor: pointer;
   border: none;
   display: inline-block;
-  font-family: cursive;
+  font-family: sans-serif;
   position: relative;
   transition: 0.5s;
 }
