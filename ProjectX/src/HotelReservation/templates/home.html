@@ -111,7 +111,7 @@
 
 .b08_3d_pushback div:nth-child(1) {
     background: #F08080;
-    font-family: cursive;
+    font-family: sans-serif;
     font-size: 14px;
     border-radius: 50%;
     text-align: center;
@@ -129,7 +129,7 @@
 .b08_3d_pushback div a{color: #fff;}
 
 .b08_3d_pushback div:nth-child(2) {
-    font-family: cursive;
+    font-family: sans-serif;
     font-size: 14px;
     text-align: center; 
     background-color: #CD5C5C;
@@ -225,7 +225,7 @@
   top: 90px;
   position: absolute;
   text-align: center; 
-  font-family: cursive;
+  font-family: sans-serif;
 }
 
 .vertical-text{
@@ -239,7 +239,7 @@
   top: -80px;
   left: 105px;
   text-align: center;
-  font-family: cursive;
+  font-family: sans-serif;
   font-weight: bold;
   font-size: 37px;
 }
@@ -291,7 +291,7 @@
   color: #000;
   width: 100%;
 
-  font-family: cursive;
+  font-family: sans-serif;
   border-radius: 10px;
 }
 
@@ -325,7 +325,7 @@
   text-transform: uppercase;
   font-size: 8pt;
   font-weight: bold;
-  font-family: cursive;
+  font-family: sans-serif;
   color: #000;
 }
 
@@ -352,7 +352,7 @@
 .ui-datepicker td span, .ui-datepicker td a {
   display: inline-block;
   text-align: center;
-  font-family: cursive;
+  font-family: sans-serif;
   width: 10px;
   height: 10px;
   line-height: 30px;
@@ -459,7 +459,7 @@
       float: left;
       width: 47%;
       background: #F5F5F5;
-      font-family: cursive;
+      font-family: sans-serif;
       padding: 15px;
       box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.2);
   }
@@ -478,7 +478,7 @@
       text-decoration: none;
       top: 130px;
       left: 10px;
-      font-family: cursive;
+      font-family: sans-serif;
       font-size: 15px;
       background: #F59290;
       border-radius: 40px;
@@ -516,7 +516,7 @@
 }
 
 .text1{
-  font-family: cursive;
+  font-family: sans-serif;
   font-size: 15px;
   color: white;
   line-height: 25px;
@@ -534,8 +534,26 @@
   }
 }
 </style>
+<body>
+   <h1 style="text-align: center; font-size: 70px;width: 700px; height: 300px; font-family: sans-serif; position: absolute; top: 200px; color: #fff; left: 410px; padding: 50px 0;">Name of the hotel</h1>
 
- <h1 style="text-align: center; font-size: 70px;width: 700px; height: 300px; font-family: cursive; position: absolute; top: 200px; color: #fff; left: 410px; padding: 50px 0;">Name of the hotel</h1>
+  <div class="authentication">
+    {% if user.is_authenticated %}
+      <button class="button2"><a href="{% url 'logout' %}" style="text-decoration: none; color: #fff; float: left; width: 100%; height: 100%; line-height: 60px;">See Ya</a></button>
+      <div class="tag1">
+        <h6 class="text1">{{ user.username }}</h6>
+      </div>
+    {% else %}
+    <button class="button2"><a href="{% url 'login' %}" style="text-decoration: none; color: #fff; float: left; width: 100%; height: 100%; line-height: 60px;">Sign In</a></button>
+      <div class="tag1" style="width: 200px;">
+        <h6 class="text1">You're Out!</h6>
+      </div>
+    {% endif %}
+  </div>
+
+  <div>
+    <img src="{% static 'img/overview.jpg' %}" style="width: 100%; height: 100%;">
+  </div>
 
 <div class="authentication">
   {% if user.is_authenticated %}
@@ -555,108 +573,158 @@
   <img src="{% static 'img/overview.jpg' %}" style="width: 100%; height: 100%;">
 </div>
 
-<div class="policy" style="width: 1150px; height: 470px; position: relative; background: #FEF5E7; top: 455px; left: 140px;">
-  <h2 style="color: #000; width: 400px; padding: 25px 50px; font-size: 37px; font-weight: 100; font-family: cursive; ">Welcome
-    <div style="border-bottom: 2px solid #CD5C5C; width: 300px; padding: 2px 0;"></div>
-    <div style="border-bottom: 2px solid #CD5C5C; width: 350px; padding: 2px 0;"></div>
-  </h2>
 
-  <div style="width: 680px; height: 150px;  position: absolute; top: 290px; left: 400px;">
-        <div style="width: 150px; height: 40px; position: absolute; top: 5px; left: 20px;">
-          <div class="circle" style="background: #B03A2E; width: 50px; height: 50px; border-radius: 50%; position: absolute; z-index: 0.25;"></div>
-          <div class="rec" style="background: #B03A2E; width: 130px; height: 50px; position: absolute; z-index: -0.5; left: 23px; border-right: 10px solid #E74C3C; ">
-            <h6 style="font-size: 15px; font-family: cursive; top: -5px; position: absolute; left: 45px; color: #fff; border-bottom: 2px solid #F9E79F; text-align: center;">Free Wifi</h6>
+
+  <div class="policy" style="width: 1150px; height: 470px; position: relative; background: #FEF5E7; top: 455px; left: 140px;">
+    <h2 style="color: #000; width: 400px; padding: 25px 50px; font-size: 37px; font-weight: 100; font-family: sans-serif; ">Welcome
+      <div style="border-bottom: 2px solid #CD5C5C; width: 300px; padding: 2px 0;"></div>
+      <div style="border-bottom: 2px solid #CD5C5C; width: 350px; padding: 2px 0;"></div>
+    </h2>
+
+    <div style="width: 680px; height: 150px;  position: absolute; top: 290px; left: 400px;">
+          <div style="width: 150px; height: 40px; position: absolute; top: 5px; left: 20px;">
+            <div class="circle" style="background: #B03A2E; width: 50px; height: 50px; border-radius: 50%; position: absolute; z-index: 0.25;"></div>
+            <div class="rec" style="background: #B03A2E; width: 130px; height: 50px; position: absolute; z-index: -0.5; left: 23px; border-right: 10px solid #E74C3C; ">
+              <h6 style="font-size: 15px; font-family: sans-serif; top: -5px; position: absolute; left: 45px; color: #fff; border-bottom: 2px solid #F9E79F; text-align: center;">Free Wifi</h6>
+            </div>
+            <div class="wifi"></div>
+
           </div>
-          <div class="wifi"></div>
+          <div style="width: 150px; height: 40px; position: absolute; top: 75px; left: 20px;">
+            <div class="circle" style="background: #B03A2E; width: 50px; height: 50px; border-radius: 50%; position: absolute; z-index: 0.25;"></div>
+            <div class="rec" style="background: #B03A2E; width: 130px; height: 50px; position: absolute; z-index: -0.5; left: 23px; border-right: 10px solid #E74C3C; ">
+              <h6 style="font-size: 15px; font-family: sans-serif; top: -5px; position: absolute; left: 45px; color: #fff; border-bottom: 2px solid #F9E79F; text-align: center;">Bar Night</h6>
+            </div>
+            <div class="fas fa-glass-martini" style="z-index: 2.75; color: #fff; top: 10px; left: 15px;position: relative; width: 30px; height: 30px;"></div>
+
+          </div>
+
+          <div style="width: 150px; height: 40px; position: absolute; top: 5px; left: 260px;">
+            <div class="circle" style="background: #B03A2E; width: 50px; height: 50px; border-radius: 50%; position: absolute; z-index: 0.25;"></div>
+            <div class="rec" style="background: #B03A2E; width: 130px; height: 50px; position: absolute; z-index: -0.5; left: 23px; border-right: 10px solid #E74C3C; ">
+              <h6 style="font-size: 15px; font-family: sans-serif; top: -5px; position: absolute; left: 45px; color: #fff; border-bottom: 2px solid #F9E79F; text-align: center;">Dog Hotel</h6>
+              <h6 style="font-size: 10px; font-family: sans-serif; top: 15px; position: absolute; left: 45px; color: #fff; text-align: center; ">Take Good Care for You</h6>
+            </div>
+            <div class="fas fa-paw" style="z-index: 2.75; color: #fff; top: 10px; left: 15px;position: relative; width: 30px; height: 30px;"></div>
+          </div> 
+
+          <div style="width: 150px; height: 40px; position: absolute; top: 75px; left: 260px;">
+            <div class="circle" style="background: #B03A2E; width: 50px; height: 50px; border-radius: 50%; position: absolute; z-index: 0.25;"></div>
+            <div class="rec" style="background: #B03A2E; width: 130px; height: 50px; position: absolute; z-index: -0.5; left: 23px; border-right: 10px solid #E74C3C; ">
+              <h6 style="font-size: 15px; font-family: sans-serif; top: -5px; position: absolute; left: 45px; color: #fff; border-bottom: 2px solid #F9E79F; text-align: center;">Cruise</h6>
+              <h6 style="font-size: 12px; font-family: sans-serif; top: 15px; position: absolute; left: 45px; color: #fff; text-align: center; ">25% Off</h6>
+            </div>
+            <div class="fas fa-ship" style="z-index: 2.75; color: #fff; top: 10px; left: 15px; position: relative; width: 30px; height: 30px;"></div>
+          </div>  
+
+          <div style="width: 150px; height: 40px; position: absolute; top: 5px; left: 500px;">
+            <div class="circle" style="background: #B03A2E; width: 50px; height: 50px; border-radius: 50%; position: absolute; z-index: 0.25;"></div>
+            <div class="rec" style="background: #B03A2E; width: 130px; height: 50px; position: absolute; z-index: -0.5; left: 23px; border-right: 10px solid #E74C3C; ">
+              <h6 style="font-size: 14px; font-family: sans-serif; top: -5px; position: absolute; left: 45px; color: #fff; border-bottom: 2px solid #F9E79F;">Movie Time</h6>
+            </div>
+            <div class="fas fa-ticket-alt" style="z-index: 2.75; color: #fff; top: 10px; left: 15px;position: relative; width: 30px; height: 30px; transform: rotate(-40deg); "></div>
+          </div> 
+
+          <div style="width: 150px; height: 40px; position: absolute; top: 75px; left: 500px;">
+            <div class="circle" style="background: #B03A2E; width: 50px; height: 50px; border-radius: 50%; position: absolute; z-index: 0.25;"></div>
+            <div class="rec" style="background: #B03A2E; width: 130px; height: 50px; position: absolute; z-index: -0.5; left: 23px; border-right: 10px solid #E74C3C; ">
+              <h6 style="font-size: 15px; font-family: sans-serif; top: -5px; position: absolute; left: 45px; color: #fff; border-bottom: 2px solid #F9E79F;">Emergency</h6>
+            </div>
+            <div class="fas fa-plus" style="z-index: 2.75; color: #fff; top: 10px; left: 15px; position: relative; width: 30px; height: 30px;"></div>
+          </div> 
+    </div>
+    
+    <div class="info-service">
+        <h4 style="font-family: sans-serif; font-weight: bold;">Name of the Hotel</h4>
+        <p style="font-size: 17px;">The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.</p>
+
+        <h5 style="padding: 15px 0; font-family: sans-serif;">Stephanie Cheng-<span style="color: #CD5C5C; font-weight: bold;">Manager</span></h5>
+    </div>
+
+
+    <div class="gradient-border" id="box">
+      <div class="coupon">
+        <div>
+          <div class="left-line" style="background: #fff; width: 50px; height: 1px; position: relative; top: 60px; left: 110px;"></div>
+          <div style="font-size: 14px; position: relative; top: 50px; text-align: center;  font-family: sans-serif;">Bar Night</div>
+          <div class="right-line" style="background: #fff; width: 50px; height: 1px; position: relative; top: 39px; left: 235px;"></div>
         </div>
-        <div style="width: 150px; height: 40px; position: absolute; top: 75px; left: 20px;">
-          <div class="circle" style="background: #B03A2E; width: 50px; height: 50px; border-radius: 50%; position: absolute; z-index: 0.25;"></div>
-          <div class="rec" style="background: #B03A2E; width: 130px; height: 50px; position: absolute; z-index: -0.5; left: 23px; border-right: 10px solid #E74C3C; ">
-            <h6 style="font-size: 15px; font-family: cursive; top: -5px; position: absolute; left: 45px; color: #fff; border-bottom: 2px solid #F9E79F; text-align: center;">Bar Night</h6>
-          </div>
-          <div class="fas fa-glass-martini" style="z-index: 2.75; color: #fff; top: 10px; left: 15px;position: relative; width: 30px; height: 30px;"></div>
 
-        </div>
 
-        <div style="width: 150px; height: 40px; position: absolute; top: 5px; left: 260px;">
-          <div class="circle" style="background: #B03A2E; width: 50px; height: 50px; border-radius: 50%; position: absolute; z-index: 0.25;"></div>
-          <div class="rec" style="background: #B03A2E; width: 130px; height: 50px; position: absolute; z-index: -0.5; left: 23px; border-right: 10px solid #E74C3C; ">
-            <h6 style="font-size: 15px; font-family: cursive; top: -5px; position: absolute; left: 45px; color: #fff; border-bottom: 2px solid #F9E79F; text-align: center;">Dog Hotel</h6>
-            <h6 style="font-size: 10px; font-family: cursive; top: 15px; position: absolute; left: 45px; color: #fff; text-align: center; ">Take Good Care for You</h6>
-          </div>
-          <div class="fas fa-paw" style="z-index: 2.75; color: #fff; top: 10px; left: 15px;position: relative; width: 30px; height: 30px;"></div>
-        </div> 
+        <h1 style="font-family: sans-serif; font-size: 100px; top: 5px; left: 105px; position: relative;">20<span style="font-size: 22px; position: relative; top: -20px; ">%</span></h1>
+        <h1 class="vertical-text">OFF</h1>
 
-        <div style="width: 150px; height: 40px; position: absolute; top: 75px; left: 260px;">
-          <div class="circle" style="background: #B03A2E; width: 50px; height: 50px; border-radius: 50%; position: absolute; z-index: 0.25;"></div>
-          <div class="rec" style="background: #B03A2E; width: 130px; height: 50px; position: absolute; z-index: -0.5; left: 23px; border-right: 10px solid #E74C3C; ">
-            <h6 style="font-size: 15px; font-family: cursive; top: -5px; position: absolute; left: 45px; color: #fff; border-bottom: 2px solid #F9E79F; text-align: center;">Cruise</h6>
-            <h6 style="font-size: 12px; font-family: cursive; top: 15px; position: absolute; left: 45px; color: #fff; text-align: center; ">25% Off</h6>
-          </div>
-          <div class="fas fa-ship" style="z-index: 2.75; color: #fff; top: 10px; left: 15px; position: relative; width: 30px; height: 30px;"></div>
-        </div>  
+        <h1 style="font-size: 16px; position: relative; text-align: center; top: -60px;font-family: sans-serif;">Get Code, Get Drunk with Your Loves</h1>
 
-        <div style="width: 150px; height: 40px; position: absolute; top: 5px; left: 500px;">
-          <div class="circle" style="background: #B03A2E; width: 50px; height: 50px; border-radius: 50%; position: absolute; z-index: 0.25;"></div>
-          <div class="rec" style="background: #B03A2E; width: 130px; height: 50px; position: absolute; z-index: -0.5; left: 23px; border-right: 10px solid #E74C3C; ">
-            <h6 style="font-size: 14px; font-family: cursive; top: -5px; position: absolute; left: 45px; color: #fff; border-bottom: 2px solid #F9E79F;">Movie Time</h6>
-          </div>
-          <div class="fas fa-ticket-alt" style="z-index: 2.75; color: #fff; top: 10px; left: 15px;position: relative; width: 30px; height: 30px; transform: rotate(-40deg); "></div>
-        </div> 
-
-        <div style="width: 150px; height: 40px; position: absolute; top: 75px; left: 500px;">
-          <div class="circle" style="background: #B03A2E; width: 50px; height: 50px; border-radius: 50%; position: absolute; z-index: 0.25;"></div>
-          <div class="rec" style="background: #B03A2E; width: 130px; height: 50px; position: absolute; z-index: -0.5; left: 23px; border-right: 10px solid #E74C3C; ">
-            <h6 style="font-size: 15px; font-family: cursive; top: -5px; position: absolute; left: 45px; color: #fff; border-bottom: 2px solid #F9E79F;">Emergency</h6>
-          </div>
-          <div class="fas fa-plus" style="z-index: 2.75; color: #fff; top: 10px; left: 15px; position: relative; width: 30px; height: 30px;"></div>
-        </div> 
-  </div>
-  
-  <div class="info-service">
-      <h4 style="font-family: cursive; font-weight: bold;">Name of the Hotel</h4>
-      <p style="font-size: 17px;">The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.</p>
-
-      <h5 style="padding: 15px 0; font-family: cursive;">Stephanie Cheng-<span style="color: #CD5C5C; font-weight: bold;">Manager</span></h5>
+        <div style="position: relative; text-align: center; font-size: 15px; font-family: sans-serif; top: -50px; left: 150px; border-radius: 10px; border: 1px solid #fff; width: 100px;">NDK1234</div>
+      </div>
+    </div>
   </div>
 
+  <div style="width: 100%; height: 580px; position: relative; top: 500px; background: #FDEDEC;">
+    <div class="thing1" style="width: 200px; height: 50px; background: #FF6F6F; position: relative; top: -27px; left: 60px; border-left: 5px solid #F9E79F;">
+      <h6 style="width: 200px; height: 50px; position: relative; top: 10px; left: 30px; font-size: 20px; font-family: sans-serif; color: #fff;">Best Choices</h6>
+    </div>
+    <div class="razor" style="width: 50px; height: 50px; transform: skew(-25deg); position: relative; left: 235px; top: -77px; background: #FF6F6F;"></div>
 
-  <div class="gradient-border" id="box">
-    <div class="coupon">
-      <div>
-        <div class="left-line" style="background: #fff; width: 50px; height: 1px; position: relative; top: 60px; left: 110px;"></div>
-        <div style="font-size: 14px; position: relative; top: 50px; text-align: center;  font-family: cursive;">Bar Night</div>
-        <div class="right-line" style="background: #fff; width: 50px; height: 1px; position: relative; top: 39px; left: 235px;"></div>
+    <div class="animation-element slide-left testimonial" style=" width: 1350px; height: 500px; background: #fff; float: left; position: relative; top: -60px; ">
+      <!--<div class="" style="">
+        
       </div>
 
+      <div class="" style="">
+        
+      </div>
 
-      <h1 style="font-family: cursive; font-size: 100px; top: 5px; left: 105px; position: relative;">20<span style="font-size: 22px; position: relative; top: -20px; ">%</span></h1>
-      <h1 class="vertical-text">OFF</h1>
-
-      <h1 style="font-size: 16px; position: relative; text-align: center; top: -60px;font-family: cursive;">Get Code, Get Drunk with Your Loves</h1>
-
-      <div style="position: relative; text-align: center; font-size: 15px; font-family: cursive; top: -50px; left: 150px; border-radius: 10px; border: 1px solid #fff; width: 100px;">NDK1234</div>
+      <div class="" style="">
+        
+      </div>-->
     </div>
   </div>
-</div>
 
-<div style="width: 100%; height: 580px; position: relative; top: 500px; background: #FDEDEC;">
-  <div class="thing1" style="width: 200px; height: 50px; background: #FF6F6F; position: relative; top: -27px; left: 60px; border-left: 5px solid #F9E79F;">
-    <h6 style="width: 200px; height: 50px; position: relative; top: 10px; left: 30px; font-size: 20px; font-family: cursive; color: #fff;">Best Choices</h6>
+
+  <div>
+    <a class="weatherwidget-io" href="https://forecast7.com/en/37d34n121d89/san-jose/?unit=us" data-label_1="SAN JOSE" data-label_2="WEATHER" data-font="Georgia" data-icons="Climacons Animated" data-mode="Current" data-theme="original" data-basecolor="#9f1619" style="position: relative; top: 605px; width: 100%; font-family: sans-serif;" >SAN JOSE WEATHER</a>
+  <script>
+  !function(d,s,id){
+    var js,fjs=d.getElementsByTagName(s)[0];
+    if(!d.getElementById(id)){
+      js=d.createElement(s);
+      js.id=id;
+      js.src='https://weatherwidget.io/js/widget.min.js';
+      fjs.parentNode.insertBefore(js,fjs);
+    }
+  }(document,'script','weatherwidget-io-js');
+  </script>
   </div>
-  <div class="razor" style="width: 50px; height: 50px; transform: skew(-25deg); position: relative; left: 235px; top: -77px; background: #FF6F6F;"></div>
 
-  <div class="animation-element slide-left testimonial" style=" width: 1350px; height: 500px; background: #fff; float: left; position: relative; top: -60px; ">
-    <!--<div class="" style="">
-      
-    </div>
+  <div>
+    <a class="weatherwidget-io" href="https://forecast7.com/en/37d34n121d89/san-jose/?unit=us" data-label_1="SAN JOSE" data-label_2="WEATHER" data-icons="Climacons Animated" data-theme="original" data-basecolor="#ea8a8c" data-highcolor="#ffdf00" data-cloudcolor="#ffffff" data-cloudfill="#fdfdfc" data-raincolor="#b1beed" style="width: 100%; position: relative; top: 78px;" >SAN JOSE WEATHER</a>
+  <script>
+  !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src='https://weatherwidget.io/js/widget.min.js';fjs.parentNode.insertBefore(js,fjs);}}(document,'script','weatherwidget-io-js');
+  </script>
+  </div>
 
-    <div class="" style="">
-      
-    </div>
+  </div>
 
-    <div class="" style="">
+  <div style="position: absolute; width: 1000px; height: 600px; top: 750px; padding: 0px 60px;">
+    <div style="background: #D35400; width: 450px; height: 600px; position: absolute; left: 820px; top: -20px; box-shadow: 0 25px 30px rgba(0,0,0,0.5);">
+      <div style="border: 2px solid #fff; width: 430px; height: 580px; position: absolute; top: 10px; left: 10px;">
+        <h1 style="position: relative; text-align: center; top: 30px;font-family: sans-serif; color: #fff; font-size: 30px;">Check Availability</h1>
+        <!--{% if form %}
+        <div class="fas fa-calendar-alt" style="width: 20px; height: 20px; color: #797D7F; position: absolute; z-index: 1; top: 102px; left: 305px;"></div>
+        <div class="fas fa-calendar-alt" style="width: 20px; height: 20px; color: #797D7F; position: absolute; z-index: 1; top: 146px; left: 305px;"></div>
+        <form method="POST">{% csrf_token %}
+          <h2 style="font-size: 20px; font-family: sans-serif; color: #fff; position: relative; top: 110px; text-align: center;">Adults</h2>
+          <h2 style="font-size: 20px; font-family: sans-serif; color: #fff; position: relative; top: 160px; text-align: center; ">Children</h2>
+          {{ form.as_p }}
+          <button class="submit" style="width: 200px; height: 50px; font-size: 20px; background: none; color: white; font-family: sans-serif; position: relative; top: 50px; left: 115px; border: 2px solid #fff;">Check</button>
+        </form>
+        <script type="text/javascript">$('.datepicker').datepicker()</script>
+        {% endif %}-->
+      </div>
       
+<<<<<<< HEAD
     </div>-->
   </div>
 </div>
@@ -701,168 +769,158 @@
       </form>
       <script type="text/javascript">$('.datepicker').datepicker()</script>
       {% endif %}-->
+=======
+>>>>>>> ac7fd8c283da122891c9053447746dc246595826
     </div>
-    
+
+    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" style="width: 600px; height: 400px; position: relative; box-shadow: 0 75px 30px rgba(0,0,0,0.5); z-index: 0 ">
+
+      <ol class="carousel-indicators" style="position: relative; top: 445px; z-index: 1;">
+        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
+      </ol>
+
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          {% load static %}
+          <img class="d-block w-100" src="{% static 'img/expensive.jpg' %}" alt="First slide">
+
+          <div class="back">
+            <div class="button_base b08_3d_pushback">
+                <div><a href="">Read</a></div>
+                <div><a href="">Read</a></div>
+            </div>
+          </div>
+        </div>
+        <div class="carousel-item">
+          {% load static %}
+          <img class="d-block w-100" src="{% static 'img/dog.jpg' %}" alt="Second slide">
+
+          <div class="back">
+            <div class="button_base b08_3d_pushback">
+                <div><a href="">Read</a></div>
+                <div><a href="">Read</a></div>
+            </div>
+          </div>
+        </div>
+        <div class="carousel-item">
+          {% load static %}
+          <img class="d-block w-100" src="{% static 'img/wedding.jpg' %}" alt="Third slide">
+          <div class="back">
+            <div class="button_base b08_3d_pushback">
+                <div><a href="">Read</a></div>
+                <div><a href="">Read</a></div>
+            </div>
+          </div>
+        </div>
+        <div class="carousel-item">
+          {% load static %}
+          <img class="d-block w-100" src="{% static 'img/buffet.jpg' %}" alt="Fourth slide">
+          <div class="back">
+            <div class="button_base b08_3d_pushback">
+                <div><a href="">Read</a></div>
+                <div><a href="">Read</a></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+        <span class="left-previous-button" style="width: 40px; height: 40px; position: absolute; top: 50%; left: -25px; border-bottom: 3px solid #000; border-left: 3px solid #000; cursor: pointer; transform: rotate(45deg); transition: 0.5s;"></span></a>
+      <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+        <span class="" style="width: 40px; height: 40px; position: absolute; left: 75px; top: 50%; border-bottom: 3px solid #000; border-left: 3px solid #000; cursor: pointer; transform: rotate(-135deg);"></span>
+      </a>
+    </div>
   </div>
 
-  <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" style="width: 600px; height: 400px; position: relative; box-shadow: 0 75px 30px rgba(0,0,0,0.5); z-index: 0 ">
 
-    <ol class="carousel-indicators" style="position: relative; top: 445px; z-index: 1;">
-      <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-      <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-      <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-      <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
-    </ol>
-
-    <div class="carousel-inner">
-      <div class="carousel-item active">
-        {% load static %}
-        <img class="d-block w-100" src="{% static 'img/expensive.jpg' %}" alt="First slide">
-
-        <div class="back">
-          <div class="button_base b08_3d_pushback">
-              <div><a href="">Read</a></div>
-              <div><a href="">Read</a></div>
-          </div>
-        </div>
+  <!--Footer-->
+  <footer style="margin: 0; padding: 0; border-top: 4px solid #FAD7A0; position: absolute; background: #151515; width: 100%; height: 376px; top: 10450px;">
+    <div style="position: absolute; width: 1000px; top: 50px; height: 100px; box-sizing: border-box; left: 240px; float: left; padding: 0 10px;  box-sizing: border-box;">
+      <div class="brief-about-us" style=" width: 200px; padding: 5px 0px; left: -20px;top: 4px; position: absolute; ">
+        <!--Sub-title-->
+        <h5 style="color: #FAD7A0; text-align: center; position: relative; width: 200px; font-size: 16px; font-family: sans-serif;">About Us</h5>
+        <p class="information" style="position: relative; width: 200px; font-family: sans-serif; font-size: 15px; color: #fff; list-style: none;">Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.</p>
       </div>
-      <div class="carousel-item">
-        {% load static %}
-        <img class="d-block w-100" src="{% static 'img/dog.jpg' %}" alt="Second slide">
 
-        <div class="back">
-          <div class="button_base b08_3d_pushback">
-              <div><a href="">Read</a></div>
-              <div><a href="">Read</a></div>
-          </div>
-        </div>
+      <div class="sub-contact-information" style="border-left: 1px solid #FAD7A0; width: 400px; border-right: 1px solid #FAD7A0; padding: 10px 0px; left: 277px;  position: absolute;">
+        <!--Subtitle-->
+        <h5 style="color: #FAD7A0; text-align: center; position: relative; width: 400px; font-size: 16px; font-family: sans-serif;">Information</h5>
+        <p style="color: #fff; font-family: sans-serif; text-align: center; width: 400px; padding: 5px 10px;">2568 S King Rd, San Jose, CA 95122</i></p>
+        <p style="text-align: center; position: relative; width: 400px; font-family: sans-serif; color: #fff; list-style: none; top: -15px;"><a href="mailto:lavshort@gmail.com" style="text-decoration: none; color: #fff;padding: 10px 10px;"><span>&#9993;</span> lavashort@gmail.com</a></p>
+        <p style="text-align: center; position: relative; width: 400px; font-family: sans-serif; color: #fff; top: -25px; list-style: none;"><a href="tel:4089529901" style="text-decoration: none; color: #fff; padding: 15px 10px;"><span>&#9990;</span> +1 (408)-952-9901</a></p>
+
       </div>
-      <div class="carousel-item">
-        {% load static %}
-        <img class="d-block w-100" src="{% static 'img/wedding.jpg' %}" alt="Third slide">
-        <div class="back">
-          <div class="button_base b08_3d_pushback">
-              <div><a href="">Read</a></div>
-              <div><a href="">Read</a></div>
-          </div>
-        </div>
+
+      <div class="openning-hour-section" style="width: 200px; padding: 10px 0px; left: 757px; position: absolute; ">
+        <!--Subtitle-->
+        <h5 style="color: #FAD7A0; text-align: center; position: relative; width: 200px; font-family: sans-serif;">Openning Hours</h5>
+        
+        <p class="morning-booking-time" style="text-align: center; position: relative; width: 200px; font-family: sans-serif; color: #fff; list-style: none;">Monday-Friday: 9:00am-12:00am</p>
+        <p class="evening-booking-time" style=" text-align: center; position: relative; top: -15px; width: 200px; font-family: sans-serif; color: #fff; list-style: none;">Saturday-Sunday: 10:00pm-5:00am</p>
       </div>
-      <div class="carousel-item">
-        {% load static %}
-        <img class="d-block w-100" src="{% static 'img/buffet.jpg' %}" alt="Fourth slide">
-        <div class="back">
-          <div class="button_base b08_3d_pushback">
-              <div><a href="">Read</a></div>
-              <div><a href="">Read</a></div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-      <span class="left-previous-button" style="width: 40px; height: 40px; position: absolute; top: 50%; left: -25px; border-bottom: 3px solid #000; border-left: 3px solid #000; cursor: pointer; transform: rotate(45deg); transition: 0.5s;"></span></a>
-    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-      <span class="" style="width: 40px; height: 40px; position: absolute; left: 75px; top: 50%; border-bottom: 3px solid #000; border-left: 3px solid #000; cursor: pointer; transform: rotate(-135deg);"></span>
-    </a>
-  </div>
-</div>
-
-
-<!--Footer-->
-<footer style="margin: 0; padding: 0; border-top: 4px solid #FAD7A0; position: absolute; background: #151515; width: 100%; height: 376px; top: 10450px;">
-  <div style="position: absolute; width: 1000px; top: 50px; height: 100px; box-sizing: border-box; left: 240px; float: left; padding: 0 10px;  box-sizing: border-box;">
-    <div class="brief-about-us" style=" width: 200px; padding: 5px 0px; left: -20px;top: 4px; position: absolute; ">
-      <!--Sub-title-->
-      <h5 style="color: #FAD7A0; text-align: center; position: relative; width: 200px; font-size: 16px; font-family: cursive;">About Us</h5>
-      <p class="information" style="position: relative; width: 200px; font-family: cursive; font-size: 15px; color: #fff; list-style: none;">Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.</p>
-    </div>
-
-    <div class="sub-contact-information" style="border-left: 1px solid #FAD7A0; width: 400px; border-right: 1px solid #FAD7A0; padding: 10px 0px; left: 277px;  position: absolute;">
-      <!--Subtitle-->
-      <h5 style="color: #FAD7A0; text-align: center; position: relative; width: 400px; font-size: 16px; font-family: cursive;">Information</h5>
-      <p style="color: #fff; font-family: cursive; text-align: center; width: 400px; padding: 5px 10px;">2568 S King Rd, San Jose, CA 95122</i></p>
-      <p style="text-align: center; position: relative; width: 400px; font-family: cursive; color: #fff; list-style: none; top: -15px;"><a href="mailto:lavshort@gmail.com" style="text-decoration: none; color: #fff;padding: 10px 10px;"><span>&#9993;</span> lavashort@gmail.com</a></p>
-      <p style="text-align: center; position: relative; width: 400px; font-family: cursive; color: #fff; top: -25px; list-style: none;"><a href="tel:4089529901" style="text-decoration: none; color: #fff; padding: 15px 10px;"><span>&#9990;</span> +1 (408)-952-9901</a></p>
-
-    </div>
-
-    <div class="openning-hour-section" style="width: 200px; padding: 10px 0px; left: 757px; position: absolute; ">
-      <!--Subtitle-->
-      <h5 style="color: #FAD7A0; text-align: center; position: relative; width: 200px; font-family: cursive;">Openning Hours</h5>
+    </div>-->
       
-      <p class="morning-booking-time" style="text-align: center; position: relative; width: 200px; font-family: cursive; color: #fff; list-style: none;">Monday-Friday: 9:00am-12:00am</p>
-      <p class="evening-booking-time" style=" text-align: center; position: relative; top: -15px; width: 200px; font-family: cursive; color: #fff; list-style: none;">Saturday-Sunday: 10:00pm-5:00am</p>
-    </div>
-  </div>-->
-    
-  <!---Copyright-->
-  <p style="color: #fff; font-size: 12px; position: relative; top: 310px;  text-align: center; font-family: cursive;">Copyright &copy; 2017. All rights reserved.</p>
+    <!---Copyright-->
+    <p style="color: #fff; font-size: 12px; position: relative; top: 310px;  text-align: center; font-family: sans-serif;">Copyright &copy; 2017. All rights reserved.</p>
 
-  <div style="width: 260px; position: relative; top: 300px; left: 588px; height: 1px; background: #FFA07A"></div>
-</footer>
+    <div style="width: 260px; position: relative; top: 300px; left: 588px; height: 1px; background: #FFA07A"></div>
+  </footer>
 
-<a href="javascript:" id="return-to-top"><i class="icon-chevron-up"></i>
-<script type="text/javascript">
-  $(window).scroll(function() {
-      if ($(this).scrollTop() >= 50) {    
-          $('#return-to-top').fadeIn(200);  
-      } else {
-          $('#return-to-top').fadeOut(200);
-      }
-  });
-  $('#return-to-top').click(function() {   
-      $('body,html').animate({
-          scrollTop : 0                   
-      }, 500);
-  });
-  </script>
-</a>
+  <a href="javascript:" id="return-to-top"><i class="icon-chevron-up"></i>
+  <script type="text/javascript">
+    $(window).scroll(function() {
+        if ($(this).scrollTop() >= 50) {    
+            $('#return-to-top').fadeIn(200);  
+        } else {
+            $('#return-to-top').fadeOut(200);
+        }
+    });
+    $('#return-to-top').click(function() {   
+        $('body,html').animate({
+            scrollTop : 0                   
+        }, 500);
+    });
+    </script>
+  </a>
 
-<!-- Nav Bar -->
-<nav>
-  <div class="logo"><a href="">Logo</a></div>
-  <ul class="menu-main">
-      <li class="home"><a href="{% url 'home' %}">Home</a></li>
+  <!-- Nav Bar -->
+  <nav>
+    <div class="logo"><a href="">Logo</a></div>
+    <ul class="menu-main">
+        <li class="home"><a href="{% url 'home' %}">Home</a></li>
 
-      <li class="page"><a href="#">Page</a>
-        <div class="menu-sub">
-              <div class="menu-col-1">
-                  <h3 class="menu-category">Generals</h3>
-                  <ul>
-                      <li class="sub-l"><a href="">Link 1</a></li>
-                      <li class="sub-l"><a href="">Link 2</a></li>
-                      <li class="sub-l"><a href="">Link 3</a></li>
-                      <li class="sub-l"><a href="">Link 4</a></li>
-                      <li class="sub-l"><a href="">Link 5</a></li>
+        <li class="page"><a href="#">Page</a>
+          <div class="menu-sub">
+                <div class="menu-col-1">
+                    <h3 class="menu-category">Generals</h3>
+                    <ul>
+                        <li class="sub-l"><a href="">Link 1</a></li>
+                        <li class="sub-l"><a href="">Link 2</a></li>
+                        <li class="sub-l"><a href="">Link 3</a></li>
+                        <li class="sub-l"><a href="">Link 4</a></li>
+                        <li class="sub-l"><a href="">Link 5</a></li>
+                    </ul>
+                </div>
+
+                <div class="menu-col-2">
+                    <h3 class="menu-category">Fast Services</h3>
+                    <ul>
+                        <li class="sub-l"><a href="">Link 1</a></li>
+                        <li class="sub-l"><a href="">Link 2</a></li>
+                        <li class="sub-l"><a href="">Link 3</a></li>
+                        <li class="sub-l"><a href="">Link 4</a></li>
+                        <li class="sub-l"><a href="">Link 5</a></li>
                   </ul>
-              </div>
+                </div>
 
-              <div class="menu-col-2">
-                  <h3 class="menu-category">Fast Services</h3>
-                  <ul>
+                <div class="menu-col-3">
+                    <h3 class="menu-category">About</h3>
+                    <ul>
                       <li class="sub-l"><a href="">Link 1</a></li>
-                      <li class="sub-l"><a href="">Link 2</a></li>
-                      <li class="sub-l"><a href="">Link 3</a></li>
-                      <li class="sub-l"><a href="">Link 4</a></li>
-                      <li class="sub-l"><a href="">Link 5</a></li>
-                </ul>
-              </div>
-
-              <div class="menu-col-3">
-                  <h3 class="menu-category">About</h3>
-                  <ul>
-                    <li class="sub-l"><a href="">Link 1</a></li>
-                      <li class="sub-l"><a href="">Link 2</a></li>
-                      <li class="sub-l"><a href="">Link 3</a></li>
-                      <li class="sub-l"><a href="">Link 4</a></li>
-                      <li class="sub-l"><a href="">Link 5</a></li>
-                  </ul>
-              </div>
-
-              <div class="menu-col-4">
-                  <h3 class="menu-category">Team Members</h3>
-                  <ul>
-                      <li class="sub-l"><a href="">Link 1</a></li>
+<<<<<<< HEAD
                       <li class="sub-l"><a href="">Link 2</a></li>
                       <li class="sub-l"><a href="">Link 3</a></li>
                       <li class="sub-l"><a href="">Link 4</a></li>
@@ -899,3 +957,53 @@
   </ul>
 </nav>
 {% endblock %}
+=======
+                        <li class="sub-l"><a href="">Link 2</a></li>
+                        <li class="sub-l"><a href="">Link 3</a></li>
+                        <li class="sub-l"><a href="">Link 4</a></li>
+                        <li class="sub-l"><a href="">Link 5</a></li>
+                    </ul>
+                </div>
+
+                <div class="menu-col-4">
+                    <h3 class="menu-category">Team Members</h3>
+                    <ul>
+                        <li class="sub-l"><a href="">Link 1</a></li>
+                        <li class="sub-l"><a href="">Link 2</a></li>
+                        <li class="sub-l"><a href="">Link 3</a></li>
+                        <li class="sub-l"><a href="">Link 4</a></li>
+                        <li class="sub-l"><a href="">Link 5</a></li>
+                    </ul>
+                </div>
+            </div>
+        </li>
+
+        <li class="Room"><a href="#">Rooms & Trips</a>
+            <ul class="room-sub">
+                <li><a href="">Single Room</a></li>
+                <li><a href="">Search Availability</a></li>
+                <li><a href="">Wedding Room</a></li>
+            </ul>
+        </li>
+
+        <li class="Dinning"><a href="#">Dinings & Bars</a>
+            <ul>
+                <li><a href="">Bar</a></li>
+                <li><a href="">Buffet</a></li>
+                <li><a href="">Breakfast</a></li>
+                <li><a href="">Lunch</a></li>
+                <li><a href="">Dinner</a></li>
+                <li><a href="">Wedding</a></li> 
+            </ul>
+        </li>
+
+        <li class="ammeties"><a href="#">Ammeties</a></li>
+
+        <li class="contact"><a href="{% url 'contact' %}">Contact</a></li>
+
+        <a href="{% url 'reservation' %}" style="position: relative; top: -10px; left: -10px;"><button class="button1"><span style="font-size: 15px;">Book Now</span></button></a>
+    </ul>
+  </nav>
+  {% endblock %}
+</body>
+>>>>>>> ac7fd8c283da122891c9053447746dc246595826
