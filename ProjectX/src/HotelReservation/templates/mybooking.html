@@ -1,0 +1,126 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>My Booking</title>
+{% endblock %}
+
+{% block content %}
+
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+  <link rel="stylesheet" href="{% static 'css/swiper.min.css' %}">
+<style type="text/css">
+.each-list{
+	margin: 20px;
+	width: 420px;
+	height: 170px;
+	background: white;
+	border-radius: 100px;
+	border: 1px solid black;
+}
+.list-img{
+	width: 150px;
+	height: 150px;
+	position: relative;
+	top: 5px;
+	left: 10px;
+	border-radius: 50%;
+}
+.list-img, .each-list, .list-content{
+	float: left;
+}
+.list-btn{
+	float: right;
+	position: relative;
+}
+
+.list-contents{
+	font-family: cursive;
+	font-size: 15px;
+	position: relative;
+	top:10px;
+	left: 10px;
+	border-radius: 100px;
+	width: 425px;
+	height: 150px;
+}
+
+.hotel-name-list{
+	font-size: 20px;
+	position: relative;
+	left: 90px;
+}
+.hotel-room-type-list, .hotel-checkin-list, .hotel-checkout-list{
+	position: relative;
+	top: -10px;
+	font-size: 16px;
+	left: 25px;
+}
+
+.room-price{
+	font-size: 17px;
+	position: relative;
+	left: 150px;
+	top: -10px;
+
+}
+
+.list-btn{
+	width: 50px;
+	height: 50px;
+	border-radius: 50%;
+	text-align: center;
+	position: relative;
+	top: -90px;
+	left: -10px;
+	background: #FFC23F;
+	transition: 0.5s;
+}
+.list-btn:hover{
+	background: #FCAC00;
+	color: white;
+}
+.trash-icon{
+	width: 35px;
+	height: 35px;
+	position: relative;
+	top: 15%;
+	border-radius: 50%;
+
+}
+</style>
+<div>
+
+	<div style="">
+		<h1>My Booking</h1>
+		<br>
+		<p>{{ user.first_name }} {{ user.last_name }}</p>
+		{% if booking %}
+
+		{% for bookings in booking %}
+		<div style="width: 100%;">
+			
+			<div class="each-list">
+				<div class="list-img">
+					<img class="list-img" src="{{ bookings.hotel.image.url }}">
+				</div>
+				<div class="list-contents">
+					<p class="hotel-name-list">{{ bookings.hotel.hotel_name }}</p>
+					<p class="hotel-room-type-list"><span>Room Type</span>: {{ bookings.room.RoomType }}</p>
+					
+					<p class="hotel-checkin-list"><span>Check In</span>: {{ bookings.date_in }}</p>
+					<p class="hotel-checkout-list"><span>Check Out</span>: {{ bookings.date_out }}</p>
+					<p class="room-price">${{ bookings.total_cost }}</p>
+				</div>
+				<div class="list-btn">
+					<a class="" href="{% url 'cancelbooking' bookings.id %}"><img class="trash-icon" src="https://png.icons8.com/dotty/50/000000/waste.png"></a>
+				</div>
+				
+			</div>
+			
+		</div>
+		{% endfor %}
+		{% endif %}	
+	</div>
+</div>
+{% endblock %}

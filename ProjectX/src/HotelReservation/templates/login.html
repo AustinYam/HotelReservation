@@ -10,6 +10,330 @@
 <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
 
 <style type="text/css">
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+.button1 {
+  width: 150px;
+  height: 50px;
+  position: relative;
+  left: 10px;
+  color: #fff;
+  background: #FA8072;
+  font-family: cursive;
+  border-radius: 4px;
+  text-align: center;
+  cursor: pointer;
+  border: none;
+  transition: all 0.5s;
+}
+
+.button1 span {
+  cursor: pointer;
+  border: none;
+  display: inline-block;
+  font-family: cursive;
+  position: relative;
+  transition: 0.5s;
+  font-size: 15px;
+}
+
+.button1 span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -10px;
+  transition: 0.5s;
+}
+
+.button1:hover span {
+  padding-right: 25px;
+}
+
+.button1:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+
+nav {
+  background: #fff;
+  position: fixed;
+  box-sizing: border-box;
+  padding: 10px 100px;
+  width: 100%;
+  height: 70px;
+  top: 0px;
+  left: 0;
+  transition: 0.3s;
+  z-index: 4;
+}
+
+nav.change {
+  background: #CD5C5C;
+}
+
+.logo{
+  padding: 0px;
+  height: 10px;
+  float: left;
+  transition: 0.3s;
+  pointer-events: none;
+}
+
+
+nav ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  position: relative;
+  text-align: left;
+  float: right;
+  display: flex;
+  height: 60px;
+  background: #fff;
+  transition: 0.3s;
+}
+
+nav.change ul {
+  background: #CD5C5C;
+}
+
+nav li {
+  display: inline-block;
+
+}
+nav ul li{
+  display: inline-block;
+  list-style: none;
+}
+
+nav ul li a:hover{
+  color: #F9E79F;
+  transform: translate(10px); 
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+ul li:hover{
+  background: #FFA07A;
+}
+
+ul ul{
+  position: absolute;
+  display: none;
+}
+
+ul li:hover ul{
+  display: block;
+}
+
+ul ul li{
+  display: block;
+  background: #fff;
+  transition: 0.3s;
+  width: 100px;
+}
+
+ul .Room ul li, ul .Dinning ul li{
+  width: 200px;
+  transition: 0.3s;
+}
+
+ul .Room ul{
+  height: auto;
+  top: 60px;
+  border-top: 3px solid #F08080;
+  border-bottom: 3px solid #F08080;
+}
+
+ul .Dinning ul{
+  height: auto;
+  top: 60px;
+  border-top: 3px solid #F08080;
+  border-bottom: 3px solid #F08080;
+}
+
+nav.change ul ul li{
+   background: #CD5C5C;
+}
+
+nav a {
+  color: #000;
+  text-decoration: none;
+  display: block;
+  font-size: 20px;
+  font-family: cursive;
+  padding: 10px 15px;
+  transition: 0.3s;
+}
+
+nav.change a{
+  color: #fff;
+}
+
+nav ul li a:focus{
+  outline: none;
+}
+
+nav li:hover {
+  background: #fff;
+  transition: 0.3s;
+}
+
+nav.change li:hover{
+  background: #CD5C5C;
+}
+
+.menu-sub {
+  position: absolute;
+  left: -430px;
+  top: 60px;
+  background: #fff;
+  width: 1430px;
+  height: 300px;
+  display: none;
+  color: #000;
+  padding: 2em;
+  transition: 0.3s ease;
+  border-top: 3px solid #F08080;
+  border-bottom: 3px solid #F08080;
+}
+
+nav.change .menu-sub{
+  background: #CD5C5C;
+  color: #fff;
+}
+
+nav li:hover .menu-sub {
+  display: block;
+}
+
+.menu-sub li {
+  display: block;
+  left: 0;
+  transition: 0.3s;
+}
+
+.menu-sub a {
+  padding: 0;
+  font-size: 15px;
+  font-family: cursive;
+  margin-bottom: .35em;
+}
+
+.menu-sub a:hover {
+  color: #F9E79F;
+  text-decoration: none;
+}
+
+
+.menu-category {
+  font-size: 20px;
+  width: 300px;
+  color: #CD5C5C;
+  position: relative;
+  font-family: cursive;
+}
+
+.change .menu-category{
+  color: #F9E79F;
+}
+
+.menu-category:first-of-type {
+  margin-top: 0;
+}
+
+.menu-col-1{
+  top: 0px;
+  width: 200px;
+  height: 200px;
+  float: left;
+  border-right: 1px solid #F08080;
+}
+
+.menu-col-2 {
+  top: 0px;
+  width: 200px;
+  height: 200px;
+  float: left;
+  padding: 0 40px;
+  border-right: 1px solid #F08080;
+}
+
+.menu-col-3 {
+  top: 0px;
+  width: 250px;
+  height: 200px;
+  float: left;
+  padding: 0 40px;
+  border-right: 1px solid #F08080;
+}
+
+.menu-col-4 {
+  top: 0px;
+  width: 250px;
+  height: 200px;
+  float: left;
+  padding: 0 40px;
+  border-right: 1px solid #F08080;
+}
+
+nav.change .menu-col-4, .change .menu-col-3, .change .menu-col-2, .change .menu-col-1{
+  border-right: 1px solid #fff;
+}
+
+@media(max-width: 768px){
+  nav{
+    width: 100%;
+    height: 70px;
+  }
+  .menu-main{
+    left: 27%;
+    top: 70px;
+  }
+
+  .menu-col-1{
+    padding: 0;
+  }
+
+  .menu-main li a{
+    font-size: 15px;
+  }
+
+  .logo{
+    position: relative;
+    padding: 0;
+    top: -10px;
+    left: 0;
+    width: 100%;
+  }
+
+  .logo a{
+    text-align: center; 
+    font-size: 30px;
+  }
+
+  .menu-sub{
+    top: 49.5px;
+    width: 100%;
+    left: 0;
+  }
+  ul .Room ul li, ul .Dinning ul li{
+    width: 150px;
+    transition: 0.3s;
+  }
+}
+
+@media(min-width: 768px){
+
+}
+
 .button1{
 	width: 200px;
 	height: 40px;
@@ -456,37 +780,22 @@
 }
 
 .error{
-	width: 900px;
-	background: rgba(231, 76, 60, 0.5);
-	color: white;
-	height: 40px;
+	width: 250px;
+  height: 200px;
+  margin-bottom: 20px;
+	background: rgba(247, 220, 111, 0.9);
+	color: black;
 	font-family: cursive;
 	font-size: 20px;
 	text-align:center;
 	border-radius: 30px;
+
 }
 
 .error strong{
 	position: relative;
-	top: 5px;
-}
+	top: 20px;
 
-.close {
-	position: relative;
-    color: white;
-    font-weight: bold;
-    float: right;
-    font-size: 22px;
-    line-height: 25px;
-    top: 5px;
-    left: -50px;
-    cursor: pointer;
-    transition: 0.3s;
-
-}
-
-.close:hover{
-	color: white;
 }
 
 .input-field:hover{
@@ -600,16 +909,6 @@
 			<button class="button2"><a href="{% url 'logout' %}" style="text-decoration: none; color: #fff; float: left; width: 100%; height: 100%; line-height: 50px;">Sign Out</a></button>
 	</div>
 
-	<!--Sign Up Button-->
-	<div style="width: 250px; height: 45px; border-radius: 30px; border: 2px solid #F9E79F; background: #F59292; position: absolute; top: 458px; left: 975px; color: white; font-family: cursive; text-align: center; font-size: 15px;">Don't have an account?<br>Click the R!!!</div>
-	<!--Sign Up Button-->
-	<div style="width: 250px; height: 45px; border-radius: 30px; border: 2px solid #F9E79F; background: #F59292; position: absolute; top: 458px; left: 975px; color: white; font-family: cursive; text-align: center; font-size: 15px;">Don't have an account?<br>Click the R!!!</div>
-
-
-	 <button class="button3" data-balloon="Register!!!" data-balloon-pos="up"><a href="{% url 'signup' %}" style="text-decoration: none; color: #F9E79F; float: left; width: 100%; height: 100%; line-height: 50px;">R</a></button>
-
-
-	 <a class="reset-pass" href="{% url 'password_reset' %}" data-balloon="Reset!!!" data-balloon-pos="up" style="text-decoration: none; position: absolute; top: 430px; font-family: cursive; font-size: 15px; left: 679px; z-index: 20;">Password Reset</a>
   <!---Copyright-->
   <p style="color: #fff; font-size: 12px; position: relative; top: 350px;  text-align: center; font-family: cursive;">Copyright &copy; 2017. All rights reserved.</p>
 
@@ -619,39 +918,41 @@
 
 <div class="error-wrapper" style="position: absolute; z-index: 20; text-align: center; left: 340px; top: 5px;">
 	{% if form.errors %}
-    	{% for field in form %}
-        	{% for error in field.errors %}
-        	<div class="error error-message">
-
-  				<strong>{{ error|escape }}</strong>
-  				<button type="button" class="close" aria-label="Close"><span style="color: white;">&times;</span></button>
-			</div>
-
-			<script type="text/javascript">
-				window.setTimeout(function() {
-    				$(".error").fadeTo(500, 0).slideUp(500, function(){
-       				 		$(this).remove(); 
-   		 			});
-				}, 4000);
-			</script>
-        	{% endfor %}
-    	{% endfor %}
-    	{% for error in form.non_field_errors %}
-        	<div class="error error-message">
-  				<strong>{{ error|escape }}</strong>
-  				<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-			</div>
-			<script type="text/javascript">
-				window.setTimeout(function() {
-    				$(".error").fadeTo(500, 0).slideUp(500, function(){
-        				$(this).remove(); 
-    				});
-				}, 4000);
-			</script>
-    	{% endfor %}
-
+    {% if form.username.errors %}
+      <div class="error error-message">
+        <strong style="text-decoration: none; list-style-type: none;">Yo!</strong>
+        <br>
+        <strong style="text-decoration: none; list-style-type: none;">Your username is weird, man!!</strong>
+        <br>
+        <strong style="text-decoration: none; list-style-type: none;">Please correct it!!!</strong>
+      </div>
+    {% elif form.password.errors %}
+      <div class="error error-message">
+        <strong style="text-decoration: none; list-style-type: none;">OMG!!</strong>
+        <br>
+        <strong style="text-decoration: none; list-style-type: none;">Not your password, too!</strong>
+        <br>
+        <strong style="text-decoration: none; list-style-type: none;">Let me sleep in peace!!!</strong>
+      </div>
+    {% else %}
+      {% for error in form.non_field_errors %}
+        <div class="error error-message">
+          <strong>I warn You!!</strong>
+          <br>
+          <strong>Please don't make any mistake!!</strong>
+          <br>
+          <strong>I'm try to sleep, here!!</strong>
+        </div>
+        <script type="text/javascript">
+          window.setTimeout(function() {
+            $(".error").fadeTo(500, 0).slideUp(500, function(){
+              $(this).remove(); 
+            });
+          }, 4000);
+        </script>
+      {% endfor %}  
+    {% endif %}
 	{% endif %}
-
 </div>
 
 <div style="width: 100%; height: 720px; background: #F59292; position: relative; ">

@@ -20,6 +20,7 @@ from django.conf.urls import url, include
 from django.contrib.auth.views import login, logout
 from django.contrib.auth import views as auth_views
 
+
 from HotelReservation import views
 
 urlpatterns = [
@@ -38,13 +39,19 @@ urlpatterns = [
     url(r'^reset/done/$', auth_views.password_reset_complete, {'template_name': 'password_reset_complete.html'}, name='password_reset_complete'),
 
     url(r'^hotel-list/$', views.hotellist_view, name='hotel-list'),
+    url(r'^result/$', views.search, name='search'),
     url(r'^booking-room/$', views.booking_room_view, name='booking'),
     url(r'^booking-room/(?P<pk>[0-9]+)/$', views.booking_room_view, name='booking_with_pk'),
 
-    url(r'^reservation/$', views.reservation_view, name='reservation'),
+    url(r'^reservation-detail/(?P<thehotelid>[0-9]+)/(?P<roomsid>[0-9]+)$', views.reservation_detail_view, name='reservation'),
+    url(r'^storing/(?P<thehotelid>[0-9]+)/(?P<roomid>[0-9]+)/(?P<checkin>(\d{4}-\d{2}-\d{2}))/(?P<checkout>(\d{4}-\d{2}-\d{2}))/(?P<totalcost>\d+\.\d{2})/$', views.storingData, name='storing'),
+    url(r'^confirmation/$', views.confirmation, name='thanks'),
+    url(r"^mybooking/$", views.mybooking, name="mybooking"),
+    url(r'^mybookings/cancel/(?P<id>[0-9]+)$', views.cancelbooking, name='cancelbooking'),
+
 ]+ static(settings.MEDIA_URL, document_root= settings.MEDIA_ROOT)
 
 # Debug the static file.
 if settings.DEBUG:
-	urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
-	urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -8,6 +8,7 @@
 
 {% load static %}
 <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+ <link rel="stylesheet" href="{% static 'css/swiper.min.css' %}">
 
   <script type="text/javascript">
     $(document).ready(function() {
@@ -48,6 +49,337 @@
       </script>
 
 <style type="text/css">
+* {
+  box-sizing: border-box;
+}
+
+.button1 {
+  width: 150px;
+  height: 50px;
+  position: relative;
+  left: 10px;
+  color: #fff;
+  background: #FA8072;
+  font-family: cursive;
+  border-radius: 4px;
+  text-align: center;
+  cursor: pointer;
+  border: none;
+  transition: all 0.5s;
+  outline: none;
+}
+
+.button1 span {
+  cursor: pointer;
+  border: none;
+  display: inline-block;
+  font-family: cursive;
+  position: relative;
+  transition: 0.5s;
+  font-size: 15px;
+}
+
+.button1 span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -10px;
+  transition: 0.5s;
+}
+
+.button1:hover span {
+  padding-right: 25px;
+}
+
+.button1:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+
+nav {
+  background: #fff;
+  position: fixed;
+  box-sizing: border-box;
+  padding: 10px 100px;
+  width: 100%;
+  height: 80px;
+  top: 0px;
+  left: 0;
+  transition: 0.3s;
+  z-index: 10;
+}
+
+nav.change {
+  background: #CD5C5C;
+}
+
+.logo{
+  padding: 0px;
+  height: 10px;
+  float: left;
+  transition: 0.3s;
+  pointer-events: none;
+}
+
+
+nav ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  position: relative;
+  text-align: left;
+  float: right;
+  display: flex;
+  height: 60px;
+  background: #fff;
+  transition: 0.3s;
+}
+
+nav.change ul {
+  background: #CD5C5C;
+}
+
+nav li {
+  display: inline-block;
+
+}
+nav ul li{
+  display: inline-block;
+  list-style: none;
+}
+
+nav ul li a:hover{
+  color: #F9E79F;
+  transform: translate(10px); 
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+ul li:hover{
+  background: #FFA07A;
+}
+
+ul ul{
+  position: absolute;
+  display: none;
+}
+
+ul li:hover ul{
+  display: block;
+}
+
+ul ul li{
+  display: block;
+  background: #fff;
+  transition: 0.3s;
+  width: 100px;
+}
+
+ul .Room ul li, ul .Dinning ul li{
+  width: 200px;
+  transition: 0.3s;
+}
+
+ul .Room ul{
+  height: auto;
+  top: 60px;
+  border-top: 3px solid #F08080;
+  border-bottom: 3px solid #F08080;
+}
+
+ul .Dinning ul{
+  height: auto;
+  top: 60px;
+  border-top: 3px solid #F08080;
+  border-bottom: 3px solid #F08080;
+}
+
+nav.change ul ul li{
+   background: #CD5C5C;
+}
+
+nav a {
+  color: #000;
+  text-decoration: none;
+  display: block;
+  font-size: 20px;
+  font-family: cursive;
+  padding: 10px 15px;
+  transition: 0.3s;
+}
+
+nav.change a{
+  color: #fff;
+}
+
+nav ul li a:focus{
+  outline: none;
+}
+
+nav li:hover {
+  background: #fff;
+  transition: 0.3s;
+}
+
+nav.change li:hover{
+  background: #CD5C5C;
+}
+
+.menu-sub {
+  position: absolute;
+  left: -530px;
+  top: 60px;
+  background: #fff;
+  width: 1430px;
+  height: 300px;
+  display: none;
+  color: #000;
+  padding: 2em;
+  transition: 0.3s ease;
+  border-top: 3px solid #F08080;
+  border-bottom: 3px solid #F08080;
+}
+
+.menu-sub:hover{
+  left: -700px;
+
+}
+
+  .menu-main{
+    top: 10px;
+  }
+
+nav.change .menu-sub{
+  background: #CD5C5C;
+
+  color: #fff;
+}
+
+nav li:hover .menu-sub {
+  display: block;
+}
+
+.menu-sub li {
+  display: block;
+  left: 0;
+  transition: 0.3s;
+}
+
+.menu-sub a {
+  padding: 0;
+  font-size: 15px;
+  font-family: cursive;
+  margin-bottom: .35em;
+}
+
+.menu-sub a:hover {
+  color: #F9E79F;
+  text-decoration: none;
+}
+
+
+.menu-category {
+  font-size: 20px;
+  width: 300px;
+  color: #CD5C5C;
+  position: relative;
+  font-family: cursive;
+}
+
+.change .menu-category{
+  color: #F9E79F;
+}
+
+.menu-category:first-of-type {
+  margin-top: 0;
+}
+
+.menu-col-1{
+  top: 0px;
+  width: 200px;
+  height: 200px;
+  float: left;
+  border-right: 1px solid #F08080;
+}
+
+.menu-col-2 {
+  top: 0px;
+  width: 200px;
+  height: 200px;
+  float: left;
+  padding: 0 40px;
+  border-right: 1px solid #F08080;
+}
+
+.menu-col-3 {
+  top: 0px;
+  width: 250px;
+  height: 200px;
+  float: left;
+  padding: 0 40px;
+  border-right: 1px solid #F08080;
+}
+
+.menu-col-4 {
+  top: 0px;
+  width: 250px;
+  height: 200px;
+  float: left;
+  padding: 0 40px;
+  border-right: 1px solid #F08080;
+}
+
+nav.change .menu-col-4, .change .menu-col-3, .change .menu-col-2, .change .menu-col-1{
+  border-right: 1px solid #fff;
+}
+
+@media(max-width: 768px){
+  nav{
+    width: 100%;
+    height: 70px;
+  }
+  .menu-main{
+    left: 27%;
+    top: 70px;
+  }
+
+  .menu-col-1{
+    padding: 0;
+  }
+
+  .menu-main li a{
+    font-size: 15px;
+  }
+
+  .logo{
+    position: relative;
+    padding: 0;
+    top: -10px;
+    left: 0;
+    width: 100%;
+  }
+
+  .logo a{
+    text-align: center; 
+    font-size: 30px;
+  }
+
+  .menu-sub{
+    top: 49.5px;
+    width: 100%;
+    left: 0;
+  }
+  ul .Room ul li, ul .Dinning ul li{
+    width: 150px;
+    transition: 0.3s;
+  }
+}
+
+@media(min-width: 768px){
+
+}
+
 
 .back {
     width: 33%;
@@ -111,7 +443,7 @@
 
 .b08_3d_pushback div:nth-child(1) {
     background: #F08080;
-    font-family: sans-serif;
+    font-family: cursive;
     font-size: 14px;
     border-radius: 50%;
     text-align: center;
@@ -129,7 +461,7 @@
 .b08_3d_pushback div a{color: #fff;}
 
 .b08_3d_pushback div:nth-child(2) {
-    font-family: sans-serif;
+    font-family: cursive;
     font-size: 14px;
     text-align: center; 
     background-color: #CD5C5C;
@@ -179,6 +511,7 @@
     -moz-border-radius: 35px;
     border-radius: 50%;
     display: none;
+    z-index: 9;
     transform: rotate(-180deg);
     -webkit-transition: all 0.3s linear;
     -moz-transition: all 0.3s ease;
@@ -225,7 +558,7 @@
   top: 90px;
   position: absolute;
   text-align: center; 
-  font-family: sans-serif;
+  font-family: cursive;
 }
 
 .vertical-text{
@@ -239,7 +572,7 @@
   top: -80px;
   left: 105px;
   text-align: center;
-  font-family: sans-serif;
+  font-family: cursive;
   font-weight: bold;
   font-size: 37px;
 }
@@ -273,11 +606,15 @@
   background-size: 300% 300%;
 }
 
+.shade{
+  background: linear-gradient(180deg, #FFFFFF, #FFFFFF, #DEF8FF, #D3F6FF, #6FE3FF, #56DEFF, #36D7FF, #17D1FF);
+  opacity: 0.75;
+}
 
 
 .ui-datepicker {
-  width: 300px;
-  height: 300px;
+  width: 350px;
+  height: 350px;
   margin: 5px auto 0;
   z-index: -1;
 }
@@ -291,7 +628,7 @@
   color: #000;
   width: 100%;
 
-  font-family: sans-serif;
+  font-family: cursive;
   border-radius: 10px;
 }
 
@@ -325,7 +662,7 @@
   text-transform: uppercase;
   font-size: 8pt;
   font-weight: bold;
-  font-family: sans-serif;
+  font-family: cursive;
   color: #000;
 }
 
@@ -352,7 +689,7 @@
 .ui-datepicker td span, .ui-datepicker td a {
   display: inline-block;
   text-align: center;
-  font-family: sans-serif;
+  font-family: cursive;
   width: 10px;
   height: 10px;
   line-height: 30px;
@@ -459,7 +796,7 @@
       float: left;
       width: 47%;
       background: #F5F5F5;
-      font-family: sans-serif;
+      font-family: cursive;
       padding: 15px;
       box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.2);
   }
@@ -478,7 +815,7 @@
       text-decoration: none;
       top: 130px;
       left: 10px;
-      font-family: sans-serif;
+      font-family: cursive;
       font-size: 15px;
       background: #F59290;
       border-radius: 40px;
@@ -498,7 +835,11 @@
   z-index: 20;
   position: fixed;
   padding: 20px;
-
+  -webkit-transition: all 0.3s linear;
+  -moz-transition: all 0.3s ease;
+  -ms-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  transition: all 0.3s ease;
 }
 
 .tag1{
@@ -516,10 +857,86 @@
 }
 
 .text1{
-  font-family: sans-serif;
+  font-family: cursive;
   font-size: 15px;
   color: white;
   line-height: 25px;
+}
+
+.button0{
+  background: rgba(0,0,0,0);
+  border-radius: 50px;
+  transition: 0.5s;
+  border: 1px solid black; 
+  width: 200px; 
+  height: 50px; 
+  font-family: cursive; 
+  font-size: 15px;
+  position: absolute; 
+  top: 480px; 
+  outline: none;
+  left: 830px; 
+  z-index: 5;
+}
+.button0:hover{
+  background: rgba(255,255,255,0.7);
+  transition: 0.5s;
+
+}
+
+.search-wrapper{
+  position: absolute; width: 400px; 
+  height: 525px; 
+  padding: 50px 0px; 
+  border: 1px solid black; 
+  border-radius: 30px; 
+  position: absolute; top: 240px; 
+  left: 100px; 
+  z-index: 9; 
+  background: rgba(255,255,255,0.4); 
+  transition: 0.5s; 
+    
+    border-top-right-radius: 200px;
+  border-top-left-radius: 200px; 
+}
+.door{
+  position: absolute; width: 400px; 
+  height: 600px; 
+  padding: 50px 0px; 
+  border: 1px solid black; 
+  border-radius: 30px; 
+  position: absolute;
+  top: 200px; 
+  left: 100px; z-index: 10; 
+  background: rgba(255,255,255,1); 
+  transition: 0.5s;   
+}
+
+
+.door:hover{
+  transition: 0.5s;
+  border-top-right-radius: 200px;
+  border-top-left-radius: 200px;
+}
+
+.doorOpen
+{
+  transition: 0.5s;
+  border-top-right-radius: 200px;
+  border-top-left-radius: 200px;
+  /*prespectiv creates the door open effect*/
+  transform: perspective(1200px) translateZ(0px) translateX(-285px) translateY(0px) rotateY(-105deg); transition: 0.5s;
+}
+
+.search-word, .search-paragraph{
+  font-family: cursive; 
+  text-align: center; 
+  position: relative; 
+  top: 100px; opacity: 1; 
+  transition: 0.5s;
+}
+.search-word-nothing, .search-paragraph-nothing{
+  opacity: 0;
 }
 
 @keyframes animatedgradient {
@@ -533,158 +950,779 @@
     background-position: 0% 50%;
   }
 }
+
+.section{
+  position: relative;
+  left: 100px;
+  height: 400px;
+  width: 1200px;
+  background: white;
+  box-shadow: 15px 15px 25px rgba(0,0,0,0.2);
+  display: flex;
+  border-radius: 20px;
+}
+
+.content{
+  width: 200px;
+  height: 100%;
+  position: absolute;
+  z-index: 1;
+  background: rgba(0,0,0,0);
+  left: 400px;
+  box-sizing: border-box;
+  border-right: 150px solid white;
+  border-top: 400px solid transparent;
+}
+
+.Image-View{
+  width: 600px;
+  height: 400px;
+  position: absolute;
+  background:  white;
+  box-sizing: border-box;
+  transition: 0.5s;
+  border-radius: 20px;
+}
+
+.none-view{
+  position: absolute;
+  left: 600px;
+  height: 400px;
+  width: 600px;
+  background: white;
+  display: flex;
+  z-index: 8;
+  border-bottom-right-radius: 20px;
+  border-top-right-radius: 20px;
+}
+
+.section-hotel{
+  position: relative;
+  width: 350px;
+  left: 650px;
+  top: -100px;
+  height: 700px;
+  background: white;
+  box-shadow: 25px 15px 5px rgba(0,0,0,0.25);
+  display: flex;
+  border-radius: 20px;
+  transform: perspective(1200px) rotateY(-25deg) rotateX(25deg) skew(-2deg) scale(0.9);
+
+}
+
+.content-hotel{
+  width: 200px;
+  height: 300px;
+  position: absolute;
+  z-index: 1;
+  background: rgba(0,0,0,0);
+  top: 240px;
+  box-sizing: border-box;
+  border-right: 350px solid white;
+  border-top: 40px solid transparent;
+}
+
+.Image-View-hotel{
+  width: 350px;
+  height: 300px;
+  position: absolute;
+  background:  white;
+  box-sizing: border-box;
+  transition: 0.5s;
+  border-radius: 20px;
+}
+
+.none-view-hotel{
+  position: absolute;
+  top: 300px;
+  height: 400px;
+  width: 350px;
+  background: white;
+  border-bottom-right-radius: 20px;
+  border-bottom-left-radius: 20px;
+  display: flex;
+  z-index: 8;
+
+}
+/* Next & previous buttons */
+.prev, .next {
+  position: absolute;
+  top: 180px;
+  width: 60px;
+  height: 60px;
+  padding: 6px 16px;
+  background: white;
+  border-radius: 50%;
+  font-size: 30px;
+  transition: 0.7s ease;
+}
+
+.prev-hotel, .next-hotel {
+  position: absolute;
+  top: 200px;
+  width: 60px;
+  height: 60px;
+  padding: 6px 16px;
+  background: white;
+  border-radius: 50%;
+  font-size: 30px;
+  transition: 0.7s ease;
+}
+/* Position the "next button" to the right */
+.next {
+  right: 110px;
+  transform: rotate(90deg);
+  z-index: 8;
+  box-shadow: 5px 0px 5px rgba(0,0,0,0.2);
+
+}
+.prev {
+  left: 597px;
+  z-index: 8;
+  transform: rotate(-90deg);
+  box-shadow: -5px 0px 5px rgba(0,0,0,0.2);
+
+}
+
+.next-hotel {
+  right: 150px;
+  transform: rotate(90deg);
+  z-index: 8;
+  box-shadow: 5px 0px 5px rgba(0,0,0,0.2);
+
+}
+.prev-hotel {
+  left: 637px;
+  z-index: 8;
+  transform: rotate(-90deg);
+  box-shadow: -5px 0px 5px rgba(0,0,0,0.2);
+
+}
+/* On hover, add a black background color with a little bit see-through */
+.next:hover {
+  box-shadow: 5px 0px 5px rgba(0,0,0,0.7);
+}
+
+.prev:hover{
+  box-shadow: -5px 0px 5px rgba(0,0,0,0.7);
+}
+
+/* Caption text */
+.text {
+  color: #f2f2f2;
+  font-size: 15px;
+  padding: 8px 12px;
+  position: absolute;
+  bottom: 8px;
+  width: 100%;
+  text-align: center;
+}
+
+/* The dots/bullets/indicators */
+.dot {
+  cursor: pointer;
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  position: relative;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+
+}
+
+.active, .dot:hover {
+  background-color: #717171;
+}
+
+.img-view{
+  width: 600px; 
+  height: 400px; 
+  position: absolute; 
+  z-index: 0; 
+  transition: all 0.7s; 
+  border-radius: 20px; 
+  animation: animatedImage 3s ease alternate;
+}
+.img-view-hotel{
+  width: 350px; 
+  height: 300px; 
+  position: absolute; 
+  z-index: 0; 
+  transition: all 0.7s; 
+  border-top-right-radius: 20px; 
+  border-top-left-radius: 20px;
+  animation: animatedImage 3s ease alternate; 
+}
+.img-view:hover{
+  box-shadow: 15px 15px 25px rgba(0,0,0,0.1);
+  transform: translateX(-30px);
+}
+
+.text-fly{
+  font-family: cursive; 
+  font-size: 15px; 
+  text-align: center; 
+  line-height: 20px; position: 
+  relative; 
+  top: 100px; 
+  width: 500px; 
+  left: 50px; 
+  transition: all 0.5s; 
+  animation: animatedText 3s ease alternate;
+}
+
+@keyframes animatedImage{
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes animatedText{
+  0% {
+    transform: translateX(-100px); 
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0px); 
+    opacity: 1;
+  }
+}
+#map{
+  height: 100%;
+  width: 100%;
+  border-radius: 30px;
+}
+
+.info-wrapper{
+  width: 100%;
+  height: 600px;
+  position: absolute;
+  top: 2220px;
+  display: flex;
+  z-index: -1;
+  background: linear-gradient(180deg, #FDEDEC, #F5B7B1, #F1948A, #EC7063, #CD5C5C, #FAD7A0);
+}
+.left-side-info{
+  width: 744px;
+  height: 599px;
+  background: white;
+  border-top-right-radius: 10px; 
+  border-bottom-right-radius: 10px; 
+}
+.right-side-info{
+  width: 720px;
+  height: 199px;
+  position: relative;
+  left: 2px;
+  background: white;
+  border-top-left-radius: 10px; 
+  border-bottom-left-radius: 10px; 
+}
+.right-side-middle-info{
+  width: 720px;
+  height: 398px;
+  top: 201px;
+  position: absolute;
+  left: 733px;
+  background: white;
+  border-top-left-radius: 10px; 
+  border-bottom-left-radius: 10px; 
+}
+.lock-circle{
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: #D5F5E3;
+  margin-bottom: 10px;
+  position: relative;
+  top: 50px;
+  left: 160px;
+  box-shadow: 0px 4px 6px rgba(0,0,0,0.1);
+}
+
+.icon-lock-lock {
+  width: 40px;
+  height: 40px;
+  position: relative;
+  overflow: hidden;
+  margin-left: 6px;
+  top: 3px;
+}
+
+.icon-lock-lock .lock-top-1 {
+  width: 40%;
+  height: 40%;
+  position: absolute;
+  left: 50%;
+  margin-left: -20%;
+  top: 14%;
+  
+  border-radius: 40%;
+}
+
+.icon-lock-lock .lock-top-2 {
+  width: 24%;
+  height: 40%;
+  position: absolute;
+  left: 50%;
+  margin-left: -12%;
+  top: 22%;
+  background-color: #D5F5E3;
+  border-radius: 25%;
+}
+
+.icon-lock-lock .lock-body {
+  width: 60%;
+  height: 48%;
+  position: absolute;
+  left: 50%;
+  margin-left: -30%;
+  bottom: 11%;
+  background-color: #D5F5E3;
+  border-radius: 15%;
+}
+
+.icon-lock-lock .lock-hole {
+  width: 16%;
+  height: 16%;
+  position: absolute;
+  left: 50%;
+  margin-left: -8%;
+  top: 51%;
+  border-radius: 100%;
+  background-color: #D5F5E3;
+}
+
+.icon-lock-lock .lock-hole:after {
+  content: "";
+  width: 43%;
+  height: 78%;
+  position: absolute;
+  left: 50%;
+  margin-left: -20%;
+  top: 100%;
+  background-color: inherit;
+}
+
+.swiper-container {
+  width: 100%;
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+.swiper-slide {
+  background: white;
+  background-position: center;
+  background-size: cover;
+  width: 300px;
+  height: 500px;
+ 
+}
+.button3 {
+  width: 100px;
+  height: 40px;
+  position: relative;
+  left: 10px;
+  color: #fff;
+  font-family: cursive;
+  border-radius: 40px;
+  text-align: center;
+  cursor: pointer;
+  border: none;
+  transition: all 0.5s;
+  top: 650px;
+  left: 230px;
+  background: #CD5C5C;
+  z-index: 9;
+}
+
+.button3 span {
+  cursor: pointer;
+  border: none;
+  display: inline-block;
+  font-family: cursive;
+  position: relative;
+  transition: 0.5s;
+
+}
+
+.button3 span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.button3:hover span {
+  padding-right: 15px;
+
+}
+
+.button3:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+
+.button8 {
+  width: 50px;
+  height: 50px;
+  position: relative;
+  left: 240px;
+  color: #fff;
+  top: -40px;
+  background: #FA8072;
+  font-family: cursive;
+  border-radius: 50px;
+  text-align: center;
+  cursor: pointer;
+  border: none;
+  transition: all 0.5s;
+  box-shadow: 0px 5px 15px rgba(0,0,0,0.3);
+}
+
+.button8:hover{
+  box-shadow: 0px 5px 15px rgba(0,0,0,0.1);
+}
+
+.magnifier-icon{
+  display: block;
+  position: relative;
+  height: 20px;
+  width: 20px;
+  left: 5px;
+  top: -2px;
+  background: white;
+  border-radius: 50%;
+  transform: rotate(-45deg);
+}
+.magnifier-icon:before{
+  content: "";
+  position: absolute;
+  height: 80%;
+  width: 80%;
+  border-radius: 50%;
+  top: 10%;
+  left: 10%;
+  background: #FA8072;
+}
+.magnifier-icon:after{
+  content: "";
+  position: absolute;
+  width: 20%;
+  height: 45%;
+  background: white;
+  left: 40%;
+  top: 99%;
+}
 </style>
-<body>
-   <h1 style="text-align: center; font-size: 70px;width: 700px; height: 300px; font-family: sans-serif; position: absolute; top: 200px; color: #fff; left: 410px; padding: 50px 0;">Name of the hotel</h1>
-
-  <div class="authentication">
-    {% if user.is_authenticated %}
-      <button class="button2"><a href="{% url 'logout' %}" style="text-decoration: none; color: #fff; float: left; width: 100%; height: 100%; line-height: 60px;">See Ya</a></button>
-      <div class="tag1">
-        <h6 class="text1">{{ user.username }}</h6>
-      </div>
-    {% else %}
-    <button class="button2"><a href="{% url 'login' %}" style="text-decoration: none; color: #fff; float: left; width: 100%; height: 100%; line-height: 60px;">Sign In</a></button>
-      <div class="tag1" style="width: 200px;">
-        <h6 class="text1">You're Out!</h6>
-      </div>
-    {% endif %}
-  </div>
-
-  <div>
-    <img src="{% static 'img/overview.jpg' %}" style="width: 100%; height: 100%;">
-  </div>
 
 <div class="authentication">
   {% if user.is_authenticated %}
-    <button class="button2"><a href="{% url 'logout' %}" style="text-decoration: none; color: #fff; float: left; width: 100%; height: 100%; line-height: 60px;">Log out</a></button>
+    <button class="button2"><a href="{% url 'logout' %}" style="text-decoration: none; color: #fff; float: left; width: 100%; height: 100%; line-height: 60px; outline: none;">Log out</a></button>
     <div class="tag1">
       <h6 class="text1">{{ user.username }}</h6>
     </div>
   {% else %}
-  <button class="button2"><a href="{% url 'login' %}" style="text-decoration: none; color: #fff; float: left; width: 100%; height: 100%; line-height: 60px;">Sign In</a></button>
+  <button class="button2"><a href="{% url 'login' %}" style="text-decoration: none; color: #fff; float: left; width: 100%; height: 100%; line-height: 60px; outline: none;">Sign In</a></button>
     <div class="tag1" style="width: 200px;">
       <h6 class="text1">You're Out!</h6>
     </div>
   {% endif %}
+  <script type="text/javascript">
+      $(window).scroll(function() {
+      if ($(this).scrollTop() >= 50) {    
+          $('.authentication').fadeIn(200);  
+      } else {
+          $('.authentication').fadeOut(200);
+      }
+  });
+  </script>
+</div>
+
+
+<div class="cover" style="width: 100%; position: relative;">
+  <img src="{% static 'img/mountain.jpg' %}" style="width: 100%; height: 900px;">
+  <div class="shade" style="width: 1470px; height: 900px; position: absolute; z-index: 4; top: 0px; "></div>
+  <h1 style="font-family: cursive; position: absolute; top: 340px; left: 700px; color: black; z-index: 5; font-size: 60px;">Love Me, Book Me</h1>
+
+</div>
+
+<div class="skew-rect" style="background: #D4EFDF; width: 179px; height: 30px; transform: skew(-70deg) rotate(20deg); position: absolute; z-index: -1; top: 890px; left: 1310px;"></div>
+<div class="skew-rect" style="background: #FEF5E7; width: 179px;  height: 40px; transform: skew(-70deg) rotate(20deg); position: absolute; left: 1250px; top: 950px; left: 1290px;"></div>
+<div class="skew-rect" style="background: #CD5C5C; width: 179px;  height: 70px; transform: skew(-70deg) rotate(20deg); position: absolute; left: 1250px; top: 1000px;"></div>
+<div class="skew-rect" style="background: #D4EFDF; width: 179px; height: 20px; transform: skew(-70deg) rotate(20deg); position: absolute; z-index: 0; top: 1200px; left: -60px;"></div>
+<div class="skew-rect" style="background: #FEF5E7; width: 179px; height: 40px; transform: skew(-70deg) rotate(20deg); position: absolute; z-index: 0; top: 1240px; left: -60px;"></div>
+<div class="skew-rect" style="background: #CD5C5C; width: 179px; height: 100px; transform: skew(-70deg) rotate(20deg); position: absolute; z-index: 0; top: 1250px; "></div>
+
+<div id="slide">
+    <div class="swiper-container">
+    <div class="swiper-wrapper" style="border-radius: 30px;">
+      {% for photo in photoforteam %}
+      <div class="swiper-slide" style="border: 1px solid black; border-radius: 30px;">
+        <div class="team-member-img">
+          <img src="{{ photo.image1.url }}" style="width: 300px;">
+        </div>
+
+        <div class="line2" style="width: 200px; position: relative; top: 170px; left: 50px; height: 1px; background: linear-gradient(60deg, #FDEDEC, #F5B7B1, #F1948A, #EC7063, #CD5C5C, #FAD7A0);"></div>
+
+        <div class="team-member-roles" style="height: 120px; position: relative; top: 170px; border-bottom-left-radius: 30px; border-bottom-right-radius: 30px;">
+          <div style="text-align: center;">
+            <p style="font-family: cursive; font-size: 20px;">{{ photo.full_name }}</p>
+            <p style="font-family: cursive; font-size: 15px; color: #E74C3C; position: relative; top: -10px;">{{ photo.roles }}</p>
+            <p style="font-family: cursive; font-size: 15px; position: relative; top: -15px;">{{ photo.roles2 }}</p>
+          </div>
+
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    <!-- Add Pagination -->
+    <div class="swiper-pagination"></div>
+  </div>
+
+  <script src="{% static 'js/swiper.min.js' %}"></script>
+    <!-- Initialize Swiper -->
+  <script>
+    var swiper = new Swiper('.swiper-container', {
+      effect: 'coverflow',
+      grabCursor: true,
+      centeredSlides: true,
+      slidesPerView: 'auto',
+      coverflowEffect: {
+        rotate: 50,
+        stretch: 0,
+        depth: 100,
+        modifier: 1,
+        slideShadows : false,
+      },
+      pagination: {
+        el: '.swiper-pagination',
+      },
+    });
+  </script>
+
+
 </div>
 
 <div>
-  <img src="{% static 'img/overview.jpg' %}" style="width: 100%; height: 100%;">
+  <div class="slideshow-container" style="position: relative; top: 1350px;">
+    <div class="section" style="transition: 0.5s;">
+      <div class="content"></div>
+      <div class="none-view">
+          <p class="text-fly">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. </p>
+      
+      </div>
+      <div class="Image-View">
+          <img class="img-view" src="{% static 'img/image.jpeg' %}">
+      </div>
+
+    </div>
+    <div class="section" style="transition: 0.5s;">
+      <div class="content"></div>
+      <div class="none-view">
+          <p class="text-fly">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. </p>
+      </div>
+      <div class="Image-View">
+          <img class="img-view" src="{% static 'img/room1.jpg' %}">
+      </div>
+    </div>
+    <a class="prev" onclick="plusSlides(-1)"><i class="icon-chevron-up"></i></a> 
+    <a class="next" onclick="plusSlides(1)"><i class="icon-chevron-up"></i></a> 
+</div>
+<br>
+
+<div style="text-align:center; position: relative; top: 1300px; z-index: 9;"> 
+  <span class="dot" onclick="currentSlide(1)"></span> 
+  <span class="dot" onclick="currentSlide(2)"></span> 
+</div>
+
+  <script>
+    var slides,dots;
+    var slideIndex = 0;
+    showSlides();
+
+    function showSlides() {
+        var i;
+        slides = document.getElementsByClassName("section");
+        dots = document.getElementsByClassName("dot");
+        for (i = 0; i < slides.length; i++) {
+           slides[i].style.display = "none";
+        }
+        slideIndex++;
+
+        if (slideIndex> slides.length) {slideIndex = 1}   
+
+        for (i = 0; i < dots.length; i++) {
+            dots[i].className = dots[i].className.replace(" active", "");
+        }
+
+        slides[slideIndex-1].style.display = "block"; 
+        dots[slideIndex-1].className += " active";
+        setTimeout(showSlides, 8000); // Change image every 8 seconds
+    }
+
+    function plusSlides(position) {
+        slideIndex +=position;
+        if (slideIndex> slides.length) {slideIndex = 1}
+        else if(slideIndex<1){slideIndex = slides.length}
+        for (i = 0; i < slides.length; i++) {
+          slides[i].style.display = "none";  
+        }
+        for (i = 0; i < dots.length; i++) {
+            dots[i].className = dots[i].className.replace(" active", "");
+        }
+        slides[slideIndex-1].style.display = "block";
+        dots[slideIndex-1].className += " active";
+
+    }
+
+    function currentSlide(index) {
+        if (index> slides.length) {index = 1}
+        else if(index<1){index = slides.length}
+        for (i = 0; i < slides.length; i++) {
+           slides[i].style.display = "none"; 
+        }
+        for (i = 0; i < dots.length; i++) {
+            dots[i].className = dots[i].className.replace(" active", "");
+        }
+
+        slides[index-1].style.display = "block";  
+        dots[index-1].className += " active";
+    }
+  </script>
+</div>
+
+<div class="razor" style="width: 100%; height: 700px; position: relative; top: -430px; background: #FDEDEC; border-right: 1470px solid white; border-bottom: 590px solid transparent;">
+    <div class="thing1" style="width: 200px; height: 50px; background: #FF6F6F; position: relative; top: 28px; left: 60px; border-left: 5px solid #F9E79F; z-index: 6;">
+    <h6 style="width: 200px; height: 50px; position: relative; top: 10px; left: 30px; font-size: 20px; font-family: cursive; color: #fff;">Best Choices</h6>
+  </div>
+  <div class="razor" style="width: 50px; height: 50px; transform: skew(-25deg); position: relative; left: 235px; top: -22px; background: #FF6F6F; z-index: 6;"></div>
+
+</div>
+
+<div style="width: 100%; height: 550px; position: relative; top: -1000px;">
+  <div class="slideshow-container">
+    {% if rooms %}
+
+    {% for room in rooms %}
+    <div class="section-hotel" style="transition: 0.5s;">
+      <div class="none-view-hotel">
+          <!--Text here-->
+          <div style="padding: 20px;">
+              <h6 style="position: relative; height: 30px; font-size: 15px; font-family: cursive; top: 10px;"><span style="font-size: 20px; margin-bottom: 15px;">Address</span>:<br>{{ room.address }}, {{ room.city }}, {{ room.state }} {{ room.zip_code }}</h6>
+              <br>
+              <h6 style="position: relative; height: 30px; font-size: 15px; font-family: cursive; top: 10px;"><span style="font-size: 20px; margin-bottom: 15px;"><span style="font-size: 20px; margin-bottom: 15px;">Phone</span>:<br>{{ room.telephone }}</h6>
+              <br>
+              <p style="position: relative; height: 30px; font-size: 15px; font-family: cursive; top: 10px;"><span style="font-size: 20px; margin-bottom: 15px;"><span style="font-size: 20px; margin-bottom: 15px;">Description</span>:<br>{{ room.description }}</p>
+          </div>
+          
+      </div>
+      <div class="Image-View-hotel">
+        <div class="" style="position: absolute; background: white; z-index: 8; color: black; width: 150px; left: 95px; top: 275px; height: 50px; border: 1px solid black; border-radius: 30px;">
+          <h6 style="font-size: 15px; line-height: 30px; font-family: cursive; text-align: center;">{{ room.hotel_name }}</h6>
+        </div>
+        <img class="img-view-hotel" src="{{ room.image.url }}">
+      </div>
+      <a href="{% url 'booking_with_pk' pk=room.pk %}"><button class="button3"><span>Book</span></button></a>
+    </div>
+   
+    {% endfor %}
+    {% endif %}
+ 
+    <a class="prev-hotel" onclick="plusSlidesHotel(-1)"><i class="icon-chevron-up"></i></a> 
+    <a class="next-hotel" onclick="plusSlidesHotel(1)"><i class="icon-chevron-up"></i></a> 
+
+    <script>
+    var slidesHotel
+    var slideIndexHotel = 0;
+    showSlidesHotel();
+
+    function showSlidesHotel() {
+        var j;
+        slidesHotel = document.getElementsByClassName("section-hotel");
+        for (j = 1; j < slidesHotel.length; j++) {
+           slidesHotel[j].style.display = "none";
+        }
+        slideIndexHotel++;
+
+
+        if (slideIndeHotel> slidesHotel.length) {slideIndexHotel = 1}   
+
+        slidesHotel[slideIndexHotel-1].style.display = "block"; 
+        setTimeout(showSlidesHotel, 8000); // Change image every 8 seconds
+    }
+
+    function plusSlidesHotel(positionHotel) {
+        slideIndexHotel +=positionHotel;
+        if (slideIndexHotel> slidesHotel.length) {slideIndexHotel = 1}
+        else if(slideIndexHotel<1){slideIndexHotel = slidesHotel.length}
+        for (j = 0; j < slidesHotel.length; j++) {
+          slidesHotel[j].style.display = "none";  
+        }
+        slidesHotel[slideIndexHotel-1].style.display = "block";
+      
+
+    }
+
+    function currentSlideHotel(indexHotel) {
+        if (indexHotel> slidesHotel.length) {indexHotel = 1}
+        else if(indexHotel<1){indexHotel = slidesHotel.length}
+        for (j = 1; j < slidesHotel.length; j++) {
+           slidesHotel[j].style.display = "none"; 
+        }
+        slidesHotel[indexHotel-1].style.display = "block";  
+      
+    }
+  </script>
+</div>
+</div>
+
+<div class="info-wrapper">
+  <div class="left-side-info"></div>
+
+  <div class="right-side-info">
+    <div class="lock-circle">
+      <div class="icon-lock-lock" style="clear: left; float: left">
+        <div class="lock-top-1" style="background-color: #2CC3B5"></div>
+        <div class="lock-top-2"></div>
+        <div class="lock-body" style="background-color: #2CC3B5"></div>
+        <div class="lock-hole"></div>
+      </div>
+    </div>
+    <div>
+      <p style="font-size: 15px; position: absolute; font-family: cursive; left: 220px; top: 55px;">Your card will be securely saved in our database.</p>
+      <p style="font-size: 15px; position: absolute; font-family: cursive; left: 220px; top: 72px;">Bringing security to custormer is our first priority.</p>    
+    </div>
+
+    <div class="lock-circle">
+      <div class="icon-lock-lock" style="clear: left; float: left">
+        <div class="lock-top-1" style="background-color: #2CC3B5"></div>
+        <div class="lock-top-2"></div>
+        <div class="lock-body" style="background-color: #2CC3B5"></div>
+        <div class="lock-hole"></div>
+      </div>
+    </div>
+    <div>
+      <p style="font-size: 15px; position: absolute; font-family: cursive; left: 220px; top: 115px;">Guaranteeing a secured authentication & authorization.</p>
+      <p style="font-size: 15px; position: absolute; font-family: cursive; left: 220px; top: 132px;">Your information will not be shared with other users.</p>
+    </div>
+  </div>
+  <div class="right-side-middle-info">
+  </div>
 </div>
 
 
 
-  <div class="policy" style="width: 1150px; height: 470px; position: relative; background: #FEF5E7; top: 455px; left: 140px;">
-    <h2 style="color: #000; width: 400px; padding: 25px 50px; font-size: 37px; font-weight: 100; font-family: sans-serif; ">Welcome
-      <div style="border-bottom: 2px solid #CD5C5C; width: 300px; padding: 2px 0;"></div>
-      <div style="border-bottom: 2px solid #CD5C5C; width: 350px; padding: 2px 0;"></div>
-    </h2>
-
-    <div style="width: 680px; height: 150px;  position: absolute; top: 290px; left: 400px;">
-          <div style="width: 150px; height: 40px; position: absolute; top: 5px; left: 20px;">
-            <div class="circle" style="background: #B03A2E; width: 50px; height: 50px; border-radius: 50%; position: absolute; z-index: 0.25;"></div>
-            <div class="rec" style="background: #B03A2E; width: 130px; height: 50px; position: absolute; z-index: -0.5; left: 23px; border-right: 10px solid #E74C3C; ">
-              <h6 style="font-size: 15px; font-family: sans-serif; top: -5px; position: absolute; left: 45px; color: #fff; border-bottom: 2px solid #F9E79F; text-align: center;">Free Wifi</h6>
-            </div>
-            <div class="wifi"></div>
-
-          </div>
-          <div style="width: 150px; height: 40px; position: absolute; top: 75px; left: 20px;">
-            <div class="circle" style="background: #B03A2E; width: 50px; height: 50px; border-radius: 50%; position: absolute; z-index: 0.25;"></div>
-            <div class="rec" style="background: #B03A2E; width: 130px; height: 50px; position: absolute; z-index: -0.5; left: 23px; border-right: 10px solid #E74C3C; ">
-              <h6 style="font-size: 15px; font-family: sans-serif; top: -5px; position: absolute; left: 45px; color: #fff; border-bottom: 2px solid #F9E79F; text-align: center;">Bar Night</h6>
-            </div>
-            <div class="fas fa-glass-martini" style="z-index: 2.75; color: #fff; top: 10px; left: 15px;position: relative; width: 30px; height: 30px;"></div>
-
-          </div>
-
-          <div style="width: 150px; height: 40px; position: absolute; top: 5px; left: 260px;">
-            <div class="circle" style="background: #B03A2E; width: 50px; height: 50px; border-radius: 50%; position: absolute; z-index: 0.25;"></div>
-            <div class="rec" style="background: #B03A2E; width: 130px; height: 50px; position: absolute; z-index: -0.5; left: 23px; border-right: 10px solid #E74C3C; ">
-              <h6 style="font-size: 15px; font-family: sans-serif; top: -5px; position: absolute; left: 45px; color: #fff; border-bottom: 2px solid #F9E79F; text-align: center;">Dog Hotel</h6>
-              <h6 style="font-size: 10px; font-family: sans-serif; top: 15px; position: absolute; left: 45px; color: #fff; text-align: center; ">Take Good Care for You</h6>
-            </div>
-            <div class="fas fa-paw" style="z-index: 2.75; color: #fff; top: 10px; left: 15px;position: relative; width: 30px; height: 30px;"></div>
-          </div> 
-
-          <div style="width: 150px; height: 40px; position: absolute; top: 75px; left: 260px;">
-            <div class="circle" style="background: #B03A2E; width: 50px; height: 50px; border-radius: 50%; position: absolute; z-index: 0.25;"></div>
-            <div class="rec" style="background: #B03A2E; width: 130px; height: 50px; position: absolute; z-index: -0.5; left: 23px; border-right: 10px solid #E74C3C; ">
-              <h6 style="font-size: 15px; font-family: sans-serif; top: -5px; position: absolute; left: 45px; color: #fff; border-bottom: 2px solid #F9E79F; text-align: center;">Cruise</h6>
-              <h6 style="font-size: 12px; font-family: sans-serif; top: 15px; position: absolute; left: 45px; color: #fff; text-align: center; ">25% Off</h6>
-            </div>
-            <div class="fas fa-ship" style="z-index: 2.75; color: #fff; top: 10px; left: 15px; position: relative; width: 30px; height: 30px;"></div>
-          </div>  
-
-          <div style="width: 150px; height: 40px; position: absolute; top: 5px; left: 500px;">
-            <div class="circle" style="background: #B03A2E; width: 50px; height: 50px; border-radius: 50%; position: absolute; z-index: 0.25;"></div>
-            <div class="rec" style="background: #B03A2E; width: 130px; height: 50px; position: absolute; z-index: -0.5; left: 23px; border-right: 10px solid #E74C3C; ">
-              <h6 style="font-size: 14px; font-family: sans-serif; top: -5px; position: absolute; left: 45px; color: #fff; border-bottom: 2px solid #F9E79F;">Movie Time</h6>
-            </div>
-            <div class="fas fa-ticket-alt" style="z-index: 2.75; color: #fff; top: 10px; left: 15px;position: relative; width: 30px; height: 30px; transform: rotate(-40deg); "></div>
-          </div> 
-
-          <div style="width: 150px; height: 40px; position: absolute; top: 75px; left: 500px;">
-            <div class="circle" style="background: #B03A2E; width: 50px; height: 50px; border-radius: 50%; position: absolute; z-index: 0.25;"></div>
-            <div class="rec" style="background: #B03A2E; width: 130px; height: 50px; position: absolute; z-index: -0.5; left: 23px; border-right: 10px solid #E74C3C; ">
-              <h6 style="font-size: 15px; font-family: sans-serif; top: -5px; position: absolute; left: 45px; color: #fff; border-bottom: 2px solid #F9E79F;">Emergency</h6>
-            </div>
-            <div class="fas fa-plus" style="z-index: 2.75; color: #fff; top: 10px; left: 15px; position: relative; width: 30px; height: 30px;"></div>
-          </div> 
-    </div>
-    
-    <div class="info-service">
-        <h4 style="font-family: sans-serif; font-weight: bold;">Name of the Hotel</h4>
-        <p style="font-size: 17px;">The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.</p>
-
-        <h5 style="padding: 15px 0; font-family: sans-serif;">Stephanie Cheng-<span style="color: #CD5C5C; font-weight: bold;">Manager</span></h5>
-    </div>
-
-
-    <div class="gradient-border" id="box">
-      <div class="coupon">
-        <div>
-          <div class="left-line" style="background: #fff; width: 50px; height: 1px; position: relative; top: 60px; left: 110px;"></div>
-          <div style="font-size: 14px; position: relative; top: 50px; text-align: center;  font-family: sans-serif;">Bar Night</div>
-          <div class="right-line" style="background: #fff; width: 50px; height: 1px; position: relative; top: 39px; left: 235px;"></div>
-        </div>
-
-
-        <h1 style="font-family: sans-serif; font-size: 100px; top: 5px; left: 105px; position: relative;">20<span style="font-size: 22px; position: relative; top: -20px; ">%</span></h1>
-        <h1 class="vertical-text">OFF</h1>
-
-        <h1 style="font-size: 16px; position: relative; text-align: center; top: -60px;font-family: sans-serif;">Get Code, Get Drunk with Your Loves</h1>
-
-        <div style="position: relative; text-align: center; font-size: 15px; font-family: sans-serif; top: -50px; left: 150px; border-radius: 10px; border: 1px solid #fff; width: 100px;">NDK1234</div>
-      </div>
-    </div>
-  </div>
-
-  <div style="width: 100%; height: 580px; position: relative; top: 500px; background: #FDEDEC;">
-    <div class="thing1" style="width: 200px; height: 50px; background: #FF6F6F; position: relative; top: -27px; left: 60px; border-left: 5px solid #F9E79F;">
-      <h6 style="width: 200px; height: 50px; position: relative; top: 10px; left: 30px; font-size: 20px; font-family: sans-serif; color: #fff;">Best Choices</h6>
-    </div>
-    <div class="razor" style="width: 50px; height: 50px; transform: skew(-25deg); position: relative; left: 235px; top: -77px; background: #FF6F6F;"></div>
-
-    <div class="animation-element slide-left testimonial" style=" width: 1350px; height: 500px; background: #fff; float: left; position: relative; top: -60px; ">
-      <!--<div class="" style="">
-        
-      </div>
-
-      <div class="" style="">
-        
-      </div>
-
-      <div class="" style="">
-        
-      </div>-->
-    </div>
-  </div>
-
-
+<div style="box-shadow: -25px 10px 15px rgba(0,0,0,0.2); transform: perspective(1200px) rotateY(25deg) rotateX(25deg) skew(-2deg) scale(0.9); width: 500px; height: 310px; border-radius: 20px; position: relative; top: -1093px; left: 100px;">
   <div>
-    <a class="weatherwidget-io" href="https://forecast7.com/en/37d34n121d89/san-jose/?unit=us" data-label_1="SAN JOSE" data-label_2="WEATHER" data-font="Georgia" data-icons="Climacons Animated" data-mode="Current" data-theme="original" data-basecolor="#9f1619" style="position: relative; top: 605px; width: 100%; font-family: sans-serif;" >SAN JOSE WEATHER</a>
+  <a class="weatherwidget-io" href="https://forecast7.com/en/37d34n121d89/san-jose/?unit=us" data-label_1="SAN JOSE" data-label_2="WEATHER" data-font="Georgia" data-icons="Climacons Animated" data-mode="Current" data-theme="original" data-basecolor="#9f1619" style="border-top-left-radius: 20px; border-top-right-radius: 20px; position: relative;  width: 500px; font-family: cursive; z-index: 8;" >SAN JOSE WEATHER</a>
+
   <script>
   !function(d,s,id){
     var js,fjs=d.getElementsByTagName(s)[0];
@@ -695,232 +1733,258 @@
       fjs.parentNode.insertBefore(js,fjs);
     }
   }(document,'script','weatherwidget-io-js');
+
   </script>
-  </div>
-
-  <div>
-    <a class="weatherwidget-io" href="https://forecast7.com/en/37d34n121d89/san-jose/?unit=us" data-label_1="SAN JOSE" data-label_2="WEATHER" data-icons="Climacons Animated" data-theme="original" data-basecolor="#ea8a8c" data-highcolor="#ffdf00" data-cloudcolor="#ffffff" data-cloudfill="#fdfdfc" data-raincolor="#b1beed" style="width: 100%; position: relative; top: 78px;" >SAN JOSE WEATHER</a>
-  <script>
-  !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src='https://weatherwidget.io/js/widget.min.js';fjs.parentNode.insertBefore(js,fjs);}}(document,'script','weatherwidget-io-js');
-  </script>
-  </div>
-
-  </div>
-
-  <div style="position: absolute; width: 1000px; height: 600px; top: 750px; padding: 0px 60px;">
-    <div style="background: #D35400; width: 450px; height: 600px; position: absolute; left: 820px; top: -20px; box-shadow: 0 25px 30px rgba(0,0,0,0.5);">
-      <div style="border: 2px solid #fff; width: 430px; height: 580px; position: absolute; top: 10px; left: 10px;">
-        <h1 style="position: relative; text-align: center; top: 30px;font-family: sans-serif; color: #fff; font-size: 30px;">Check Availability</h1>
-        <!--{% if form %}
-        <div class="fas fa-calendar-alt" style="width: 20px; height: 20px; color: #797D7F; position: absolute; z-index: 1; top: 102px; left: 305px;"></div>
-        <div class="fas fa-calendar-alt" style="width: 20px; height: 20px; color: #797D7F; position: absolute; z-index: 1; top: 146px; left: 305px;"></div>
-        <form method="POST">{% csrf_token %}
-          <h2 style="font-size: 20px; font-family: sans-serif; color: #fff; position: relative; top: 110px; text-align: center;">Adults</h2>
-          <h2 style="font-size: 20px; font-family: sans-serif; color: #fff; position: relative; top: 160px; text-align: center; ">Children</h2>
-          {{ form.as_p }}
-          <button class="submit" style="width: 200px; height: 50px; font-size: 20px; background: none; color: white; font-family: sans-serif; position: relative; top: 50px; left: 115px; border: 2px solid #fff;">Check</button>
-        </form>
-        <script type="text/javascript">$('.datepicker').datepicker()</script>
-        {% endif %}-->
-      </div>
-      
-<<<<<<< HEAD
-    </div>-->
-  </div>
 </div>
-
-
-<div>
-  <a class="weatherwidget-io" href="https://forecast7.com/en/37d34n121d89/san-jose/?unit=us" data-label_1="SAN JOSE" data-label_2="WEATHER" data-font="Georgia" data-icons="Climacons Animated" data-mode="Current" data-theme="original" data-basecolor="#9f1619" style="position: relative; top: 480px; width: 100%; font-family: cursive;" >SAN JOSE WEATHER</a>
-<script>
-!function(d,s,id){
-  var js,fjs=d.getElementsByTagName(s)[0];
-  if(!d.getElementById(id)){
-    js=d.createElement(s);
-    js.id=id;
-    js.src='https://weatherwidget.io/js/widget.min.js';
-    fjs.parentNode.insertBefore(js,fjs);
-  }
-}(document,'script','weatherwidget-io-js');
-</script>
-</div>
-
-<div>
-  <a class="weatherwidget-io" href="https://forecast7.com/en/37d34n121d89/san-jose/?unit=us" data-label_1="SAN JOSE" data-label_2="WEATHER" data-icons="Climacons Animated" data-theme="original" data-basecolor="#ea8a8c" data-highcolor="#ffdf00" data-cloudcolor="#ffffff" data-cloudfill="#fdfdfc" data-raincolor="#b1beed" style="width: 100%; position: relative; top: 480px;" >SAN JOSE WEATHER</a>
-<script>
-!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src='https://weatherwidget.io/js/widget.min.js';fjs.parentNode.insertBefore(js,fjs);}}(document,'script','weatherwidget-io-js');
-</script>
-</div>
-
-</div>
-
-<div style="position: absolute; width: 1000px; height: 600px; top: 750px; padding: 0px 60px;">
-  <div style="background: #D35400; width: 450px; height: 600px; position: absolute; left: 820px; top: -20px; box-shadow: 0 25px 30px rgba(0,0,0,0.5);">
-    <div style="border: 2px solid #fff; width: 430px; height: 580px; position: absolute; top: 10px; left: 10px;">
-      <h1 style="position: relative; text-align: center; top: 30px;font-family: cursive; color: #fff; font-size: 30px;">Check Availability</h1>
-      <!--{% if form %}
-      <div class="fas fa-calendar-alt" style="width: 20px; height: 20px; color: #797D7F; position: absolute; z-index: 1; top: 102px; left: 305px;"></div>
-      <div class="fas fa-calendar-alt" style="width: 20px; height: 20px; color: #797D7F; position: absolute; z-index: 1; top: 146px; left: 305px;"></div>
-      <form method="POST">{% csrf_token %}
-        <h2 style="font-size: 20px; font-family: cursive; color: #fff; position: relative; top: 110px; text-align: center;">Adults</h2>
-        <h2 style="font-size: 20px; font-family: cursive; color: #fff; position: relative; top: 160px; text-align: center; ">Children</h2>
-        {{ form.as_p }}
-        <button class="submit" style="width: 200px; height: 50px; font-size: 20px; background: none; color: white; font-family: cursive; position: relative; top: 50px; left: 115px; border: 2px solid #fff;">Check</button>
-      </form>
-      <script type="text/javascript">$('.datepicker').datepicker()</script>
-      {% endif %}-->
-=======
->>>>>>> ac7fd8c283da122891c9053447746dc246595826
-    </div>
-
-    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" style="width: 600px; height: 400px; position: relative; box-shadow: 0 75px 30px rgba(0,0,0,0.5); z-index: 0 ">
-
-      <ol class="carousel-indicators" style="position: relative; top: 445px; z-index: 1;">
-        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-        <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
-      </ol>
-
-      <div class="carousel-inner">
-        <div class="carousel-item active">
-          {% load static %}
-          <img class="d-block w-100" src="{% static 'img/expensive.jpg' %}" alt="First slide">
-
-          <div class="back">
-            <div class="button_base b08_3d_pushback">
-                <div><a href="">Read</a></div>
-                <div><a href="">Read</a></div>
-            </div>
-          </div>
-        </div>
-        <div class="carousel-item">
-          {% load static %}
-          <img class="d-block w-100" src="{% static 'img/dog.jpg' %}" alt="Second slide">
-
-          <div class="back">
-            <div class="button_base b08_3d_pushback">
-                <div><a href="">Read</a></div>
-                <div><a href="">Read</a></div>
-            </div>
-          </div>
-        </div>
-        <div class="carousel-item">
-          {% load static %}
-          <img class="d-block w-100" src="{% static 'img/wedding.jpg' %}" alt="Third slide">
-          <div class="back">
-            <div class="button_base b08_3d_pushback">
-                <div><a href="">Read</a></div>
-                <div><a href="">Read</a></div>
-            </div>
-          </div>
-        </div>
-        <div class="carousel-item">
-          {% load static %}
-          <img class="d-block w-100" src="{% static 'img/buffet.jpg' %}" alt="Fourth slide">
-          <div class="back">
-            <div class="button_base b08_3d_pushback">
-                <div><a href="">Read</a></div>
-                <div><a href="">Read</a></div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-        <span class="left-previous-button" style="width: 40px; height: 40px; position: absolute; top: 50%; left: -25px; border-bottom: 3px solid #000; border-left: 3px solid #000; cursor: pointer; transform: rotate(45deg); transition: 0.5s;"></span></a>
-      <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-        <span class="" style="width: 40px; height: 40px; position: absolute; left: 75px; top: 50%; border-bottom: 3px solid #000; border-left: 3px solid #000; cursor: pointer; transform: rotate(-135deg);"></span>
-      </a>
-    </div>
-  </div>
-
-
-  <!--Footer-->
-  <footer style="margin: 0; padding: 0; border-top: 4px solid #FAD7A0; position: absolute; background: #151515; width: 100%; height: 376px; top: 10450px;">
-    <div style="position: absolute; width: 1000px; top: 50px; height: 100px; box-sizing: border-box; left: 240px; float: left; padding: 0 10px;  box-sizing: border-box;">
-      <div class="brief-about-us" style=" width: 200px; padding: 5px 0px; left: -20px;top: 4px; position: absolute; ">
-        <!--Sub-title-->
-        <h5 style="color: #FAD7A0; text-align: center; position: relative; width: 200px; font-size: 16px; font-family: sans-serif;">About Us</h5>
-        <p class="information" style="position: relative; width: 200px; font-family: sans-serif; font-size: 15px; color: #fff; list-style: none;">Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.</p>
-      </div>
-
-      <div class="sub-contact-information" style="border-left: 1px solid #FAD7A0; width: 400px; border-right: 1px solid #FAD7A0; padding: 10px 0px; left: 277px;  position: absolute;">
-        <!--Subtitle-->
-        <h5 style="color: #FAD7A0; text-align: center; position: relative; width: 400px; font-size: 16px; font-family: sans-serif;">Information</h5>
-        <p style="color: #fff; font-family: sans-serif; text-align: center; width: 400px; padding: 5px 10px;">2568 S King Rd, San Jose, CA 95122</i></p>
-        <p style="text-align: center; position: relative; width: 400px; font-family: sans-serif; color: #fff; list-style: none; top: -15px;"><a href="mailto:lavshort@gmail.com" style="text-decoration: none; color: #fff;padding: 10px 10px;"><span>&#9993;</span> lavashort@gmail.com</a></p>
-        <p style="text-align: center; position: relative; width: 400px; font-family: sans-serif; color: #fff; top: -25px; list-style: none;"><a href="tel:4089529901" style="text-decoration: none; color: #fff; padding: 15px 10px;"><span>&#9990;</span> +1 (408)-952-9901</a></p>
-
-      </div>
-
-      <div class="openning-hour-section" style="width: 200px; padding: 10px 0px; left: 757px; position: absolute; ">
-        <!--Subtitle-->
-        <h5 style="color: #FAD7A0; text-align: center; position: relative; width: 200px; font-family: sans-serif;">Openning Hours</h5>
-        
-        <p class="morning-booking-time" style="text-align: center; position: relative; width: 200px; font-family: sans-serif; color: #fff; list-style: none;">Monday-Friday: 9:00am-12:00am</p>
-        <p class="evening-booking-time" style=" text-align: center; position: relative; top: -15px; width: 200px; font-family: sans-serif; color: #fff; list-style: none;">Saturday-Sunday: 10:00pm-5:00am</p>
-      </div>
-    </div>-->
-      
-    <!---Copyright-->
-    <p style="color: #fff; font-size: 12px; position: relative; top: 310px;  text-align: center; font-family: sans-serif;">Copyright &copy; 2017. All rights reserved.</p>
-
-    <div style="width: 260px; position: relative; top: 300px; left: 588px; height: 1px; background: #FFA07A"></div>
-  </footer>
-
-  <a href="javascript:" id="return-to-top"><i class="icon-chevron-up"></i>
-  <script type="text/javascript">
-    $(window).scroll(function() {
-        if ($(this).scrollTop() >= 50) {    
-            $('#return-to-top').fadeIn(200);  
-        } else {
-            $('#return-to-top').fadeOut(200);
-        }
-    });
-    $('#return-to-top').click(function() {   
-        $('body,html').animate({
-            scrollTop : 0                   
-        }, 500);
-    });
+    <div>
+      <a class="weatherwidget-io" href="https://forecast7.com/en/37d34n121d89/san-jose/?unit=us" data-label_1="SAN JOSE" data-label_2="WEATHER" data-icons="Climacons Animated" data-theme="original" data-basecolor="#ea8a8c" data-highcolor="#ffdf00" data-cloudcolor="#ffffff" data-cloudfill="#fdfdfc" data-raincolor="#b1beed" style="width: 500px; position: relative; z-index: 8; border-bottom-left-radius: 20px; border-bottom-right-radius: 20px;" >SAN JOSE WEATHER</a>
+    <script>
+    !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src='https://weatherwidget.io/js/widget.min.js';fjs.parentNode.insertBefore(js,fjs);}}(document,'script','weatherwidget-io-js');
     </script>
-  </a>
+    </div>
+  </div>
+</div>
 
-  <!-- Nav Bar -->
-  <nav>
-    <div class="logo"><a href="">Logo</a></div>
-    <ul class="menu-main">
-        <li class="home"><a href="{% url 'home' %}">Home</a></li>
+<!---Map-->
+<div style="position: relative; width: 500px; height: 400px; top: -100px; left: 55px; border-radius: 30px; box-shadow: 0px 15px 25px rgba(0,0,0,0.2);">
+  <div id="map"></div>
+  <script>
+    function initMap() {
+    var center = {lat: 34.052235, lng: -118.243683};
 
-        <li class="page"><a href="#">Page</a>
-          <div class="menu-sub">
-                <div class="menu-col-1">
-                    <h3 class="menu-category">Generals</h3>
-                    <ul>
-                        <li class="sub-l"><a href="">Link 1</a></li>
-                        <li class="sub-l"><a href="">Link 2</a></li>
-                        <li class="sub-l"><a href="">Link 3</a></li>
-                        <li class="sub-l"><a href="">Link 4</a></li>
-                        <li class="sub-l"><a href="">Link 5</a></li>
-                    </ul>
-                </div>
+    var locations = [
+      ['Philz Coffee<br>\
+      801 S Hope St A, Los Angeles, CA 90017<br>\
+     <a href="https://goo.gl/maps/L8ETMBt7cRA2">Get Directions</a>',   34.046438, -118.259653],
+    ];
+    var map = new google.maps.Map(document.getElementById('map'), {
+        zoom: 9,
+        center: center
+      });
+    var infowindow =  new google.maps.InfoWindow({});
+    var marker, count;
+    for (count = 0; count < locations.length; count++) {
+        marker = new google.maps.Marker({
+          position: new google.maps.LatLng(locations[count][1], locations[count][2]),
+          map: map,
+          title: locations[count][0]
+        });
+        google.maps.event.addListener(marker, 'click', (function (marker, count) {
+          return function () {
+            infowindow.setContent(locations[count][0]);
+            infowindow.open(map, marker);
+          }
+        })(marker, count));
+    }
+  } 
+  </script>
 
-                <div class="menu-col-2">
-                    <h3 class="menu-category">Fast Services</h3>
-                    <ul>
-                        <li class="sub-l"><a href="">Link 1</a></li>
-                        <li class="sub-l"><a href="">Link 2</a></li>
-                        <li class="sub-l"><a href="">Link 3</a></li>
-                        <li class="sub-l"><a href="">Link 4</a></li>
-                        <li class="sub-l"><a href="">Link 5</a></li>
-                  </ul>
-                </div>
+  <!--Change its API key, when it runs out of 30 days trial.-->
+ <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC-Ktd88tyYteNf326wmMLJNO_T7SLXDT8&callback=initMap"
+    async defer></script>
+</div>
 
-                <div class="menu-col-3">
-                    <h3 class="menu-category">About</h3>
-                    <ul>
+<!--Footer-->
+<footer style="margin: 0; padding: 0; border-top: 4px solid #FAD7A0; position: absolute; background: #151515; width: 100%; height: 376px; top: 4000px;">
+  <div style="position: absolute; width: 1000px; top: 50px; height: 100px; box-sizing: border-box; left: 240px; float: left; padding: 0 10px;  box-sizing: border-box;">
+    <div class="brief-about-us" style=" width: 200px; padding: 5px 0px; left: -20px;top: 4px; position: absolute; ">
+      <!--Sub-title-->
+      <h5 style="color: #FAD7A0; text-align: center; position: relative; width: 200px; font-size: 16px; font-family: cursive;">About Us</h5>
+      <p class="information" style="position: relative; width: 200px; font-family: cursive; font-size: 15px; color: #fff; list-style: none;">Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.</p>
+    </div>
+
+    <div class="sub-contact-information" style="border-left: 1px solid #FAD7A0; width: 400px; border-right: 1px solid #FAD7A0; padding: 10px 0px; left: 277px;  position: absolute;">
+      <!--Subtitle-->
+      <h5 style="color: #FAD7A0; text-align: center; position: relative; width: 400px; font-size: 16px; font-family: cursive;">Information</h5>
+      <p style="color: #fff; font-family: cursive; text-align: center; width: 400px; padding: 5px 10px;">2568 S King Rd, San Jose, CA 95122</i></p>
+      <p style="text-align: center; position: relative; width: 400px; font-family: cursive; color: #fff; list-style: none; top: -15px;"><a href="mailto:lavshort@gmail.com" style="text-decoration: none; color: #fff;padding: 10px 10px;"><span>&#9993;</span> lavashort@gmail.com</a></p>
+      <p style="text-align: center; position: relative; width: 400px; font-family: cursive; color: #fff; top: -25px; list-style: none;"><a href="tel:4089529901" style="text-decoration: none; color: #fff; padding: 15px 10px;"><span>&#9990;</span> +1 (408)-952-9901</a></p>
+
+    </div>
+
+    <div class="openning-hour-section" style="width: 200px; padding: 10px 0px; left: 757px; position: absolute; ">
+      <!--Subtitle-->
+      <h5 style="color: #FAD7A0; text-align: center; position: relative; width: 200px; font-family: cursive;">Openning Hours</h5>
+      
+      <p class="morning-booking-time" style="text-align: center; position: relative; width: 200px; font-family: cursive; color: #fff; list-style: none;">Monday-Friday: 9:00am-12:00am</p>
+      <p class="evening-booking-time" style=" text-align: center; position: relative; top: -15px; width: 200px; font-family: cursive; color: #fff; list-style: none;">Saturday-Sunday: 10:00pm-5:00am</p>
+    </div>
+  </div>
+    
+  <!---Copyright-->
+  <p style="color: #fff; font-size: 12px; position: relative; top: 310px;  text-align: center; font-family: cursive;">Copyright &copy; 2017. All rights reserved.</p>
+
+  <div style="width: 260px; position: relative; top: 300px; left: 588px; height: 1px; background: #FFA07A"></div>
+</footer>
+
+<a href="javascript:" id="return-to-top"><i class="icon-chevron-up"></i>
+<script type="text/javascript">
+  $(window).scroll(function() {
+      if ($(this).scrollTop() >= 50) {    
+          $('#return-to-top').fadeIn(200);  
+      } else {
+          $('#return-to-top').fadeOut(200);
+      }
+  });
+  $('#return-to-top').click(function() {   
+      $('body,html').animate({
+          scrollTop : 0                   
+      }, 500);
+  });
+  </script>
+</a>
+
+<div class="backDoor">
+  <div class="door">
+    <h3 class="search-word" style="">Want To Search?</h3>
+    <p class="search-paragraph" style="font-family: cursive; text-align: center; position: relative; top: 100px;">Click on This Door</p>
+  </div>
+  <script type="text/javascript">
+    $('.door').click(function(){
+      $('.door').toggleClass('doorOpen');
+    });
+
+    $('.door').click(function(){
+      $('.search-word').toggleClass('search-word-nothing');
+    });
+
+     $('.door').click(function(){
+      $('.search-paragraph').toggleClass('search-paragraph-nothing');
+    });
+  </script>
+</div>
+
+<div class="search-wrapper" style="">
+  <form label="" method="POST" style="font-family: cursive; text-align: center; float: left; width: 300px; height: 100px; position: relative; top: 10px; left: 50px;" autocomplete="off">
+      {% csrf_token %}
+      <label for="from">From</label>
+      <br>
+      <input type="text" id="from" name="checkin" required="true" style="width: 200px; border: 1px solid black; padding: 10px; height: 30px; border-radius: 30px; outline: none;">
+      <br>
+      <label for="to">to</label>
+      <br>
+      <input type="text" id="to" name="checkout" required="true" style="width: 200px; border: 1px solid black; padding: 10px; height: 30px; border-radius: 30px; outline: none;">
+      <br>
+      <label for="q">People: </label>
+      <br>
+      <select id="q" name="q" required="true" style=" border: 1px solid black; background: white; width: 100px; border-radius: 30px;">
+        <option>0</option>
+      </select>
+      <!--<label for="q-room">Room: </label>
+      <select id="q-room" name="q-room" required="true">
+      </select>-->
+      <br>
+
+      <a href="{% url 'hotel-list' %}"></a><button class="button1" id="btnValidateDate" type="submit" style="vertical-align:middle; top: 10px; border-radius: 30px; left: -1px; height: 45px; width: 100px;"><span>Search</span></button>
+
+  </form> 
+    <script>
+
+
+  $(function() { // don't leak
+    var elm = document.getElementById('q'), // get the select
+        df = document.createDocumentFragment(); // create a document fragment to hold the options while we create them
+    for (var i = 1; i <= 10; i++) { // loop, i like 42.
+        var option = document.createElement('option'); // create the option element
+        option.value = i; // set the value property
+        option.appendChild(document.createTextNode(i)); // set the textContent in a safe way.
+        df.appendChild(option); // append the option to the document fragment
+    }
+    elm.appendChild(df); // append the document fragment to the DOM. this is the better way rather than setting innerHTML a bunch of times (or even once with a long string)
+}());
+      $(document).ready(function(){
+        $('#from').datepicker().datepicker('setDate', 'today');
+      })
+      
+      $(function(){
+        var dateFormat = "mm/dd/yy", 
+
+        from = $("#from").datepicker({
+          defaultDate: "+1w",
+          //changeMonth: true,
+          numberOfMonths: 1
+        }).on("change", function(){
+          to.datepicker( "option", "minDate", getDate( this ) );
+        }),
+        
+        to = $( "#to" ).datepicker({
+          defaultDate: "+1w",
+          //changeMonth: true,
+          numberOfMonths: 1
+        }).on( "change", function() {
+          from.datepicker( "option", "maxDate", getDate( this ) );
+        });
+    
+        function getDate( element ) {
+          var date;
+          try {
+            date = $.datepicker.parseDate( dateFormat, element.value );
+          } catch( error ) {
+            date = null;
+          }
+          return date;
+        }
+
+      $('#btnValidateDate').click(function(){
+        var startDate = $( "#from" ).datepicker( "getDate" );
+        var endDate =  $( "#to" ).datepicker( "getDate" );
+        
+        if(startDate >= endDate){
+          alert('Invalid date! Both date field are the same!');
+          window.location.reload();
+        }
+      });
+
+      });
+  </script>
+</div>
+
+
+<!-- Nav Bar -->
+<nav>
+  <div class="logo"><a href="{% url 'home' %}"><img src="{% static 'img/logo.png' %}" id="Logo" style="width: 170px; height: 120px; top: -40px; position: relative; left: -50px; z-index: 10;"></a></div>
+  <ul class="menu-main">
+      <li class="home"><a href="{% url 'home' %}">Home</a></li>
+<!--
+      <li class="page"><a href="#">Page</a>
+        <div class="menu-sub">
+              <div class="menu-col-1">
+                  <h3 class="menu-category">Generals</h3>
+                  <ul>
                       <li class="sub-l"><a href="">Link 1</a></li>
-<<<<<<< HEAD
+                      <li class="sub-l"><a href="">Link 2</a></li>
+                      <li class="sub-l"><a href="">Link 3</a></li>
+                      <li class="sub-l"><a href="">Link 4</a></li>
+                      <li class="sub-l"><a href="">Link 5</a></li>
+                  </ul>
+              </div>
+
+              <div class="menu-col-2">
+                  <h3 class="menu-category">Fast Services</h3>
+                  <ul>
+                      <li class="sub-l"><a href="">Link 1</a></li>
+                      <li class="sub-l"><a href="">Link 2</a></li>
+                      <li class="sub-l"><a href="">Link 3</a></li>
+                      <li class="sub-l"><a href="">Link 4</a></li>
+                      <li class="sub-l"><a href="">Link 5</a></li>
+                </ul>
+              </div>
+
+              <div class="menu-col-3">
+                  <h3 class="menu-category">About</h3>
+                  <ul>
+                    <li class="sub-l"><a href="">Link 1</a></li>
+                      <li class="sub-l"><a href="">Link 2</a></li>
+                      <li class="sub-l"><a href="">Link 3</a></li>
+                      <li class="sub-l"><a href="">Link 4</a></li>
+                      <li class="sub-l"><a href="">Link 5</a></li>
+                  </ul>
+              </div>
+
+              <div class="menu-col-4">
+                  <h3 class="menu-category">Team Members</h3>
+                  <ul>
+                      <li class="sub-l"><a href="">Link 1</a></li>
                       <li class="sub-l"><a href="">Link 2</a></li>
                       <li class="sub-l"><a href="">Link 3</a></li>
                       <li class="sub-l"><a href="">Link 4</a></li>
@@ -928,82 +1992,34 @@
                   </ul>
               </div>
           </div>
-      </li>
-      <!--
-      <li class="Room"><a href="#">Rooms & Trips</a>
-          <ul class="room-sub">
-              <li><a href="">Single Room</a></li>
-              <li><a href="">Search Availability</a></li>
-              <li><a href="">Wedding Room</a></li>
-          </ul>
-      </li>
-
-      <li class="Dinning"><a href="#">Dinings & Bars</a>
-          <ul>
-              <li><a href="">Bar</a></li>
-              <li><a href="">Buffet</a></li>
-              <li><a href="">Breakfast</a></li>
-              <li><a href="">Lunch</a></li>
-              <li><a href="">Dinner</a></li>
-              <li><a href="">Wedding</a></li> 
-          </ul>
-      </li>
-      -->
-      <li class="ammeties"><a href="#">Ammeties</a></li>
+      </li>-->
+      <li class="Room"><a href="{% url 'hotel-list' %}">Hotel List</a></li>
+      <li class="ammeties"><a href="{% url 'mybooking' %}">My Booking</a></li>
 
       <li class="contact"><a href="{% url 'contact' %}">Contact</a></li>
-
-      <!--<a href="{% url 'booking' %}" style="position: relative; top: -10px; left: -10px;"><button class="button1"><span style="font-size: 15px;">Book Now</span></button></a>-->
   </ul>
+  <script>
+
+window.onscroll = function() {
+  growShrinkLogo()
+};
+
+function growShrinkLogo() {
+  var Logo = document.getElementById("Logo")
+  if (document.body.scrollTop > 5 || document.documentElement.scrollTop > 5) {
+    Logo.style.width = '170px';
+    Logo.style.height = '120px';
+    Logo.style.transition = '0.5s';
+    Logo.style.transform = 'rotateY(360deg)';
+  } else {
+    Logo.style.background = 'rgba(255,255,255,0)';
+    Logo.style.transform = 'rotateY(0deg)';
+    Logo.style.top = '-40px';
+    Logo.style.transition = '0.5s';
+    Logo.style.width = '170px';
+    Logo.style.height = '120px';
+  }
+}
+</script>
 </nav>
 {% endblock %}
-=======
-                        <li class="sub-l"><a href="">Link 2</a></li>
-                        <li class="sub-l"><a href="">Link 3</a></li>
-                        <li class="sub-l"><a href="">Link 4</a></li>
-                        <li class="sub-l"><a href="">Link 5</a></li>
-                    </ul>
-                </div>
-
-                <div class="menu-col-4">
-                    <h3 class="menu-category">Team Members</h3>
-                    <ul>
-                        <li class="sub-l"><a href="">Link 1</a></li>
-                        <li class="sub-l"><a href="">Link 2</a></li>
-                        <li class="sub-l"><a href="">Link 3</a></li>
-                        <li class="sub-l"><a href="">Link 4</a></li>
-                        <li class="sub-l"><a href="">Link 5</a></li>
-                    </ul>
-                </div>
-            </div>
-        </li>
-
-        <li class="Room"><a href="#">Rooms & Trips</a>
-            <ul class="room-sub">
-                <li><a href="">Single Room</a></li>
-                <li><a href="">Search Availability</a></li>
-                <li><a href="">Wedding Room</a></li>
-            </ul>
-        </li>
-
-        <li class="Dinning"><a href="#">Dinings & Bars</a>
-            <ul>
-                <li><a href="">Bar</a></li>
-                <li><a href="">Buffet</a></li>
-                <li><a href="">Breakfast</a></li>
-                <li><a href="">Lunch</a></li>
-                <li><a href="">Dinner</a></li>
-                <li><a href="">Wedding</a></li> 
-            </ul>
-        </li>
-
-        <li class="ammeties"><a href="#">Ammeties</a></li>
-
-        <li class="contact"><a href="{% url 'contact' %}">Contact</a></li>
-
-        <a href="{% url 'reservation' %}" style="position: relative; top: -10px; left: -10px;"><button class="button1"><span style="font-size: 15px;">Book Now</span></button></a>
-    </ul>
-  </nav>
-  {% endblock %}
-</body>
->>>>>>> ac7fd8c283da122891c9053447746dc246595826

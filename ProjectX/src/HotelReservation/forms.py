@@ -1,35 +1,36 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.models import User
+
 from django.forms.widgets import PasswordInput, TextInput
 
 class contactForm(forms.Form):
-	Full_Name = forms.CharField(label='',required=True, max_length=4000, help_text='', widget=forms.TextInput(
-		attrs={
-			'placeholder': 'Full Name',
-			'style': 'font-family: cursive; border: 1px solid #000; border-radius: 5px; width: 770px;',
-		}
-	))
-	Email = forms.EmailField(label='', required=True, widget=forms.TextInput(
-		attrs={
-			'placeholder': 'Email Address',
-			'style': 'font-family: cursive; border: 1px solid #000; border-radius: 5px; width: 770px;',
-		}
-	))
+    Full_Name = forms.CharField(label='',required=True, max_length=4000, help_text='', widget=forms.TextInput(
+        attrs={
+            'placeholder': 'Full Name',
+            'style': 'font-family: cursive; border: 1px solid #000; border-radius: 5px; width: 770px;',
+        }
+    ))
+    Email = forms.EmailField(label='', required=True, widget=forms.TextInput(
+        attrs={
+            'placeholder': 'Email Address',
+            'style': 'font-family: cursive; border: 1px solid #000; border-radius: 5px; width: 770px;',
+        }
+    ))
 
-	Message = forms.CharField(label='', required=True, widget=forms.Textarea(
-		attrs={
-			'placeholder': 'Message',
-			'style': 'font-family: cursive; border: 1px solid #000; border-radius: 5px; width: 770px; height: 300px; resize: none;',
-		}
-	))
-
+    Message = forms.CharField(label='', required=True, widget=forms.Textarea(
+        attrs={
+            'placeholder': 'Message',
+            'style': 'font-family: cursive; border: 1px solid #000; border-radius: 5px; width: 770px; height: 300px; resize: none;',
+        }
+    ))
 
 class SignUpForm(UserCreationForm):
     username = forms.CharField(max_length=30, required=False, help_text='', widget=forms.TextInput(
         attrs={
             'class': 'username',
             'style': 'width: 350px; border: 1px solid black; border-radius: 30px; height: 35px; padding: 10px; outline: none; position: relative; left: -1px; transition: 0.5s;'
+            
         }
     ))
     first_name = forms.CharField(max_length=30, required=False, help_text='', widget=forms.TextInput(
@@ -104,9 +105,3 @@ class LogInForm(AuthenticationForm):
         fields = ('username', 'password',)
 
 
-
-class ReservationForm(forms.Form):
-    first_name = forms.CharField(max_length=255, required=True)
-    last_name = forms.CharField(max_length=255, required=True)
-    checkin = forms.DateField(label='', widget=forms.DateInput())
-    checkout = forms.DateField(label='', widget=forms.DateInput())

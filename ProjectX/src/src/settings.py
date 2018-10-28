@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    #'stripe',
 ]
 
 MIDDLEWARE = [
@@ -145,4 +146,5 @@ LOGOUT_REDIRECT_URL = '/login/'
 EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 
 EMAIL_FILE_PATH =os.path.join(BASE_DIR, "send_emails")
+
 

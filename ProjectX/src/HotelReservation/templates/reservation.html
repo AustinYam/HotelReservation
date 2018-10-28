@@ -1,0 +1,1156 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title></title>
+{% endblock %}
+
+{% block content %}
+
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+
+<style type="text/css">
+  * {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+.button1 {
+  width: 300px;
+  height: 40px;
+  position: relative;
+  color: #fff;
+  background: #FA8072;
+  font-family: cursive;
+  border-radius: 4px;
+  text-align: center;
+  cursor: pointer;
+  border: none;
+  transition: all 0.5s;
+}
+
+.button1:hover{
+	background: #CD5C5C;
+}
+
+.button1 span {
+  cursor: pointer;
+  border: none;
+  display: inline-block;
+  font-family: cursive;
+  position: relative;
+  transition: 0.5s;
+  font-size: 15px;
+}
+
+.button1 span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -10px;
+  transition: 0.5s;
+}
+
+.button1:hover span {
+  padding-right: 25px;
+}
+
+.button1:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+
+.button{
+	width: 300px; 
+	height: 40px; 
+	position: relative;
+
+	color: #fff; 
+	background: #FA8072;
+	font-family: cursive;
+	border-radius: 4px; 
+	text-align: center; 
+	cursor: pointer; 
+	border: none; 
+	transition: all 0.5s; 
+	background: #82E0AA; 
+	color: white; 
+	border-radius: 30px; 
+	position: relative; 
+	top: 105px; 
+}
+.button:hover{
+	background: #58D68D;
+}
+
+.button span {
+  cursor: pointer;
+  border: none;
+  display: inline-block;
+  font-family: cursive;
+  position: relative;
+  transition: 0.5s;
+  font-size: 15px;
+}
+
+.button span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -10px;
+  transition: 0.5s;
+}
+
+.button:hover span {
+  padding-right: 25px;
+
+}
+
+.button:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+
+nav {
+  background: #fff;
+  position: fixed;
+  box-sizing: border-box;
+  padding: 10px 100px;
+  width: 100%;
+  height: 80px;
+  top: 0px;
+  left: 0;
+  transition: 0.3s;
+  z-index: 4;
+}
+
+nav.change {
+  background: #CD5C5C;
+}
+
+.logo{
+  padding: 0px;
+  height: 10px;
+  float: left;
+  transition: 0.3s;
+  pointer-events: none;
+}
+
+
+nav ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  position: relative;
+  text-align: left;
+  float: right;
+  display: flex;
+  height: 60px;
+  background: #fff;
+  transition: 0.3s;
+}
+
+nav.change ul {
+  background: #CD5C5C;
+}
+
+nav li {
+  display: inline-block;
+
+}
+nav ul li{
+  display: inline-block;
+  list-style: none;
+}
+
+nav ul li a:hover{
+  color: #F9E79F;
+  transform: translate(10px); 
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+ul li:hover{
+  background: #FFA07A;
+}
+
+ul ul{
+  position: absolute;
+  display: none;
+}
+
+ul li:hover ul{
+  display: block;
+}
+
+ul ul li{
+  display: block;
+  background: #fff;
+  transition: 0.3s;
+  width: 100px;
+}
+
+ul .Room ul li, ul .Dinning ul li{
+  width: 200px;
+  transition: 0.3s;
+}
+
+ul .Room ul{
+  height: auto;
+  top: 60px;
+  border-top: 3px solid #F08080;
+  border-bottom: 3px solid #F08080;
+}
+
+ul .Dinning ul{
+  height: auto;
+  top: 60px;
+  border-top: 3px solid #F08080;
+  border-bottom: 3px solid #F08080;
+}
+
+nav.change ul ul li{
+   background: #CD5C5C;
+}
+
+nav a {
+  color: #000;
+  text-decoration: none;
+  display: block;
+  font-size: 20px;
+  font-family: cursive;
+  padding: 10px 15px;
+  transition: 0.3s;
+}
+
+nav.change a{
+  color: #fff;
+}
+
+nav ul li a:focus{
+  outline: none;
+}
+
+nav li:hover {
+  background: #fff;
+  transition: 0.3s;
+}
+
+nav.change li:hover{
+  background: #CD5C5C;
+}
+
+.menu-sub {
+  position: absolute;
+  left: -530px;
+  top: 60px;
+  background: #fff;
+  width: 1430px;
+  height: 300px;
+  display: none;
+  color: #000;
+  padding: 2em;
+  transition: 0.3s ease;
+  border-top: 3px solid #F08080;
+  border-bottom: 3px solid #F08080;
+}
+
+.menu-sub:hover{
+  left: -700px;
+
+}
+nav.change .menu-sub{
+  background: #CD5C5C;
+  color: #fff;
+}
+
+nav li:hover .menu-sub {
+  display: block;
+}
+
+.menu-main{
+    top: 10px;
+}
+
+.menu-sub li {
+  display: block;
+  left: 0;
+  transition: 0.3s;
+}
+
+.menu-sub a {
+  padding: 0;
+  font-size: 15px;
+  font-family: cursive;
+  margin-bottom: .35em;
+}
+
+.menu-sub a:hover {
+  color: #F9E79F;
+  text-decoration: none;
+}
+
+
+.menu-category {
+  font-size: 20px;
+  width: 300px;
+  color: #CD5C5C;
+  position: relative;
+  font-family: cursive;
+}
+
+.change .menu-category{
+  color: #F9E79F;
+}
+
+.menu-category:first-of-type {
+  margin-top: 0;
+}
+
+.menu-col-1{
+  top: 0px;
+  width: 200px;
+  height: 200px;
+  float: left;
+  border-right: 1px solid #F08080;
+}
+
+.menu-col-2 {
+  top: 0px;
+  width: 200px;
+  height: 200px;
+  float: left;
+  padding: 0 40px;
+  border-right: 1px solid #F08080;
+}
+
+.menu-col-3 {
+  top: 0px;
+  width: 250px;
+  height: 200px;
+  float: left;
+  padding: 0 40px;
+  border-right: 1px solid #F08080;
+}
+
+.menu-col-4 {
+  top: 0px;
+  width: 250px;
+  height: 200px;
+  float: left;
+  padding: 0 40px;
+  border-right: 1px solid #F08080;
+}
+
+nav.change .menu-col-4, .change .menu-col-3, .change .menu-col-2, .change .menu-col-1{
+  border-right: 1px solid #fff;
+}
+
+@media(max-width: 768px){
+  nav{
+    width: 100%;
+    height: 70px;
+  }
+  .menu-main{
+    left: 27%;
+    top: 70px;
+  }
+
+  .menu-col-1{
+    padding: 0;
+  }
+
+  .menu-main li a{
+    font-size: 15px;
+  }
+
+  .logo{
+    position: relative;
+    padding: 0;
+    top: -10px;
+    left: 0;
+    width: 100%;
+  }
+
+  .logo a{
+    text-align: center; 
+    font-size: 30px;
+  }
+
+  .menu-sub{
+    top: 49.5px;
+    width: 100%;
+    left: 0;
+  }
+  ul .Room ul li, ul .Dinning ul li{
+    width: 150px;
+    transition: 0.3s;
+  }
+}
+
+@media(min-width: 768px){
+
+}
+
+
+.background{
+  background-image: url('{{ thehotel.image.url }}');
+
+  /* Set a specific height */
+    min-height: 545px; 
+
+    width: 100%;
+
+    /* Create the parallax scrolling effect */
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.frame-for-hotel-name{
+  width: 400px;
+  height: 100px;
+  text-align: center;
+  border: 2px solid black;
+  position: absolute;
+  border-radius: 50px;
+  background: white;
+  top: 500px;
+  left: 550px;
+  z-index: 0;
+
+}
+
+#return-to-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: rgb(0, 0, 0);
+    background: rgba(236, 112, 99, 0.7);
+    width: 50px;
+    height: 50px;
+    display: block;
+    text-decoration: none;
+    -webkit-border-radius: 35px;
+    -moz-border-radius: 35px;
+    border-radius: 50%;
+    display: none;
+    transform: rotate(-180deg);
+    -webkit-transition: all 0.5s linear;
+    -moz-transition: all 0.5s ease;
+    -ms-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+#return-to-top i {
+    color: #fff;
+    margin: 0;
+    position: relative;
+    left: 16px;
+    transform: rotate(-180deg);
+    top: 13px;
+    font-size: 19px;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -ms-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+#return-to-top:hover {
+  background: rgba(192, 57, 43, 0.9);
+  transform: rotate(0deg);
+}
+#return-to-top:hover i {
+  color: #fff;
+}
+  .button2{
+      position: absolute;
+      z-index: 20;
+      width: 70px;
+      height: 70px;
+      text-decoration: none;
+      top: 130px;
+      left: 10px;
+      font-family: cursive;
+      font-size: 15px;
+      background: #F59290;
+      border-radius: 40px;
+      transition: 0.5s;
+      border: 3px solid white;
+  }
+  .button2:hover{
+      background: #CD5C5C;
+      transition: 0.5s;
+  }
+
+
+.authentication{
+  width: 300px;
+  height: 200px;
+  top: 500px;
+  z-index: 20;
+  position: fixed;
+  padding: 20px;
+
+}
+
+.tag1{
+  width: 170px;
+  height: 50px;
+  background: #F59290;
+  text-align: center;
+  border: none;
+  border-radius: 30px;
+  position: absolute;
+  z-index: 19.5;
+  top: 140px;
+  left: 45px;
+  border: 3px solid white;
+}
+
+.text1{
+  font-family: cursive;
+  font-size: 15px;
+  color: white;
+  line-height: 25px;
+}
+
+
+.ui-datepicker {
+  width: 350px;
+  height: 350px;
+  margin: 5px auto 0;
+  z-index: -1;
+}
+
+.ui-datepicker table {
+  width: 100%;
+}
+
+.ui-datepicker-header {
+  background: #FCF3CF;
+  color: #000;
+  width: 100%;
+
+  font-family: cursive;
+  border-radius: 10px;
+}
+
+.ui-datepicker-title {
+  text-align: center;
+  font-size: 15px;
+
+}
+
+.ui-datepicker-prev {
+  float: left;
+  cursor: pointer;
+  background-position: center -30px;
+}
+.ui-datepicker-prev:hover{
+  background: white;
+}
+
+.ui-datepicker-next {
+  float: right;
+  cursor: pointer;
+  background-position: center 0px;
+}
+
+.ui-datepicker thead {
+  background-color: #fff;
+}
+
+.ui-datepicker th {
+  background-color:#fff;
+  text-transform: uppercase;
+  font-size: 8pt;
+  font-weight: bold;
+  font-family: cursive;
+  color: #000;
+}
+
+.ui-datepicker tbody td {
+  padding: 0;
+}
+
+.ui-datepicker tbody td:last-child {
+  border-right: 0px;
+}
+
+.ui-datepicker tbody tr {
+  border: none;
+}
+
+.ui-datepicker tbody tr:last-child {
+  border-bottom: 0px;
+}
+
+.ui-datepicker a {
+  text-decoration: none;
+}
+
+.ui-datepicker td span, .ui-datepicker td a {
+  display: inline-block;
+  text-align: center;
+  font-family: cursive;
+  width: 10px;
+  height: 10px;
+  line-height: 30px;
+  color: #000;
+}
+
+.ui-datepicker-calendar .ui-state-default {
+  background: linear-gradient(#fff, #fff);
+  color:#000;
+  height:40px;
+  border: none;
+  width:40px;
+
+}
+
+.ui-datepicker-calendar .ui-state-hover {
+    background: #fff;
+    color: #000;
+}
+
+.ui-datepicker-calendar .ui-state-active {
+    background: #fff;
+    color: #000;
+    border: 1px solid #000;
+    position: relative;
+}
+
+.ui-datepicker-unselectable .ui-state-default {
+    background: #D6E4BE;
+    color: #000;
+}
+.creditCardForm {
+    max-width: 700px;
+    background-color: #fff;
+    margin: 100px auto;
+    overflow: hidden;
+    padding: 25px;
+    color: #4c4e56;
+}
+
+.creditCardForm label {
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.creditCardForm .heading h1 {
+    text-align: center;
+    font-family: 'Open Sans', sans-serif;
+    color: #4c4e56;
+}
+
+.creditCardForm .payment {
+    float: left;
+    font-size: 18px;
+    padding: 10px 25px;
+    margin-top: 20px;
+    position: relative;
+}
+
+.creditCardForm .payment .form-group {
+    float: left;
+    margin-bottom: 15px;
+}
+
+.creditCardForm .payment .form-control {
+    line-height: 40px;
+    height: auto;
+    padding: 0 16px;
+}
+
+.creditCardForm .owner {
+    width: 63%;
+    margin-right: 10px;
+}
+
+.creditCardForm .CVV {
+    width: 35%;
+}
+
+.creditCardForm #card-number-field {
+    width: 100%;
+}
+
+.creditCardForm #expiration-date {
+    width: 49%;
+}
+
+.creditCardForm #credit_cards {
+    width: 50%;
+    margin-top: 25px;
+    text-align: right;
+}
+
+.creditCardForm #pay-now {
+    width: 100%;
+    margin-top: 25px;
+}
+
+.creditCardForm .payment .btn {
+    width: 100%;
+    margin-top: 3px;
+    font-size: 24px;
+    background-color: #2ec4a5;
+    color: white;
+}
+
+.creditCardForm .payment select {
+    padding: 10px;
+    margin-right: 15px;
+}
+
+.transparent {
+    opacity: 0.2;
+}
+
+@media(max-width: 650px) {
+    .creditCardForm .owner,
+    .creditCardForm .CVV,
+    .creditCardForm #expiration-date,
+    .creditCardForm #credit_cards {
+        width: 100%;
+    }
+    .creditCardForm #credit_cards {
+        text-align: left;
+    }
+}
+
+
+/*  Examples Section */
+
+.examples {
+  max-width: 700px;
+  background-color: #fff;
+  margin: 0 auto 75px;
+  padding: 30px 50px;
+  color: #4c4e56;
+}
+
+.examples-note{
+    text-align: center;
+    font-size: 14px;
+    max-width: 370px;
+    margin: 0 auto 40px;
+    line-height: 1.7;
+    color: #7a7a7a;
+}
+
+.examples table {
+    margin: 5px 0 0 0;
+    font-size: 14px;
+}
+
+
+</style>
+
+
+<div class="background">
+  <div class="frame-for-hotel-name">
+    <h1 style="font-family: cursive; font-size: 35px; line-height: 54px;">{{ thehotel.hotel_name }}</h1>
+  </div>
+</div>
+
+<div style="height: 1500px; border-top: 2px solid black; ">
+	<!--Room Picture-->
+	<div style="width: 750px; height: 410px; border: 1px solid black; position: absolute;left: 600px; top: 642px; border-radius: 30px;">
+		<img src="{{ room.image1.url }}" style="width: 500px; height: 350px;  border-radius: 30px; margin: 30px;">
+	</div>
+
+	<div style="width: 370px; height: 830px; border: 1px solid black; border-radius: 30px; position: absolute; top: 1080px; left: 600px;">
+		<h2 style="font-family: cursive; text-align: center;">Editing Date</h2>
+
+		<form method="POST" autocomplete="off" style="width: 400px; height: 500px; margin: 10px 30px; font-family: cursive;">
+			{% csrf_token %}
+  
+		  <label for="checkin" style="position: relative; top: 0px; left: 5px; font-size: 15px;">Check In:</label>
+			<input type="text" id="from" name="checkin" placeholder="mm/dd/yyyy" style="position: relative; top: 30px; left: -60px; width: 300px; height: 30px; border: 1px solid black; padding: 10px; border-radius: 50px; outline: none;">
+			<br>
+			<label for="checkout" style="position: relative; top: 35px; left: 5px;">Check Out:</label>
+			<input type="text" id="to" name="checkout" placeholder="mm/dd/yyyy" style="position: relative; left: -65px; top: 65px; width: 300px; height: 30px; border: 1px solid black; padding: 10px; border-radius: 50px; outline: none;">
+			<br>
+
+			<a href="" style="position: absolute; top: 105px; background: black;"><button class="button" style="position: absolute;" type="submit" style="outline: none;"><span>Update</span></button></a>
+	
+			
+		</form>
+   
+	<script>
+      $(function(){
+        var dateFormat = "mm/dd/yy", 
+
+        from = $("#from").datepicker({
+          defaultDate: "+1w",
+          //changeMonth: true,
+          numberOfMonths: 1
+        }).on("change", function(){
+          to.datepicker( "option", "minDate", getDate( this ) );
+        }),
+        
+        to = $( "#to" ).datepicker({
+          defaultDate: "+1w",
+          //changeMonth: true,
+          numberOfMonths: 1
+        }).on( "change", function() {
+          from.datepicker( "option", "maxDate", getDate( this ) );
+        });
+        
+        function getDate( element ) {
+          var date;
+          try {
+            date = $.datepicker.parseDate( dateFormat, element.value );
+          } catch( error ) {
+            date = null;
+          }
+          return date;
+        }
+
+      });
+  </script>
+
+  <h2 style="position: absolute; font-family: cursive; text-align: center; top: 275px; left: 126px;">Payment</h2>
+  <form method="POST" action="{% url 'storing' thehotel.id room.id checkin checkout totalcost %}" style="position: relative; top: -225px; text-align: center; font-family: cursive;">
+    {% csrf_token %}
+
+      <div class="owner">
+        <label for="owner" style="font-size: 15px; position: relative; left: -125px;">Owner:</label>
+        <br>
+        <input type="text" class="owner-form" id="owner" name="owner" placeholder="Full name" style="width: 300px; height: 30px; border: 1px solid black; padding: 10px; border-radius: 50px; outline: none; margin-bottom: 10px;">
+      </div>
+    <div class="CVV">
+        <label for="cvv" style="font-size: 15px; position: relative; left: -130px;">CVV:</label>
+        <br>
+        <input type="text" class="cvv" id="cvv" placeholder="Card Verification Value"" name="cvv" style="width: 300px; height: 30px; border: 1px solid black; padding: 10px; border-radius: 50px; outline: none; margin-bottom: 10px;">
+    </div>
+    <div class="number-on-card" id="card-number-field">
+        <label for="cardNumber" style="font-size: 15px; position: relative; left: -100px;">Card Number:</label>
+        <br>
+        <input type="text" class="card-number" id="cardNumber" placeholder="Card Number" name="number-on-card" style="width: 300px; height: 30px; border: 1px solid black; padding: 10px; border-radius: 50px; outline: none;">
+    </div>
+    <div class="exp-date-selection" id="expiration-date" style="position: relative; top: 20px;">
+        <label>Expiration Date</label>
+        <br>
+        <!--Need C-->
+        <select>
+            <option value="01">January</option>
+            <option value="02">February </option>
+            <option value="03">March</option>
+            <option value="04">April</option>
+            <option value="05">May</option>
+            <option value="06">June</option>
+            <option value="07">July</option>
+            <option value="08">August</option>
+            <option value="09">September</option>
+            <option value="10">October</option>
+            <option value="11">November</option>
+            <option value="12">December</option>
+        </select>
+        <select id="exp-year">
+            <option value="18">2018</option>
+        </select>
+    </div>
+    <div class="different-type-card" id="credit_cards" style="position: relative; top: 45px;">
+        <img src="{% static 'img/visa.jpg' %}" id="visa">
+        <img src="{% static 'img/mastercard.jpg' %}" id="mastercard">
+        <img src="{% static 'img/amex.jpg' %}" id="amex">
+    </div>
+
+    <div style="position: absolute; top: 250px;">
+        <button class="button" id="confirm-purchase" type="submit" style="outline: none;"><span>Reserve</span></button>
+        <a href="{% url 'home' %}" style="position: relative; top: 115px;"><button class="button1" type="button" style="border-radius: 30px;"><span>Cancel</span></button></a>
+    </div>
+
+  </form>
+
+  <script type="text/javascript">
+    $(function() { // don't leak
+      var elm = document.getElementById('exp-year'), // get the select
+          df = document.createDocumentFragment(); // create a document fragment to hold the options while we create them
+      for (var i = 1; i <= 10; i++) { // loop, i like 42.
+          var option = document.createElement('option'); // create the option element
+          option.value = i; // set the value property
+          option.appendChild(document.createTextNode(2018+i)); // set the textContent in a safe way.
+          df.appendChild(option); // append the option to the document fragment
+      }
+    elm.appendChild(df); // append the document fragment to the DOM. this is the better way rather than setting innerHTML a bunch of times (or even once with a long string)
+    }());
+    $(function() {
+
+    var owner = $('#owner');
+    var cardNumber = $('#cardNumber');
+    var cardNumberField = $('#card-number-field');
+    var CVV = $("#cvv");
+    var mastercard = $("#mastercard");
+    var confirmButton = $('#confirm-purchase');
+    var visa = $("#visa");
+    var amex = $("#amex");
+
+    // Use the payform library to format and validate
+    // the payment fields.
+
+    cardNumber.payform('formatCardNumber');
+    CVV.payform('formatCardCVC');
+
+
+    cardNumber.keyup(function() {
+
+        amex.removeClass('transparent');
+        visa.removeClass('transparent');
+        mastercard.removeClass('transparent');
+
+        if ($.payform.validateCardNumber(cardNumber.val()) == false) {
+            cardNumberField.addClass('has-error');
+        } else {
+            cardNumberField.removeClass('has-error');
+            cardNumberField.addClass('has-success');
+        }
+
+        if ($.payform.parseCardType(cardNumber.val()) == 'visa') {
+            mastercard.addClass('transparent');
+            amex.addClass('transparent');
+        } else if ($.payform.parseCardType(cardNumber.val()) == 'amex') {
+            mastercard.addClass('transparent');
+            visa.addClass('transparent');
+        } else if ($.payform.parseCardType(cardNumber.val()) == 'mastercard') {
+            amex.addClass('transparent');
+            visa.addClass('transparent');
+        }
+    });
+confirmButton.click(function(e) {
+    var isCardValid = $.payform.validateCardNumber(cardNumber.val());
+    var isCvvValid = $.payform.validateCardCVC(CVV.val());
+
+    if(owner.val().length < 5){
+        alert("Wrong owner name");
+    } else if (!isCardValid) {
+        alert("Wrong card number");
+    } else if (!isCvvValid) {
+        alert("Wrong CVV");
+    } else {
+      // Everything is correct. Add your form submission code here.
+      alert("Everything is correct");
+
+    }
+});
+});
+  </script>
+  <script src="{% static 'js/jquery.payform.min.js' %}" charset="utf-8"></script>
+	</div>
+
+	<!--Hotel Detail-->
+	<h1 style="font-family: cursive; font-size: 30px; color: black; position: relative; top: 105px; left: 90px;">Hotel Detail</h1>
+
+	<!--make a line that shift a little bit to the right-->
+
+  	<div class="hotel-info-holder" style="width: 500px; height: 250px; border: 1px solid black; border-bottom: none; position: absolute; border-top-left-radius: 30px; border-top-right-radius: 30px; position: absolute; top: 640px; left: 60px;">
+  		<h3 style="font-family: cursive; font-weight: bold; font-size: 20px; position: relative; top: 65px; left: 30px;">Address:</h3>
+      	<h6 style="font-family: cursive; font-size: 17px; padding-bottom: 10px; position: relative; top: 65px; left: 50px;">{{ thehotel.address}} {{ thehotel.city }}, {{ thehotel.state }} {{ thehotel.zip_code }}</h6>
+      	{% if thehotel.telephone %}
+        	<h3 style="font-family: cursive; font-weight: bold; font-size: 20px; position: relative; top: 55px; left: 30px;">Phone:</h3>
+        	<h6 style="font-family: cursive; font-size: 17px; padding-bottom: 10px; position: relative; top: 55px; left: 50px;">{{ thehotel.telephone }}</h6>
+      	{% else %}
+        	<h3 style="font-family: cursive; font-weight: bold; font-size: 20px;">Phone:</h3>
+        	<h6 style="font-family: cursive; font-size: 17px;">No Content!!</h6>
+      	{% endif %}
+  	</div>
+
+  	<!--Room Detail-->
+	<h1 style="font-family: cursive; font-size: 30px; color: black; position: relative; top: 295px; left: 90px;">Room Detail</h1>
+
+	<!--make a line that shift a little bit to the right-->
+
+  	<div class="hotel-info-holder" style="width: 500px; height: 620px; border: 1px solid black; position: absolute;  position: absolute; top: 890px; left: 60px;">
+  		<h3 style="font-family: cursive; font-weight: bold; font-size: 20px; position: relative; top: 55px; left: 30px;">Description:</h3>
+      	<h6 style="font-family: cursive; font-size: 17px; padding-bottom: 10px; position: relative; top: 55px; left: 50px;">{{ room.room_description }}</h6>
+      	<h3 style="font-family: cursive; font-weight: bold; font-size: 20px; position: relative; top: 155px; left: 30px;">Facility:</h3>
+      	<h6 style="font-family: cursive; font-size: 17px; padding-bottom: 10px; position: relative; top: 155px; left: 50px;">{{ room.room_detail }}</h6>
+ 		<h3 style="font-family: cursive; font-weight: bold; font-size: 20px; position: relative; top: 255px; left: 30px;">Bed Option:</h3>
+      	<h6 style="font-family: cursive; font-size: 17px; padding-bottom: 10px; position: relative; top: 255px; left: 50px;">{{ room.Bed_Option }}</h6>
+      	<h3 style="font-family: cursive; font-weight: bold; font-size: 20px; position: relative; top: 255px; left: 30px;">Room Capacity:</h3>
+      	<h6 style="font-family: cursive; font-size: 17px; padding-bottom: 10px; position: relative; top: 255px; left: 50px;">{{ room.Capacity }} People</h6>
+  	</div>
+
+  	<!--Price-->
+	<h1 style="font-family: cursive; font-size: 30px; color: black; position: relative; top: 860px; left: 90px;">Booking Information</h1>
+
+	<!--make a line that shift a little bit to the right-->
+
+  	<div class="hotel-info-holder" style="width: 500px; height: 400px; border: 1px solid black; border-top: none; position: absolute;  position: absolute; top: 1510px; left: 60px; border-bottom-left-radius: 30px; border-bottom-right-radius: 30px; ">
+  		<h3 style="font-family: cursive; font-weight: bold; font-size: 20px; position: relative; top: 60px; left: 90px;">Check In:</h3>
+      	<h6 style="font-family: cursive; font-size: 17px; padding-bottom: 10px; position: absolute; top: 73px; left: 300px;">{{ checkin }}</h6>
+      	<h3 style="font-family: cursive; font-weight: bold; font-size: 20px; position: relative; top: 60px; left: 90px;">Check Out:</h3>
+      	<h6 style="font-family: cursive; font-size: 17px; padding-bottom: 10px; position: absolute; top: 115px; left: 300px;">{{ checkout }}</h6>
+      	<h3 style="font-family: cursive; font-weight: bold; font-size: 20px; position: relative; top: 60px; left: 90px;">Room Price:</h3>
+      	<h6 style="font-family: cursive; font-size: 17px; padding-bottom: 10px; position: absolute; top: 156px; left: 300px;">$ {{ roomprice }} / night</h6>
+      	<h1 style="width: 40px; height: 40px; font-family: cursive; position: relative; left: 50px;top: 30px;">&times;</h1>
+      	{% if StayDuration > 1 %}
+      	<h3 style="font-family: cursive; font-weight: bold; font-size: 20px; position: relative; top: 10px; left: 90px;">Stay Duration:</h3>
+      	<h6 style="font-family: cursive; font-size: 17px; padding-bottom: 10px; position: absolute; top: 209px; left: 300px;">{{ StayDuration }} days</h6>
+      	{% else %}
+      	<h3 style="font-family: cursive; font-weight: bold; font-size: 20px; position: relative; top: 10px; left: 90px;">Stay Duration:</h3>
+      	<h6 style="font-family: cursive; font-size: 17px; padding-bottom: 10px; position: absolute; top: 209px; left: 300px;">{{ StayDuration }} day</h6>
+      	{% endif %}
+      	<div class="line-for-total-cost" style="width: 300px; height: 1px; background: black; position: relative; top: 35px; left: 91px;"></div>
+      	<h3 style="font-family: cursive; font-weight: bold; font-size: 25px; position: relative; top: 20px; left: 90px;">Total Cost:</h3>
+      	<h6 style="font-family: cursive; font-size: 25px; padding-bottom: 10px; position: absolute; top: 263px; left: 300px;"><span style="font-size: 30px;">$</span>{{ totalcost }}</h6>
+  	</div>
+</div>
+
+<!--Footer-->
+<footer style="margin: 0; padding: 0; border-top: 4px solid #FAD7A0; position: absolute; background: #151515; width: 100%; height: 376px; top: 1950px;">
+  <div style="position: absolute; width: 1000px; top: 50px; height: 100px; box-sizing: border-box; left: 240px; float: left; padding: 0 10px;  box-sizing: border-box;">
+    <div class="brief-about-us" style=" width: 200px; padding: 5px 0px; left: -20px;top: 4px; position: absolute; ">
+      <!--Sub-title-->
+      <h5 style="color: #FAD7A0; text-align: center; position: relative; width: 200px; font-size: 16px; font-family: cursive;">About Us</h5>
+      <p class="information" style="position: relative; width: 200px; font-family: cursive; font-size: 15px; color: #fff; list-style: none;">Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.</p>
+    </div>
+
+    <div class="sub-contact-information" style="border-left: 1px solid #FAD7A0; width: 400px; border-right: 1px solid #FAD7A0; padding: 10px 0px; left: 277px;  position: absolute;">
+      <!--Subtitle-->
+      <h5 style="color: #FAD7A0; text-align: center; position: relative; width: 400px; font-size: 16px; font-family: cursive;">Information</h5>
+      <p style="color: #fff; font-family: cursive; text-align: center; width: 400px; padding: 5px 10px;">2568 S King Rd, San Jose, CA 95122</i></p>
+      <p style="text-align: center; position: relative; width: 400px; font-family: cursive; color: #fff; list-style: none; top: -15px;"><a href="mailto:lavshort@gmail.com" style="text-decoration: none; color: #fff;padding: 10px 10px;"><span>&#9993;</span> lavashort@gmail.com</a></p>
+      <p style="text-align: center; position: relative; width: 400px; font-family: cursive; color: #fff; top: -25px; list-style: none;"><a href="tel:4089529901" style="text-decoration: none; color: #fff; padding: 15px 10px;"><span>&#9990;</span> +1 (408)-952-9901</a></p>
+
+    </div>
+
+    <div class="openning-hour-section" style="width: 200px; padding: 10px 0px; left: 757px; position: absolute; ">
+      <!--Subtitle-->
+      <h5 style="color: #FAD7A0; text-align: center; position: relative; width: 200px; font-family: cursive;">Openning Hours</h5>
+      
+      <p class="morning-booking-time" style="text-align: center; position: relative; width: 200px; font-family: cursive; color: #fff; list-style: none;">Monday-Friday: 9:00am-12:00am</p>
+      <p class="evening-booking-time" style=" text-align: center; position: relative; top: -15px; width: 200px; font-family: cursive; color: #fff; list-style: none;">Saturday-Sunday: 10:00pm-5:00am</p>
+    </div>
+  </div>
+    <!---Copyright-->
+  <p style="color: #fff; font-size: 12px; position: relative; top: 310px;  text-align: center; font-family: cursive;">Copyright &copy; 2017. All rights reserved.</p>
+
+  <div style="width: 260px; position: relative; top: 300px; left: 588px; height: 1px; background: #FFA07A"></div>
+</footer>
+
+<a href="javascript:" id="return-to-top"><i class="icon-chevron-up"></i>
+<script type="text/javascript">
+  $(window).scroll(function() {
+      if ($(this).scrollTop() >= 50) {    
+          $('#return-to-top').fadeIn(200);  
+      } else {
+          $('#return-to-top').fadeOut(200);
+      }
+  });
+  $('#return-to-top').click(function() {   
+      $('body,html').animate({
+          scrollTop : 0                   
+      }, 500);
+  });
+  </script>
+</a>
+
+
+<div class="authentication">
+  {% if user.is_authenticated %}
+    <button class="button2"><a href="{% url 'logout' %}" style="text-decoration: none; color: #fff; float: left; width: 100%; height: 100%; line-height: 60px;">See Ya</a></button>
+    <div class="tag1">
+      <h6 class="text1">{{ user.username }}</h6>
+    </div>
+  {% else %}
+  <button class="button2"><a href="{% url 'login' %}" style="text-decoration: none; color: #fff; float: left; width: 100%; height: 100%; line-height: 60px;">Sign In</a></button>
+    <div class="tag1" style="width: 200px;">
+      <h6 class="text1">You're Out!</h6>
+    </div>
+  {% endif %}
+</div>
+<!-- Nav Bar -->
+<nav>
+  <div class="logo"><a href="{% url 'home' %}"><img src="{% static 'img/logo.png' %}" id="Logo" style="width: 170px; height: 120px; top: -40px; position: relative; left: -50px; z-index: 10;"></a></div>
+  <ul class="menu-main">
+      <li class="home"><a href="{% url 'home' %}">Home</a></li>
+<!--
+      <li class="page"><a href="#">Page</a>
+        <div class="menu-sub">
+              <div class="menu-col-1">
+                  <h3 class="menu-category">Generals</h3>
+                  <ul>
+                      <li class="sub-l"><a href="">Link 1</a></li>
+                      <li class="sub-l"><a href="">Link 2</a></li>
+                      <li class="sub-l"><a href="">Link 3</a></li>
+                      <li class="sub-l"><a href="">Link 4</a></li>
+                      <li class="sub-l"><a href="">Link 5</a></li>
+                  </ul>
+              </div>
+
+              <div class="menu-col-2">
+                  <h3 class="menu-category">Fast Services</h3>
+                  <ul>
+                      <li class="sub-l"><a href="">Link 1</a></li>
+                      <li class="sub-l"><a href="">Link 2</a></li>
+                      <li class="sub-l"><a href="">Link 3</a></li>
+                      <li class="sub-l"><a href="">Link 4</a></li>
+                      <li class="sub-l"><a href="">Link 5</a></li>
+                </ul>
+              </div>
+
+              <div class="menu-col-3">
+                  <h3 class="menu-category">About</h3>
+                  <ul>
+                    <li class="sub-l"><a href="">Link 1</a></li>
+                      <li class="sub-l"><a href="">Link 2</a></li>
+                      <li class="sub-l"><a href="">Link 3</a></li>
+                      <li class="sub-l"><a href="">Link 4</a></li>
+                      <li class="sub-l"><a href="">Link 5</a></li>
+                  </ul>
+              </div>
+
+              <div class="menu-col-4">
+                  <h3 class="menu-category">Team Members</h3>
+                  <ul>
+                      <li class="sub-l"><a href="">Link 1</a></li>
+                      <li class="sub-l"><a href="">Link 2</a></li>
+                      <li class="sub-l"><a href="">Link 3</a></li>
+                      <li class="sub-l"><a href="">Link 4</a></li>
+                      <li class="sub-l"><a href="">Link 5</a></li>
+                  </ul>
+              </div>
+          </div>
+      </li>-->
+      <li class="Room"><a href="{% url 'hotel-list' %}">Hotel List</a></li>
+      <li class="ammeties"><a href="{% url 'mybooking' %}">My Booking</a></li>
+
+      <li class="contact"><a href="{% url 'contact' %}">Contact</a></li>
+  </ul>
+  <script>
+
+window.onscroll = function() {
+  growShrinkLogo()
+};
+
+function growShrinkLogo() {
+  var Logo = document.getElementById("Logo")
+  if (document.body.scrollTop > 5 || document.documentElement.scrollTop > 5) {
+    Logo.style.width = '170px';
+    Logo.style.height = '120px';
+    Logo.style.transition = '0.5s';
+    Logo.style.transform = 'rotateY(360deg)';
+  } else {
+    Logo.style.background = 'rgba(255,255,255,0)';
+    Logo.style.transform = 'rotateY(0deg)';
+    Logo.style.top = '-40px';
+    Logo.style.transition = '0.5s';
+    Logo.style.width = '170px';
+    Logo.style.height = '120px';
+  }
+}
+</script>
+</nav>
+
+{% endblock %}
