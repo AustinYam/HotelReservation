@@ -12,7 +12,7 @@
 <style type="text/css">
 .each-list{
 	margin: 20px;
-	width: 420px;
+	width: 460px;
 	height: 170px;
 	background: white;
 	border-radius: 100px;
@@ -46,9 +46,10 @@
 }
 
 .hotel-name-list{
-	font-size: 20px;
+	font-size: 15px;
+	left: -10px;
 	position: relative;
-	left: 90px;
+	color: red;
 }
 .hotel-room-type-list, .hotel-checkin-list, .hotel-checkout-list{
 	position: relative;
@@ -92,13 +93,16 @@
 <div>
 
 	<div style="">
-		<h1>My Booking</h1>
+		<h3 style="font-family: cursive;font-size: 50px; text-align: center;">My Booking</h1>
 		<br>
-		<p>{{ user.first_name }} {{ user.last_name }}</p>
+		<div style="font-family: cursive; width: 50%; border: 1px solid black; border-radius: 30px; height: 200px; left: 25%; position: relative;">
+			<p style="font-size: 20px;"> {{ user.first_name }} {{ user.last_name }}</p>
+		</div>
+		
 		{% if booking %}
 
 		{% for bookings in booking %}
-		<div style="width: 100%;">
+		<div style="width: 100%; position: relative; top: 150px;">
 			
 			<div class="each-list">
 				<div class="list-img">

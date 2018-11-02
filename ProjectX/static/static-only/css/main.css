@@ -28,6 +28,7 @@ body {
   font-family: cursive;
   position: relative;
   transition: 0.5s;
+  font-size: 15px;
 }
 
 .button1 span:after {
@@ -35,7 +36,7 @@ body {
   position: absolute;
   opacity: 0;
   top: 0;
-  right: -20px;
+  right: -10px;
   transition: 0.5s;
 }
 
@@ -187,7 +188,7 @@ nav.change li:hover{
   display: none;
   color: #000;
   padding: 2em;
-  transition: 0.3s;
+  transition: 0.3s ease;
   border-top: 3px solid #F08080;
   border-bottom: 3px solid #F08080;
 }
@@ -203,6 +204,7 @@ nav li:hover .menu-sub {
 
 .menu-sub li {
   display: block;
+  left: 0;
   transition: 0.3s;
 }
 

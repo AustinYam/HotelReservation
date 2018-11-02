@@ -999,7 +999,7 @@ nav.change .menu-col-4, .change .menu-col-3, .change .menu-col-2, .change .menu-
 .section-hotel{
   position: relative;
   width: 350px;
-  left: 650px;
+  left: 900px;
   top: -100px;
   height: 700px;
   background: white;
@@ -1085,14 +1085,14 @@ nav.change .menu-col-4, .change .menu-col-3, .change .menu-col-2, .change .menu-
 }
 
 .next-hotel {
-  right: 150px;
+  right: 110px;
   transform: rotate(90deg);
   z-index: 8;
   box-shadow: 5px 0px 5px rgba(0,0,0,0.2);
 
 }
 .prev-hotel {
-  left: 637px;
+  left: 847px;
   z-index: 8;
   transform: rotate(-90deg);
   box-shadow: -5px 0px 5px rgba(0,0,0,0.2);
@@ -1202,23 +1202,26 @@ nav.change .menu-col-4, .change .menu-col-3, .change .menu-col-2, .change .menu-
   width: 100%;
   height: 600px;
   position: absolute;
-  top: 2220px;
+  top: 1500px;
   display: flex;
   z-index: -1;
   background: linear-gradient(180deg, #FDEDEC, #F5B7B1, #F1948A, #EC7063, #CD5C5C, #FAD7A0);
 }
 .left-side-info{
   width: 744px;
-  height: 599px;
+  height: 596px;
   background: white;
+  position: relative;
+  top: 3px;
   border-top-right-radius: 10px; 
   border-bottom-right-radius: 10px; 
 }
 .right-side-info{
   width: 720px;
-  height: 199px;
+  height: 196px;
   position: relative;
   left: 2px;
+  top: 3px;
   background: white;
   border-top-left-radius: 10px; 
   border-bottom-left-radius: 10px; 
@@ -1420,6 +1423,287 @@ nav.change .menu-col-4, .change .menu-col-3, .change .menu-col-2, .change .menu-
   left: 40%;
   top: 99%;
 }
+
+.team-member-img{
+    border-radius:50% 50% 50% 50%;
+    width:250px;
+    position: relative;
+    left: 25px;
+    top: 10px;
+    height:250px;
+}
+.team-pic{
+  width: 100%; height: 100%; position: relative; border-radius: 50%; display: block; 
+}
+.search-btn{
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: #F1948A;
+  border: none;  
+  transition: 0.5s;
+  position: absolute;
+  left: 200px;
+  top: 145px;
+}
+.search-btn:hover{
+  background: #E74C3C;
+  transition: 0.5s;
+}
+
+.line{
+  position: relative;
+  top: 0px;
+  left: -200px;
+  width: 16em;
+  margin: 0 auto;
+  border-right: 2px solid rgba(0,0,0,0.75);
+  font-size: 20px;
+  font-family: cursive;
+  text-align: center;
+  white-space: nowrap;
+  display: block;
+  overflow: hidden;
+  transform: translateY(-50%);
+}
+
+.anim-typewriter{
+  animation: typewriter 4s steps(40) 1s 1 normal both, 
+  blinkTextCursor 500ms steps(40) infinite normal;
+
+}
+
+@keyframes typewriter{
+  0%{
+    width: 0;
+  }
+  100%{
+    width: 16em;
+  }
+}
+
+
+@keyframes blinkTextCursor{
+  0%{
+    border-right-color: rgba(0,0,0,0.75);
+  }
+  100%{
+    border-right-color: transparent;
+  }
+}
+
+.css-typing p {
+  border-right: .15em solid orange;
+  font-size: 20px;
+  white-space: nowrap;
+  font-family: cursive;
+  overflow: hidden;
+}
+.css-typing p:nth-child(1) {
+  width: 30em;
+  opacity: 0;
+  position: relative;
+  top: -350px;
+  left: 200px;
+  -webkit-animation: type 1s steps(10, end);
+  animation: type 1s steps(10, end);
+  -webkit-animation-delay: 2s;
+  animation-delay: 2s;
+  -webkit-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
+}
+
+.css-typing p:nth-child(2) {
+  width: 30em;
+  opacity: 0;
+  position: relative;
+  top: -360px;
+  left: 150px;
+  -webkit-animation: type2 2s steps(20, end);
+  animation: type2 2s steps(20, end);
+  -webkit-animation-delay: 4s;
+  animation-delay: 4s;
+  -webkit-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
+}
+.css-typing p:nth-child(3) {
+  width: 30em;
+  opacity: 0;
+  position: relative;
+  top: -370px;
+  left: 150px;
+  -webkit-animation: type2 2s steps(20, end);
+  animation: type2 2s steps(20, end);
+  -webkit-animation-delay: 8s;
+  animation-delay: 8s;
+  -webkit-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
+}
+.css-typing p:nth-child(4) {
+  width: 35em;
+  opacity: 0;
+  position: relative;
+  top: -380px;
+  left: 150px;
+  -webkit-animation: type2 2s steps(20, end);
+  animation: type2 2s steps(20, end);
+  -webkit-animation-delay: 10s;
+  animation-delay: 10s;
+  -webkit-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
+}
+.css-typing p:nth-child(5) {
+  width: 37em;
+  opacity: 0;
+  position: relative;
+  top: -390px;
+  left: 150px;
+  -webkit-animation: type2 2s steps(20, end);
+  animation: type2 2s steps(20, end);
+  -webkit-animation-delay: 13s;
+  animation-delay: 13s;
+  -webkit-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
+}
+.css-typing p:nth-child(6) {
+  width: 31em;
+  opacity: 0;
+  position: relative;
+  top: -400px;
+  left: 150px;
+  -webkit-animation: type2 2s steps(20, end);
+  animation: type2 2s steps(20, end);
+  -webkit-animation-delay: 16s;
+  animation-delay: 16s;
+  -webkit-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
+}
+.css-typing p:nth-child(7) {
+  width: 34em;
+  opacity: 0;
+  position: relative;
+  top: -410px;
+  left: 150px;
+  -webkit-animation: type2 2s steps(20, end);
+  animation: type2 2s steps(20, end);
+  -webkit-animation-delay: 19s;
+  animation-delay: 19s;
+  -webkit-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
+}
+
+
+.css-typing p:nth-child(8) {
+  width: 33em;
+  opacity: 0;
+  position: relative;
+  top: -420px;
+  left: 150px;
+  -webkit-animation: type3 1s steps(20, end), blink .5s step-end infinite alternate;
+  animation: type3 1s steps(20, end), blink .5s step-end infinite alternate;
+  -webkit-animation-delay: 23s;
+  animation-delay: 23s;
+  -webkit-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
+}
+
+@keyframes type {
+  0% {
+    width: 0;
+  }
+  1% {
+    opacity: 1;
+  }
+  99.9% {
+    border-right: .15em solid orange;
+  }
+  100% {
+    opacity: 1;
+    border: none;
+  }
+}
+
+@-webkit-keyframes type {
+  0% {
+    width: 0;
+  }
+  1% {
+    opacity: 1;
+  }
+  99.9% {
+    border-right: .15em solid orange;
+  }
+  100% {
+    opacity: 1;
+    border: none;
+  }
+}
+
+@keyframes type2 {
+  0% {
+    width: 0;
+  }
+  1% {
+    opacity: 1;
+  }
+  99.9% {
+    border-right: .15em solid orange;
+  }
+  100% {
+    opacity: 1;
+    border: none;
+  }
+}
+
+@-webkit-keyframes type2 {
+  0% {
+    width: 0;
+  }
+  1% {
+    opacity: 1;
+  }
+  99.9% {
+    border-right: .15em solid orange;
+  }
+  100% {
+    opacity: 1;
+    border: none;
+  }
+}
+
+@keyframes type3 {
+  0% {
+    width: 0;
+  }
+  1% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes type3 {
+  0% {
+    width: 0;
+  }
+  1% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes blink {
+  50% {
+    border-color: transparent;
+  }
+}
+@-webkit-keyframes blink {
+  50% {
+    border-color: tranparent;
+  }
 </style>
 
 <div class="authentication">
@@ -1450,44 +1734,187 @@ nav.change .menu-col-4, .change .menu-col-3, .change .menu-col-2, .change .menu-
   <img src="{% static 'img/mountain.jpg' %}" style="width: 100%; height: 900px;">
   <div class="shade" style="width: 1470px; height: 900px; position: absolute; z-index: 4; top: 0px; "></div>
   <h1 style="font-family: cursive; position: absolute; top: 340px; left: 700px; color: black; z-index: 5; font-size: 60px;">Love Me, Book Me</h1>
+    <div class="search-holder" style=" text-align: center; border-radius: 30px; position: absolute; top: 300px; left: 800px; z-index: 9;">
+      <form method="GET" class="search-box" action="{% url 'search' %}" style=" font-family: cursive;">
+        <input name="sorting" class="search-txt" placeholder="Advance Search" value="{{ request.GET.sorting }}" style="width: 250px; height: 40px; padding: 10px; border: 1px solid black; border-radius: 30px; outline: none; position: relative; top: 150px;">
+        <br>
+        <button class="search-btn" type="submit">
+          <div class="magnifier-icon"></div>
+        </button>
+    </form>
+</div>
+
 
 </div>
 
 <div class="skew-rect" style="background: #D4EFDF; width: 179px; height: 30px; transform: skew(-70deg) rotate(20deg); position: absolute; z-index: -1; top: 890px; left: 1310px;"></div>
 <div class="skew-rect" style="background: #FEF5E7; width: 179px;  height: 40px; transform: skew(-70deg) rotate(20deg); position: absolute; left: 1250px; top: 950px; left: 1290px;"></div>
 <div class="skew-rect" style="background: #CD5C5C; width: 179px;  height: 70px; transform: skew(-70deg) rotate(20deg); position: absolute; left: 1250px; top: 1000px;"></div>
-<div class="skew-rect" style="background: #D4EFDF; width: 179px; height: 20px; transform: skew(-70deg) rotate(20deg); position: absolute; z-index: 0; top: 1200px; left: -60px;"></div>
-<div class="skew-rect" style="background: #FEF5E7; width: 179px; height: 40px; transform: skew(-70deg) rotate(20deg); position: absolute; z-index: 0; top: 1240px; left: -60px;"></div>
-<div class="skew-rect" style="background: #CD5C5C; width: 179px; height: 100px; transform: skew(-70deg) rotate(20deg); position: absolute; z-index: 0; top: 1250px; "></div>
-
+<div class="skew-rect" style="background: #D4EFDF; width: 179px; height: 20px; transform: skew(-70deg) rotate(20deg); position: absolute; z-index: 0; top: 1250px; left: -60px;"></div>
+<div class="skew-rect" style="background: #FEF5E7; width: 179px; height: 40px; transform: skew(-70deg) rotate(20deg); position: absolute; z-index: 0; top: 1290px; left: -60px;"></div>
+<div class="skew-rect" style="background: #CD5C5C; width: 179px; height: 100px; transform: skew(-70deg) rotate(20deg); position: absolute; z-index: 0; top: 1340px; "></div>
+<!--
 <div id="slide">
     <div class="swiper-container">
     <div class="swiper-wrapper" style="border-radius: 30px;">
-      {% for photo in photoforteam %}
-      <div class="swiper-slide" style="border: 1px solid black; border-radius: 30px;">
+      
+      <div class="swiper-slide" style="border: 1px solid black; border-radius: 200px;">
         <div class="team-member-img">
-          <img src="{{ photo.image1.url }}" style="width: 300px;">
+          <img src="{% static 'img/Stephanie.jpg' %}" class="team-pic" style="">
         </div>
-
-        <div class="line2" style="width: 200px; position: relative; top: 170px; left: 50px; height: 1px; background: linear-gradient(60deg, #FDEDEC, #F5B7B1, #F1948A, #EC7063, #CD5C5C, #FAD7A0);"></div>
-
-        <div class="team-member-roles" style="height: 120px; position: relative; top: 170px; border-bottom-left-radius: 30px; border-bottom-right-radius: 30px;">
+  
+        <div class="team-member-roles" style="position: relative; top: 100px;">
           <div style="text-align: center;">
-            <p style="font-family: cursive; font-size: 20px;">{{ photo.full_name }}</p>
-            <p style="font-family: cursive; font-size: 15px; color: #E74C3C; position: relative; top: -10px;">{{ photo.roles }}</p>
-            <p style="font-family: cursive; font-size: 15px; position: relative; top: -15px;">{{ photo.roles2 }}</p>
+            <p style="font-family: cursive; font-size: 20px;">Stephanie Cheng</p>
+            <p style="font-family: cursive; font-size: 15px; color: #E74C3C; position: relative; top: -10px;">Project Manager</p>
+            <p style="font-family: cursive; font-size: 15px; position: relative; top: -15px;">Frontend Developer</p>
           </div>
 
         </div>
+  
       </div>
-      {% endfor %}
+     <div class="swiper-slide" style="border: 1px solid black; border-radius: 200px;">
+        <div class="team-member-img">
+          <img src="{% static 'img/hiep.jpg' %}" class="team-pic" style="">
+        </div>
+  
+        <div class="team-member-roles" style="position: relative; top: 100px;">
+          <div style="text-align: center;">
+            <p style="font-family: cursive; font-size: 20px;">Hiep Nguyen</p>
+            <p style="font-family: cursive; font-size: 15px; color: #E74C3C; position: relative; top: -10px;">Tech Lead</p>
+            <p style="font-family: cursive; font-size: 15px; position: relative; top: -15px;">Documentation</p>
+          </div>
+
+        </div>
+  
+      </div>
+           <div class="swiper-slide" style="border: 1px solid black; border-radius: 200px;">
+        <div class="team-member-img">
+          <img src="{% static 'img/monty.jpg' %}" class="team-pic" style="">
+        </div>
+  
+        <div class="team-member-roles" style="position: relative; top: 100px;">
+          <div style="text-align: center;">
+            <p style="font-family: cursive; font-size: 20px;">Monty Saengsavang</p>
+            <p style="font-family: cursive; font-size: 15px; color: #E74C3C; position: relative; top: -10px;">Backend Developer</p>
+            <p style="font-family: cursive; font-size: 15px; position: relative; top: -15px;">Tester</p>
+          </div>
+
+        </div>
+  
+      </div>
+           <div class="swiper-slide" style="border: 1px solid black; border-radius: 200px;">
+        <div class="team-member-img">
+          <img src="{% static 'img/jeffrey.jpg' %}" class="team-pic" style="">
+        </div>
+  
+        <div class="team-member-roles" style="position: relative; top: 100px;">
+          <div style="text-align: center;">
+            <p style="font-family: cursive; font-size: 20px;">Jeffrey Hu</p>
+            <p style="font-family: cursive; font-size: 15px; color: #E74C3C; position: relative; top: -10px;">Frontend Developer</p>
+            <p style="font-family: cursive; font-size: 15px; position: relative; top: -15px;">Documentation</p>
+          </div>
+
+        </div>
+  
+      </div>
+           <div class="swiper-slide" style="border: 1px solid black; border-radius: 200px;">
+        <div class="team-member-img">
+          <img src="{% static 'img/guan.png' %}" class="team-pic" style="">
+        </div>
+  
+        <div class="team-member-roles" style="position: relative; top: 100px;">
+          <div style="text-align: center;">
+            <p style="font-family: cursive; font-size: 20px;">Steven Guan</p>
+            <p style="font-family: cursive; font-size: 15px; color: #E74C3C; position: relative; top: -10px;">Backend Developer</p>
+            <p style="font-family: cursive; font-size: 15px; position: relative; top: -15px;">Documentation</p>
+          </div>
+
+        </div>
+  
+      </div>
+           <div class="swiper-slide" style="border: 1px solid black; border-radius: 200px;">
+        <div class="team-member-img">
+          <img src="{% static 'img/du.jpg' %}" class="team-pic" style="">
+        </div>
+  
+        <div class="team-member-roles" style="position: relative; top: 100px;">
+          <div style="text-align: center;">
+            <p style="font-family: cursive; font-size: 20px;">Roman Du</p>
+            <p style="font-family: cursive; font-size: 15px; color: #E74C3C; position: relative; top: -10px;">Backend Developer</p>
+            <p style="font-family: cursive; font-size: 15px; position: relative; top: -15px;">Documentation</p>
+          </div>
+
+        </div>
+  
+      </div>
+           <div class="swiper-slide" style="border: 1px solid black; border-radius: 200px;">
+        <div class="team-member-img">
+          <img src="{% static 'img/robert.jpg' %}" class="team-pic" style="">
+        </div>
+  
+        <div class="team-member-roles" style="position: relative; top: 100px;">
+          <div style="text-align: center;">
+            <p style="font-family: cursive; font-size: 20px;">Robert Campbell</p>
+            <p style="font-family: cursive; font-size: 15px; color: #E74C3C; position: relative; top: -10px;">Backend Developer</p>
+            <p style="font-family: cursive; font-size: 15px; position: relative; top: -15px;">Tester</p>
+          </div>
+
+        </div>
+  
+      </div>
+           <div class="swiper-slide" style="border: 1px solid black; border-radius: 200px;">
+        <div class="team-member-img">
+          <img src="{% static 'img/yam.jpg' %}" class="team-pic" style="">
+        </div>
+  
+        <div class="team-member-roles" style="position: relative; top: 100px;">
+          <div style="text-align: center;">
+            <p style="font-family: cursive; font-size: 20px;">Austin Yam</p>
+            <p style="font-family: cursive; font-size: 15px; color: #E74C3C; position: relative; top: -10px;">Backend Tester</p>
+            <p style="font-family: cursive; font-size: 15px; position: relative; top: -15px;">Documentation</p>
+          </div>
+
+        </div>
+  
+      </div>
+           <div class="swiper-slide" style="border: 1px solid black; border-radius: 200px;">
+        <div class="team-member-img">
+          <img src="{% static 'img/0.jpeg' %}" class="team-pic" style="">
+        </div>
+  
+        <div class="team-member-roles" style="position: relative; top: 100px;">
+          <div style="text-align: center;">
+            <p style="font-family: cursive; font-size: 20px;">Rahul Easaw</p>
+            <p style="font-family: cursive; font-size: 15px; color: #E74C3C; position: relative; top: -10px;">Product Owner</p>
+            <p style="font-family: cursive; font-size: 15px; position: relative; top: -15px;">Tester</p>
+          </div>
+
+        </div>
+  
+      </div>
+           <div class="swiper-slide" style="border: 1px solid black; border-radius: 200px;">
+        <div class="team-member-img">
+          <img src="{% static 'img/logo.png' %}" class="team-pic" style="">
+        </div>
+  
+        <div class="team-member-roles" style="position: relative; top: 100px;">
+          <div style="text-align: center;">
+            <p style="font-family: cursive; font-size: 20px;">Tao Sheng</p>
+            <p style="font-family: cursive; font-size: 15px; color: #E74C3C; position: relative; top: -10px;">Frontend Developer</p>
+            <p style="font-family: cursive; font-size: 15px; position: relative; top: -15px;">Documentation</p>
+          </div>
+
+        </div>
+  
+      </div>
     </div>
-    <!-- Add Pagination -->
+ 
     <div class="swiper-pagination"></div>
   </div>
 
   <script src="{% static 'js/swiper.min.js' %}"></script>
-    <!-- Initialize Swiper -->
+ 
   <script>
     var swiper = new Swiper('.swiper-container', {
       effect: 'coverflow',
@@ -1508,10 +1935,15 @@ nav.change .menu-col-4, .change .menu-col-3, .change .menu-col-2, .change .menu-
   </script>
 
 
-</div>
+</div>-->
+
+<div style="width: 1350px; height: 1px; background: linear-gradient(60deg, #FDEDEC, #F5B7B1, #F1948A, #EC7063, #CD5C5C, #FAD7A0); position: relative; top: 950px; left: 50px;"></div>
 
 <div>
-  <div class="slideshow-container" style="position: relative; top: 1350px;">
+  <p style="font-size: 40px; position: relative; top: 980px; font-family: cursive; text-align: center; ">Sponsors</p>
+</div>
+<div>
+  <div class="slideshow-container" style="position: relative; top: 1000px;">
     <div class="section" style="transition: 0.5s;">
       <div class="content"></div>
       <div class="none-view">
@@ -1519,7 +1951,7 @@ nav.change .menu-col-4, .change .menu-col-3, .change .menu-col-2, .change .menu-
       
       </div>
       <div class="Image-View">
-          <img class="img-view" src="{% static 'img/image.jpeg' %}">
+          <img class="img-view" src="{% static 'img/Slack1.png' %}">
       </div>
 
     </div>
@@ -1529,7 +1961,16 @@ nav.change .menu-col-4, .change .menu-col-3, .change .menu-col-2, .change .menu-
           <p class="text-fly">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. </p>
       </div>
       <div class="Image-View">
-          <img class="img-view" src="{% static 'img/room1.jpg' %}">
+          <img class="img-view" src="{% static 'img/facebook1.png' %}">
+      </div>
+    </div>
+    <div class="section" style="transition: 0.5s;">
+      <div class="content"></div>
+      <div class="none-view">
+          <p class="text-fly">Github benefit is to connect people </p>
+      </div>
+      <div class="Image-View">
+          <img class="img-view" src="{% static 'img/github1.png' %}" style="border: 1px solid black;">
       </div>
     </div>
     <a class="prev" onclick="plusSlides(-1)"><i class="icon-chevron-up"></i></a> 
@@ -1537,9 +1978,10 @@ nav.change .menu-col-4, .change .menu-col-3, .change .menu-col-2, .change .menu-
 </div>
 <br>
 
-<div style="text-align:center; position: relative; top: 1300px; z-index: 9;"> 
+<div style="text-align:center; position: relative; top: 950px; z-index: 9;"> 
   <span class="dot" onclick="currentSlide(1)"></span> 
   <span class="dot" onclick="currentSlide(2)"></span> 
+  <span class="dot" onclick="currentSlide(3)"></span>
 </div>
 
   <script>
@@ -1598,15 +2040,13 @@ nav.change .menu-col-4, .change .menu-col-3, .change .menu-col-2, .change .menu-
   </script>
 </div>
 
-<div class="razor" style="width: 100%; height: 700px; position: relative; top: -430px; background: #FDEDEC; border-right: 1470px solid white; border-bottom: 590px solid transparent;">
-    <div class="thing1" style="width: 200px; height: 50px; background: #FF6F6F; position: relative; top: 28px; left: 60px; border-left: 5px solid #F9E79F; z-index: 6;">
+  <div class="thing1" style="width: 200px; height: 50px; background: #FF6F6F; position: relative; top: -478px; left: 60px; border-left: 5px solid #F9E79F; z-index: 6;">
     <h6 style="width: 200px; height: 50px; position: relative; top: 10px; left: 30px; font-size: 20px; font-family: cursive; color: #fff;">Best Choices</h6>
   </div>
-  <div class="razor" style="width: 50px; height: 50px; transform: skew(-25deg); position: relative; left: 235px; top: -22px; background: #FF6F6F; z-index: 6;"></div>
+  <div class="razor" style="width: 50px; height: 50px; transform: skew(-25deg); position: relative; left: 235px; top: -528px; background: #FF6F6F; z-index: 6;"></div>
 
-</div>
 
-<div style="width: 100%; height: 550px; position: relative; top: -1000px;">
+<div style="width: 100%; height: 550px; position: relative; top: -560px; left: -50px;">
   <div class="slideshow-container">
     {% if rooms %}
 
@@ -1617,18 +2057,20 @@ nav.change .menu-col-4, .change .menu-col-3, .change .menu-col-2, .change .menu-
           <div style="padding: 20px;">
               <h6 style="position: relative; height: 30px; font-size: 15px; font-family: cursive; top: 10px;"><span style="font-size: 20px; margin-bottom: 15px;">Address</span>:<br>{{ room.address }}, {{ room.city }}, {{ room.state }} {{ room.zip_code }}</h6>
               <br>
-              <h6 style="position: relative; height: 30px; font-size: 15px; font-family: cursive; top: 10px;"><span style="font-size: 20px; margin-bottom: 15px;"><span style="font-size: 20px; margin-bottom: 15px;">Phone</span>:<br>{{ room.telephone }}</h6>
+              <h6 style="position: relative; height: 30px; font-size: 18px; font-family: cursive;"><span style="font-size: 20px; margin-bottom: 15px;"><span style="font-size: 18px; margin-bottom: 15px;">Phone</span>:<br>{{ room.telephone }}</h6>
               <br>
-              <p style="position: relative; height: 30px; font-size: 15px; font-family: cursive; top: 10px;"><span style="font-size: 20px; margin-bottom: 15px;"><span style="font-size: 20px; margin-bottom: 15px;">Description</span>:<br>{{ room.description }}</p>
+              <p style="position: relative; height: 30px; font-size: 16px; font-family: cursive;"><span style="font-size: 18px; margin-bottom: 15px;">Description</span>:<br>{{ room.description }}</p>
           </div>
           
       </div>
       <div class="Image-View-hotel">
-        <div class="" style="position: absolute; background: white; z-index: 8; color: black; width: 150px; left: 95px; top: 275px; height: 50px; border: 1px solid black; border-radius: 30px;">
-          <h6 style="font-size: 15px; line-height: 30px; font-family: cursive; text-align: center;">{{ room.hotel_name }}</h6>
+        <div class="" style="position: absolute; background: white; z-index: 8; color: black; width: 320px; left: 15px; top: 275px; height: 50px; border: 1px solid black; border-radius: 30px;">
+          <h6 style="font-size: 17px; line-height: 30px; font-family: cursive; text-align: center;">{{ room.hotel_name }}</h6>
         </div>
         <img class="img-view-hotel" src="{{ room.image.url }}">
       </div>
+
+      <div style="width: 150px; height: 1px; background: #F39C12; position: absolute; top: 670px; left: 40px; z-index: 9;"></div>
       <a href="{% url 'booking_with_pk' pk=room.pk %}"><button class="button3"><span>Book</span></button></a>
     </div>
    
@@ -1650,7 +2092,6 @@ nav.change .menu-col-4, .change .menu-col-3, .change .menu-col-2, .change .menu-
            slidesHotel[j].style.display = "none";
         }
         slideIndexHotel++;
-
 
         if (slideIndeHotel> slidesHotel.length) {slideIndexHotel = 1}   
 
@@ -1682,12 +2123,12 @@ nav.change .menu-col-4, .change .menu-col-3, .change .menu-col-2, .change .menu-
   </script>
 </div>
 </div>
+<div style="width: 1200px; height: 1px; position: absolute; top: 1550px; left: 100px; background: linear-gradient(60deg, #FDEDEC, #F5B7B1, #F1948A, #EC7063, #CD5C5C, #FAD7A0); z-index: -1; "></div>
 
-<div class="info-wrapper">
-  <div class="left-side-info"></div>
+<div style="width: 1px; height: 220px; position: absolute; top: 1600px; left: 50%; background: linear-gradient(60deg, #FDEDEC, #F5B7B1, #F1948A, #EC7063, #CD5C5C, #FAD7A0); "></div>
 
-  <div class="right-side-info">
-    <div class="lock-circle">
+<div style="position: relative; top: -470px; left: 690px;">
+      <div class="lock-circle">
       <div class="icon-lock-lock" style="clear: left; float: left">
         <div class="lock-top-1" style="background-color: #2CC3B5"></div>
         <div class="lock-top-2"></div>
@@ -1712,32 +2153,12 @@ nav.change .menu-col-4, .change .menu-col-3, .change .menu-col-2, .change .menu-
       <p style="font-size: 15px; position: absolute; font-family: cursive; left: 220px; top: 115px;">Guaranteeing a secured authentication & authorization.</p>
       <p style="font-size: 15px; position: absolute; font-family: cursive; left: 220px; top: 132px;">Your information will not be shared with other users.</p>
     </div>
-  </div>
-  <div class="right-side-middle-info">
-  </div>
 </div>
 
+<div style="box-shadow: -25px 10px 15px rgba(0,0,0,0.2); transform: perspective(1200px) rotateY(25deg) rotateX(25deg) skew(-2deg) scale(0.9); width: 500px; height: 200px; border-radius: 20px; position: relative; top: -590px; left: 100px;">
 
-
-<div style="box-shadow: -25px 10px 15px rgba(0,0,0,0.2); transform: perspective(1200px) rotateY(25deg) rotateX(25deg) skew(-2deg) scale(0.9); width: 500px; height: 310px; border-radius: 20px; position: relative; top: -1093px; left: 100px;">
-  <div>
-  <a class="weatherwidget-io" href="https://forecast7.com/en/37d34n121d89/san-jose/?unit=us" data-label_1="SAN JOSE" data-label_2="WEATHER" data-font="Georgia" data-icons="Climacons Animated" data-mode="Current" data-theme="original" data-basecolor="#9f1619" style="border-top-left-radius: 20px; border-top-right-radius: 20px; position: relative;  width: 500px; font-family: cursive; z-index: 8;" >SAN JOSE WEATHER</a>
-
-  <script>
-  !function(d,s,id){
-    var js,fjs=d.getElementsByTagName(s)[0];
-    if(!d.getElementById(id)){
-      js=d.createElement(s);
-      js.id=id;
-      js.src='https://weatherwidget.io/js/widget.min.js';
-      fjs.parentNode.insertBefore(js,fjs);
-    }
-  }(document,'script','weatherwidget-io-js');
-
-  </script>
-</div>
     <div>
-      <a class="weatherwidget-io" href="https://forecast7.com/en/37d34n121d89/san-jose/?unit=us" data-label_1="SAN JOSE" data-label_2="WEATHER" data-icons="Climacons Animated" data-theme="original" data-basecolor="#ea8a8c" data-highcolor="#ffdf00" data-cloudcolor="#ffffff" data-cloudfill="#fdfdfc" data-raincolor="#b1beed" style="width: 500px; position: relative; z-index: 8; border-bottom-left-radius: 20px; border-bottom-right-radius: 20px;" >SAN JOSE WEATHER</a>
+      <a class="weatherwidget-io" href="https://forecast7.com/en/37d34n121d89/san-jose/?unit=us" data-label_1="SAN JOSE" data-label_2="WEATHER" data-icons="Climacons Animated" data-theme="original" data-basecolor="#ea8a8c" data-highcolor="#ffdf00" data-cloudcolor="#ffffff" data-cloudfill="#fdfdfc" data-raincolor="#b1beed" style="width: 500px; position: relative; z-index: 8; border-radius: 30px;" >SAN JOSE WEATHER</a>
     <script>
     !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src='https://weatherwidget.io/js/widget.min.js';fjs.parentNode.insertBefore(js,fjs);}}(document,'script','weatherwidget-io-js');
     </script>
@@ -1745,7 +2166,8 @@ nav.change .menu-col-4, .change .menu-col-3, .change .menu-col-2, .change .menu-
   </div>
 </div>
 
-<!---Map-->
+<!--
+
 <div style="position: relative; width: 500px; height: 400px; top: -100px; left: 55px; border-radius: 30px; box-shadow: 0px 15px 25px rgba(0,0,0,0.2);">
   <div id="map"></div>
   <script>
@@ -1777,15 +2199,15 @@ nav.change .menu-col-4, .change .menu-col-3, .change .menu-col-2, .change .menu-
         })(marker, count));
     }
   } 
-  </script>
+  </script>-->
 
-  <!--Change its API key, when it runs out of 30 days trial.-->
+  <!--Change its API key, when it runs out of 30 days trial.
  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC-Ktd88tyYteNf326wmMLJNO_T7SLXDT8&callback=initMap"
     async defer></script>
-</div>
+</div>-->
 
 <!--Footer-->
-<footer style="margin: 0; padding: 0; border-top: 4px solid #FAD7A0; position: absolute; background: #151515; width: 100%; height: 376px; top: 4000px;">
+<footer style="margin: 0; padding: 0; border-top: 4px solid #FAD7A0; position: absolute; background: #151515; width: 100%; height: 376px; top: 3200px;">
   <div style="position: absolute; width: 1000px; top: 50px; height: 100px; box-sizing: border-box; left: 240px; float: left; padding: 0 10px;  box-sizing: border-box;">
     <div class="brief-about-us" style=" width: 200px; padding: 5px 0px; left: -20px;top: 4px; position: absolute; ">
       <!--Sub-title-->
@@ -2001,10 +2423,10 @@ nav.change .menu-col-4, .change .menu-col-3, .change .menu-col-2, .change .menu-
   <script>
 
 window.onscroll = function() {
-  growShrinkLogo()
+  spinningLogo()
 };
 
-function growShrinkLogo() {
+function spinningLogo() {
   var Logo = document.getElementById("Logo")
   if (document.body.scrollTop > 5 || document.documentElement.scrollTop > 5) {
     Logo.style.width = '170px';

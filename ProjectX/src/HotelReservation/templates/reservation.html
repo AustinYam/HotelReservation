@@ -414,7 +414,7 @@ nav.change .menu-col-4, .change .menu-col-3, .change .menu-col-2, .change .menu-
 }
 
 .frame-for-hotel-name{
-  width: 400px;
+  width: 800px;
   height: 100px;
   text-align: center;
   border: 2px solid black;
@@ -422,7 +422,7 @@ nav.change .menu-col-4, .change .menu-col-3, .change .menu-col-2, .change .menu-
   border-radius: 50px;
   background: white;
   top: 500px;
-  left: 550px;
+  left: 25%;
   z-index: 0;
 
 }
@@ -955,7 +955,7 @@ confirmButton.click(function(e) {
 
   	<div class="hotel-info-holder" style="width: 500px; height: 250px; border: 1px solid black; border-bottom: none; position: absolute; border-top-left-radius: 30px; border-top-right-radius: 30px; position: absolute; top: 640px; left: 60px;">
   		<h3 style="font-family: cursive; font-weight: bold; font-size: 20px; position: relative; top: 65px; left: 30px;">Address:</h3>
-      	<h6 style="font-family: cursive; font-size: 17px; padding-bottom: 10px; position: relative; top: 65px; left: 50px;">{{ thehotel.address}} {{ thehotel.city }}, {{ thehotel.state }} {{ thehotel.zip_code }}</h6>
+      	<h6 style="font-family: cursive; font-size: 17px; padding-bottom: 10px; position: relative; top: 65px; left: 50px;">{{ thehotel.address}}, {{ thehotel.city }}, {{ thehotel.state }} {{ thehotel.zip_code }}</h6>
       	{% if thehotel.telephone %}
         	<h3 style="font-family: cursive; font-weight: bold; font-size: 20px; position: relative; top: 55px; left: 30px;">Phone:</h3>
         	<h6 style="font-family: cursive; font-size: 17px; padding-bottom: 10px; position: relative; top: 55px; left: 50px;">{{ thehotel.telephone }}</h6>
@@ -972,13 +972,57 @@ confirmButton.click(function(e) {
 
   	<div class="hotel-info-holder" style="width: 500px; height: 620px; border: 1px solid black; position: absolute;  position: absolute; top: 890px; left: 60px;">
   		<h3 style="font-family: cursive; font-weight: bold; font-size: 20px; position: relative; top: 55px; left: 30px;">Description:</h3>
-      	<h6 style="font-family: cursive; font-size: 17px; padding-bottom: 10px; position: relative; top: 55px; left: 50px;">{{ room.room_description }}</h6>
-      	<h3 style="font-family: cursive; font-weight: bold; font-size: 20px; position: relative; top: 155px; left: 30px;">Facility:</h3>
-      	<h6 style="font-family: cursive; font-size: 17px; padding-bottom: 10px; position: relative; top: 155px; left: 50px;">{{ room.room_detail }}</h6>
- 		<h3 style="font-family: cursive; font-weight: bold; font-size: 20px; position: relative; top: 255px; left: 30px;">Bed Option:</h3>
-      	<h6 style="font-family: cursive; font-size: 17px; padding-bottom: 10px; position: relative; top: 255px; left: 50px;">{{ room.Bed_Option }}</h6>
-      	<h3 style="font-family: cursive; font-weight: bold; font-size: 20px; position: relative; top: 255px; left: 30px;">Room Capacity:</h3>
-      	<h6 style="font-family: cursive; font-size: 17px; padding-bottom: 10px; position: relative; top: 255px; left: 50px;">{{ room.Capacity }} People</h6>
+      	<h6 style=" width: 400px;font-family: cursive; font-size: 17px; padding-bottom: 10px; position: relative; top: 55px; left: 50px;">{{ room.room_description }}</h6>
+      	<h3 style="font-family: cursive; font-weight: bold; font-size: 20px; position: relative; top: 55px; left: 30px;">Facility:</h3>
+
+        {% if room.room_detail1 %}
+      	<h6 style="font-family: cursive; font-size: 17px; padding-bottom: 10px; position: relative; top: 55px; left: 50px;">{{ room.room_detail1 }}</h6>
+        {% else %}
+        <h6 style=""></h6>
+        {% endif %}
+
+        {% if room.room_detail1 %}
+        <h6 style="font-family: cursive; font-size: 17px; padding-bottom: 10px; position: relative; top: 45px; left: 50px;">{{ room.room_detail2 }}</h6>
+        {% else %}
+        <h6 style=""></h6>
+        {% endif %}
+
+        {% if room.room_detail1 %}
+        <h6 style="font-family: cursive; font-size: 17px; padding-bottom: 10px; position: relative; top: 45px; left: 50px;">{{ room.room_detail3 }}</h6>
+        {% else %}
+        <h6 style=""></h6>
+        {% endif %}
+
+        {% if room.room_detail1 %}
+        <h6 style="font-family: cursive; font-size: 17px; padding-bottom: 10px; position: relative; top: 45px; left: 50px;">{{ room.room_detail4 }}</h6>
+        {% else %}
+        <h6 style=""></h6>
+        {% endif %}
+
+ 		<h3 style="font-family: cursive; font-weight: bold; font-size: 20px; position: relative; top: 5px; left: 30px;">Bed Option:</h3>
+
+        {% if room.Bed_Option1 %}
+      	<h6 style="font-family: cursive; font-size: 17px; padding-bottom: 10px; position: relative; top: 5px; left: 50px;">{{ room.Bed_Option1 }}</h6>
+        {% else %}
+        {% endif %}
+
+        {% if room.Bed_Option2 %}
+        <h6 style="font-family: cursive; font-size: 17px; padding-bottom: 10px; position: relative; top: 5px; left: 50px;">{{ room.Bed_Option2 }}</h6>
+        {% else %}
+        {% endif %}
+
+        {% if room.Bed_Option3 %}
+        <h6 style="font-family: cursive; font-size: 17px; padding-bottom: 10px; position: relative; top: 5px; left: 50px;">{{ room.Bed_Option3 }}</h6>
+        {% else %}
+        {% endif %}
+
+        {% if room.Bed_Option4 %}
+        <h6 style="font-family: cursive; font-size: 17px; padding-bottom: 10px; position: relative; top: 5px; left: 50px;">{{ room.Bed_Option4 }}</h6>
+        {% else %}
+        {% endif %}
+
+      	<h3 style="font-family: cursive; font-weight: bold; font-size: 20px; position: relative; top: 5px; left: 30px;">Room Capacity:</h3>
+      	<h6 style="font-family: cursive; font-size: 17px; padding-bottom: 10px; position: relative; top: 5px; left: 50px;">{{ room.Capacity }} People</h6>
   	</div>
 
   	<!--Price-->

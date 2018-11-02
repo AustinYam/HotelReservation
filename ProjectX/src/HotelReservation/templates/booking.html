@@ -290,6 +290,10 @@ nav li:hover .menu-sub {
   border-right: 1px solid #F08080;
 }
 
+  .menu-main{
+    top: 10px;
+  }
+
 nav.change .menu-col-4, .change .menu-col-3, .change .menu-col-2, .change .menu-col-1{
   border-right: 1px solid #fff;
 }
@@ -403,7 +407,7 @@ nav.change .menu-col-4, .change .menu-col-3, .change .menu-col-2, .change .menu-
 }
 
 .frame-for-hotel-name{
-  width: 400px;
+  width: 700px;
   height: 100px;
   text-align: center;
   border: 2px solid black;
@@ -411,11 +415,23 @@ nav.change .menu-col-4, .change .menu-col-3, .change .menu-col-2, .change .menu-
   border-radius: 50px;
   background: white;
   top: 500px;
+  left: 400px;
+  z-index: 0;
+
+}
+.frame-for-hotel-name1{
+  width: 400px;
+  height: 80px;
+  text-align: center;
+  border: 2px solid black;
+  position: absolute;
+  border-radius: 50px;
+  background: white;
+  top: 1000px;
   left: 550px;
   z-index: 0;
 
 }
-
 #return-to-top {
     position: fixed;
     bottom: 20px;
@@ -518,7 +534,7 @@ nav.change .menu-col-4, .change .menu-col-3, .change .menu-col-2, .change .menu-
 </div>
 
 <div style="height: 1500px; border-top: 2px solid black; ">
-  <div class="hotel-info-holder" style="width: 900px; height: 300px; border: 2px solid black; position: absolute; border-radius: 30px; position: absolute; top: 620px; left: 40px;">
+  <div class="hotel-info-holder" style="width: 900px; height: 350px; border: 2px solid black; position: absolute; border-radius: 30px; position: absolute; top: 620px; left: 40px;">
     <div class="hotel-info" style="width: 590px; position: relative; top: 10px; left: 20px;">
       <h3 style="font-family: cursive; font-weight: bold; font-size: 20px;">Description:</h3>
       <h6 style="font-family: cursive; font-size: 17px; padding-bottom: 10px;">{{ thehotel.description }}</h6>
@@ -536,7 +552,13 @@ nav.change .menu-col-4, .change .menu-col-3, .change .menu-col-2, .change .menu-
     </div>
   </div>
 
-  <div class="room-info-holder" style="position: absolute; top: 1000px; left: 40px; height: auto; width: 1350px; border-radius: 30px; border: 2px solid black; ">
+<div>
+  <div class="frame-for-hotel-name1">
+    <h1 style="font-family: cursive; font-size: 35px; line-height: 44px;">Room List</h1>
+  </div>
+</div>
+
+  <div class="room-info-holder" style="position: absolute; top: 1100px; left: 40px; height: auto; width: 1350px; border-radius: 30px; border: 2px solid black; ">
 
     <!--Code Room Here-->
     {% if room %}
@@ -558,32 +580,59 @@ nav.change .menu-col-4, .change .menu-col-3, .change .menu-col-2, .change .menu-
             <div class="line-breaking" style=""></div>
 
             <h4 style="font-family: cursive; font-weight: bold; text-indent: 10px;">Description:</h4>
-            <h3 style="padding-bottom: 10px;"></h3>
-
-
+            <h3 style="width: 350px; top: -10px; left: 20px; position: relative; font-family: cursive; font-size: 15px; padding-bottom: 10px;">+ {{ rooms.room_description }}</h3>
             <h4 style="font-family: cursive; font-weight: bold; text-indent: 10px;">Services:</h4>
-            <h6 style="font-family: cursive; text-indent: 30px; font-size: 15px; padding-bottom: 10px;">+ {{ rooms.Bed_Option }}</h6>
+  
 
+            {% if rooms.Bed_Option1 %}
+            <h6 style="font-family: cursive; text-indent: 30px; font-size: 15px; padding-bottom: 5px;">+ {{ rooms.Bed_Option1 }}</h6>
+            {% else %}
+            <h6 style=""></h6>
+            {% endif %}
+
+            {% if rooms.Bed_Option2 %}
+            <h6 style="font-family: cursive; text-indent: 30px; font-size: 15px; padding-bottom: 5px;">+ {{ rooms.Bed_Option2 }}</h6>
+            {% else %}
+            <h6 style=""></h6>
+            {% endif %}
+
+            {% if rooms.Bed_Option3 %}
+            <h6 style="font-family: cursive; text-indent: 30px; font-size: 15px; padding-bottom: 5px;">+ {{ rooms.Bed_Option3 }}</h6>
+            {% else %}
+            <h6 style=""></h6>
+            {% endif %}
+
+            {% if rooms.Bed_Option4 %}
+            <h6 style="font-family: cursive; text-indent: 30px; font-size: 15px; padding-bottom: 5px;">+ {{ rooms.Bed_Option4 }}</h6>
+            {% else %}
+            <h6 style=""></h6>
+            {% endif %}
+
+            
             <h4 style="font-family: cursive; font-weight: bold; text-indent: 10px;">Room Capacity:</h4>
             <h6 style="font-family: cursive; text-indent: 30px; font-size: 15px; padding-bottom: 10px;">+ {{ rooms.Capacity }} People</h6>
-            
+
+
           </div>
 
-        {% if rooms.price %}
-          <div style="border-radius: 30px; width: 90px; height: 30px; background: #CD5C5C; color: #fff; position: relative; top: -515px; left: 290px;">
+        {% if rooms.price > 1000 %}
+          <div style="border-radius: 30px; width: 120px; height: 30px; background: #CD5C5C; color: #fff; position: relative; top: -515px; left: 260px;">
             
             <h6 style="font-family: cursive; font-size: 20px; line-height: 25px; font-weight: bold; padding: 0 5px; text-align: center;">$ {{ rooms.price }}</h6>
+          </div>
+
+        {% else %}
+          <div style="border-radius: 30px; width: 90px; height: 30px; background: #CD5C5C; color: #fff; position: relative; top: -515px; left: 290px;">
+            
+          <h6 style="font-family: cursive; font-size: 20px; line-height: 25px; font-weight: bold; padding: 0 5px; text-align: center;">$ {{ rooms.price }}</h6>
           </div>
         {% endif %}
 
         </div>
-        <div style="width: 400px; height: 120px; position: absolute; top: 700px;">
+        <div style="width: 400px; height: 40px; position: absolute; top: 750px;">
           <!--Book button-->
           
-          <a href="{% url 'reservation' thehotel.id rooms.id %}" style="position: relative; top: 10px;"><button class="button1" style="width: 382px; height: 45px; border-radius: 20px; background: #ABEBC6;"><span>Book</span></button></a>
-          
-          <!--Back button-->
-          <a href="{% url 'hotel-list' %}" style="position: relative; top: 15px;"><button class="button1" style="width: 382px; height: 45px; border-radius: 20px;"><span>Back</span></button></a>
+          <a href="{% url 'reservation' thehotel.id rooms.id %}" style="position: relative; top: 10px; outline: none;"><button class="button1" style="width: 382px; height: 45px; border-radius: 20px; background: #ABEBC6; outline: none;"><span>Book</span></button></a>
         </div>
 
       </div>
@@ -625,7 +674,7 @@ nav.change .menu-col-4, .change .menu-col-3, .change .menu-col-2, .change .menu-
 </div>
 
 <!--Footer-->
-<footer style="margin: 0; padding: 0; border-top: 4px solid #FAD7A0; position: absolute; background: #151515; width: 100%; height: 376px; top: 1950px;">
+<footer style="margin: 0; padding: 0; border-top: 4px solid #FAD7A0; position: absolute; background: #151515; width: 100%; height: 376px; top: 2050px;">
   <div style="position: absolute; width: 1000px; top: 50px; height: 100px; box-sizing: border-box; left: 240px; float: left; padding: 0 10px;  box-sizing: border-box;">
     <div class="brief-about-us" style=" width: 200px; padding: 5px 0px; left: -20px;top: 4px; position: absolute; ">
       <!--Sub-title-->

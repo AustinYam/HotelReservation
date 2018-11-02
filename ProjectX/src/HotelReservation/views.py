@@ -100,7 +100,6 @@ def booking_room_view(request, pk):
 		FirstDate = request.session['checkin']
 		SecDate =  request.session['checkout']
 
-	
 		Checkin = datetime.datetime.strptime(FirstDate, "%m/%d/%Y").date()
 		Checkout = datetime.datetime.strptime(SecDate, "%m/%d/%Y").date()
 
@@ -239,32 +238,41 @@ def storingData(request, thehotelid, roomid, checkin, checkout, totalcost):
 		url = reverse('hotel-list')
 		return url
 
+@login_required(login_url="login")
 def confirmation(request):
 	context = {}
 	return render(request, 'thank_you_page.html', context)
 
+@login_required(login_url="login")
 def mybooking(request):
 	bookings = Reservation.objects.filter(user=request.user)
 
 	for date_in in Reservation.objects.values_list('date_in', flat=True).distinct():
 		Reservation.objects.filter(pk__in=Reservation.objects.filter(date_in=date_in).values_list('id', flat=True)[1:]).delete()
 
-		
+	for date_out in Reservation.objects.values_list('date_out', flat=True).distinct():
+		Reservation.objects.filter(pk__in=Reservation.objects.filter(date_out=date_out).values_list('id', flat=True)[1:]).delete()
+
+	
+
 	context = {'booking':bookings}
 	return render(request, 'mybooking.html', context)
 
+@login_required(login_url="login")
 def cancelbooking(request, id):
 	bookings = Reservation.objects.get(id = id)
 	bookings.delete()
 	link = reverse('mybooking')
 	return HttpResponseRedirect(link)
 
+
 def search(request):
 	template = 'hotellist.html'
 	query = request.GET.get('sorting')
+	print(query)
 	users = HotelList.objects.all()
 	if query:
-		users = HotelList.objects.filter(Q(city__icontains=query) | Q(hotel_name__icontains=query)| Q(address__icontains=query))
+		users = HotelList.objects.filter(Q(city__icontains=query) | Q(hotel_name__icontains=query)| Q(address__icontains=query) | Q(zip_code__icontains=query) | Q(room__RoomType__icontains=query) | Q(room__Bed_Option1__icontains=query) | Q(room__Bed_Option2__icontains=query) | Q(room__Bed_Option3__icontains=query) | Q(room__Bed_Option4__icontains=query)).distinct()
 	else:
 		users = HotelList.objects.all()
 

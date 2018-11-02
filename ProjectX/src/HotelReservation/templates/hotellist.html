@@ -175,6 +175,7 @@
   font-family: cursive;
   position: relative;
   transition: 0.5s;
+  outline: none;
 
 }
 
@@ -185,6 +186,7 @@
   top: 0;
   right: -20px;
   transition: 0.5s;
+  outline: none;
 }
 
 .button3:hover span {
@@ -241,7 +243,36 @@
 	left: 0;
 	line-height: 40px;
 }
-
+.magnifier-icon{
+  display: block;
+  position: relative;
+  height: 20px;
+  width: 20px;
+  left: 0px;
+  top: -2px;
+  background: white;
+  border-radius: 50%;
+  transform: rotate(-45deg);
+}
+.magnifier-icon:before{
+  content: "";
+  position: absolute;
+  height: 80%;
+  width: 80%;
+  border-radius: 50%;
+  top: 10%;
+  left: 10%;
+  background: #FA8072;
+}
+.magnifier-icon:after{
+  content: "";
+  position: absolute;
+  width: 20%;
+  height: 45%;
+  background: white;
+  left: 40%;
+  top: 99%;
+}
 </style>
 
 <div class="hotel-list-wrapper">
@@ -249,6 +280,7 @@
 		<form method="GET" class="search-box" action="{% url 'search' %}" style=" font-family: cursive;">
 				<input name="sorting" class="search-txt" placeholder="Search" value="{{ request.GET.sorting }}" style="">
 				<button class="search-btn" type="submit" style="">
+					          <div class="magnifier-icon"></div>
 			</button>
 		</form>
 		

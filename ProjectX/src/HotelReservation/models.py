@@ -34,18 +34,24 @@ class HotelList(models.Model):
 
 class Room(models.Model):
     hotel = models.ForeignKey(HotelList, on_delete=models.CASCADE)
+    priorty = models.CharField(max_length=255, default='')
     RoomType = models.CharField(max_length=255, default='')
     Capacity = models.IntegerField(default=0)
-    Bed_Option = models.CharField(max_length=255, default='')
+    Bed_Option1 = models.CharField(max_length=255, default='', blank=True)
+    Bed_Option2 = models.CharField(max_length=255, default='', blank=True)
+    Bed_Option3 = models.CharField(max_length=255, default='', blank=True)
+    Bed_Option4 = models.CharField(max_length=255, default='', blank=True)
     room_description = models.TextField(max_length=255, default='')
-    room_detail = models.TextField(max_length=255, default='')
+    room_detail1 = models.TextField(max_length=255, default='', blank=True)
+    room_detail2 = models.TextField(max_length=255, default='', blank=True)
+    room_detail3 = models.TextField(max_length=255, default='', blank=True)
     price = models.DecimalField(max_digits=1000, decimal_places=2, default=0)
     image1 = models.FileField(upload_to='post_img', blank=True)
     TotalRooms = models.CharField(max_length=255, default='')
     #reward_points = models.IntegerField(default=0)
     class Meta:
         verbose_name_plural = 'Room'
-        ordering = ('RoomType',)
+        ordering = ('priorty',)
 
     def __str__(self):
         return self.RoomType
