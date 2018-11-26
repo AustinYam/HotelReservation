@@ -10,8 +10,245 @@
 <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
   <link rel="stylesheet" href="{% static 'css/swiper.min.css' %}">
 <style type="text/css">
+
+nav {
+  background: #fff;
+  position: fixed;
+  box-sizing: border-box;
+  padding: 10px 100px;
+  width: 100%;
+  height: 80px;
+  top: 0px;
+  left: 0;
+  transition: 0.3s;
+  z-index: 10;
+}
+
+nav.change {
+  background: #CD5C5C;
+}
+
+.logo{
+  padding: 0px;
+  height: 10px;
+  float: left;
+  transition: 0.3s;
+  pointer-events: none;
+}
+
+
+nav ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  position: relative;
+  text-align: left;
+  float: right;
+  display: flex;
+  height: 60px;
+  background: #fff;
+  transition: 0.3s;
+}
+
+nav.change ul {
+  background: #CD5C5C;
+}
+
+nav li {
+  display: inline-block;
+
+}
+nav ul li{
+  display: inline-block;
+  list-style: none;
+}
+
+nav ul li a:hover{
+  color: #F9E79F;
+  transform: translate(10px); 
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+ul li:hover{
+  background: #FFA07A;
+}
+
+ul ul{
+  position: absolute;
+  display: none;
+}
+
+ul li:hover ul{
+  display: block;
+}
+
+ul ul li{
+  display: block;
+  background: #fff;
+  transition: 0.3s;
+  width: 100px;
+}
+
+ul .Room ul li, ul .Dinning ul li{
+  width: 200px;
+  transition: 0.3s;
+}
+
+ul .Room ul{
+  height: auto;
+  top: 60px;
+  border-top: 3px solid #F08080;
+  border-bottom: 3px solid #F08080;
+}
+
+ul .Dinning ul{
+  height: auto;
+  top: 60px;
+  border-top: 3px solid #F08080;
+  border-bottom: 3px solid #F08080;
+}
+
+nav.change ul ul li{
+   background: #CD5C5C;
+}
+
+nav a {
+  color: #000;
+  text-decoration: none;
+  display: block;
+  font-size: 20px;
+  font-family: cursive;
+  padding: 10px 15px;
+  transition: 0.3s;
+}
+
+nav.change a{
+  color: #fff;
+}
+
+nav ul li a:focus{
+  outline: none;
+}
+
+nav li:hover {
+  background: #fff;
+  transition: 0.3s;
+}
+
+nav.change li:hover{
+  background: #CD5C5C;
+}
+
+.menu-sub {
+  position: absolute;
+  left: -530px;
+  top: 60px;
+  background: #fff;
+  width: 1430px;
+  height: 300px;
+  display: none;
+  color: #000;
+  padding: 2em;
+  transition: 0.3s ease;
+  border-top: 3px solid #F08080;
+  border-bottom: 3px solid #F08080;
+}
+
+.menu-sub:hover{
+  left: -700px;
+
+}
+
+  .menu-main{
+    top: 10px;
+  }
+
+nav.change .menu-sub{
+  background: #CD5C5C;
+
+  color: #fff;
+}
+
+nav li:hover .menu-sub {
+  display: block;
+}
+
+.menu-sub li {
+  display: block;
+  left: 0;
+  transition: 0.3s;
+}
+
+.menu-sub a {
+  padding: 0;
+  font-size: 15px;
+  font-family: cursive;
+  margin-bottom: .35em;
+}
+
+.menu-sub a:hover {
+  color: #F9E79F;
+  text-decoration: none;
+}
+
+
+.menu-category {
+  font-size: 20px;
+  width: 300px;
+  color: #CD5C5C;
+  position: relative;
+  font-family: cursive;
+}
+
+.change .menu-category{
+  color: #F9E79F;
+}
+
+.menu-category:first-of-type {
+  margin-top: 0;
+}
+
+.menu-col-1{
+  top: 0px;
+  width: 200px;
+  height: 200px;
+  float: left;
+  border-right: 1px solid #F08080;
+}
+
+.menu-col-2 {
+  top: 0px;
+  width: 200px;
+  height: 200px;
+  float: left;
+  padding: 0 40px;
+  border-right: 1px solid #F08080;
+}
+
+.menu-col-3 {
+  top: 0px;
+  width: 250px;
+  height: 200px;
+  float: left;
+  padding: 0 40px;
+  border-right: 1px solid #F08080;
+}
+
+.menu-col-4 {
+  top: 0px;
+  width: 250px;
+  height: 200px;
+  float: left;
+  padding: 0 40px;
+  border-right: 1px solid #F08080;
+}
+
+nav.change .menu-col-4, .change .menu-col-3, .change .menu-col-2, .change .menu-col-1{
+  border-right: 1px solid #fff;
+}
 .each-list{
-	margin: 20px;
+	margin: 10px;
 	width: 460px;
 	height: 170px;
 	background: white;
@@ -89,14 +326,38 @@
 	border-radius: 50%;
 
 }
+.image0{
+	width: 20px; 
+	height: 20px; 
+	position: relative; 
+	animation:spin 4s linear infinite;
+}
+
+@keyframes spin { 
+	100% { 
+		-webkit-transform: rotateY(360deg); 
+		transform:rotateY(360deg); 
+	} }
 </style>
 <div>
 
-	<div style="">
-		<h3 style="font-family: cursive;font-size: 50px; text-align: center;">My Booking</h1>
+	<div style="position: relative; top: 50px;">
+		<h3 style="font-family: cursive; font-size: 50px; text-align: center;">My Booking</h1>
 		<br>
 		<div style="font-family: cursive; width: 50%; border: 1px solid black; border-radius: 30px; height: 200px; left: 25%; position: relative;">
-			<p style="font-size: 20px;"> {{ user.first_name }} {{ user.last_name }}</p>
+			<p style="font-size: 19px; position: relative; top: 10px; left: 20px;"><span style="font-weight: bold; font-size: 20px;">Name</span>: {{ user.first_name }} {{ user.last_name }}</p>
+
+			<p style="font-size: 19px; position: relative; top: 10px; left: 20px;"><span style="font-weight: bold; font-size: 20px;">Email</span>: {{ user.email }}</p>
+
+			<!--<p style="font-size: 19px; position: relative; top: 10px; left: 20px;">{{ user.password }}</p>-->
+
+			{% if earning_points %}
+
+				{% for earning_point in earning_points%}
+				<p style="font-size: 20px; position: relative; top: 10px; left: 20px;"><span style="font-weight: bold; font-size: 20px;">Earned</span>: {{ earning_point.total_reward_points }} <img class="image0" src="{% static 'img/coin-4.png' %}"></p>
+				{% endfor %}
+			{% endif %}
+
 		</div>
 		
 		{% if booking %}
@@ -117,14 +378,102 @@
 					<p class="room-price">${{ bookings.total_cost }}</p>
 				</div>
 				<div class="list-btn">
-					<a class="" href="{% url 'cancelbooking' bookings.id %}"><img class="trash-icon" src="https://png.icons8.com/dotty/50/000000/waste.png"></a>
+					<a id="coin4" href="{% url 'cancelbooking' bookings.id %}"><img class="trash-icon" src="https://png.icons8.com/dotty/50/000000/waste.png"></a>
 				</div>
-				
 			</div>
 			
 		</div>
 		{% endfor %}
+
+		{% else %}
+		<div style="width: 400px; height: 100px; border: 1px solid black; position: relative; top: 100px; left: 500px; border-radius: 50px;">
+			<p style="font-family: cursive; font-size: 25px; text-align: center; position: relative; top: 30px;">You have to book a room!!</p>
+		</div>
+		
 		{% endif %}	
 	</div>
 </div>
+
+<!-- Nav Bar -->
+<nav>
+  <div class="logo"><a href="{% url 'home' %}"><img src="{% static 'img/logo.png' %}" id="Logo" style="width: 170px; height: 120px; top: -40px; position: relative; left: -50px; z-index: 10;"></a></div>
+  <ul class="menu-main">
+      <li class="home"><a href="{% url 'home' %}">Home</a></li>
+<!--
+      <li class="page"><a href="#">Page</a>
+        <div class="menu-sub">
+              <div class="menu-col-1">
+                  <h3 class="menu-category">Generals</h3>
+                  <ul>
+                      <li class="sub-l"><a href="">Link 1</a></li>
+                      <li class="sub-l"><a href="">Link 2</a></li>
+                      <li class="sub-l"><a href="">Link 3</a></li>
+                      <li class="sub-l"><a href="">Link 4</a></li>
+                      <li class="sub-l"><a href="">Link 5</a></li>
+                  </ul>
+              </div>
+
+              <div class="menu-col-2">
+                  <h3 class="menu-category">Fast Services</h3>
+                  <ul>
+                      <li class="sub-l"><a href="">Link 1</a></li>
+                      <li class="sub-l"><a href="">Link 2</a></li>
+                      <li class="sub-l"><a href="">Link 3</a></li>
+                      <li class="sub-l"><a href="">Link 4</a></li>
+                      <li class="sub-l"><a href="">Link 5</a></li>
+                </ul>
+              </div>
+
+              <div class="menu-col-3">
+                  <h3 class="menu-category">About</h3>
+                  <ul>
+                    <li class="sub-l"><a href="">Link 1</a></li>
+                      <li class="sub-l"><a href="">Link 2</a></li>
+                      <li class="sub-l"><a href="">Link 3</a></li>
+                      <li class="sub-l"><a href="">Link 4</a></li>
+                      <li class="sub-l"><a href="">Link 5</a></li>
+                  </ul>
+              </div>
+
+              <div class="menu-col-4">
+                  <h3 class="menu-category">Team Members</h3>
+                  <ul>
+                      <li class="sub-l"><a href="">Link 1</a></li>
+                      <li class="sub-l"><a href="">Link 2</a></li>
+                      <li class="sub-l"><a href="">Link 3</a></li>
+                      <li class="sub-l"><a href="">Link 4</a></li>
+                      <li class="sub-l"><a href="">Link 5</a></li>
+                  </ul>
+              </div>
+          </div>
+      </li>-->
+      <li class="Room"><a href="{% url 'hotel-list' %}">Hotel List</a></li>
+      <li class="ammeties"><a href="{% url 'mybooking' %}">My Booking</a></li>
+
+      <li class="contact"><a href="{% url 'contact' %}">Contact</a></li>
+  </ul>
+  <script>
+
+window.onscroll = function() {
+  spinningLogo()
+};
+
+function spinningLogo() {
+  var Logo = document.getElementById("Logo")
+  if (document.body.scrollTop > 5 || document.documentElement.scrollTop > 5) {
+    Logo.style.width = '170px';
+    Logo.style.height = '120px';
+    Logo.style.transition = '0.5s';
+    Logo.style.transform = 'rotateY(360deg)';
+  } else {
+    Logo.style.background = 'rgba(255,255,255,0)';
+    Logo.style.transform = 'rotateY(0deg)';
+    Logo.style.top = '-40px';
+    Logo.style.transition = '0.5s';
+    Logo.style.width = '170px';
+    Logo.style.height = '120px';
+  }
+}
+</script>
+</nav>
 {% endblock %}

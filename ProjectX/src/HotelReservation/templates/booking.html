@@ -582,36 +582,44 @@ nav.change .menu-col-4, .change .menu-col-3, .change .menu-col-2, .change .menu-
             <h4 style="font-family: cursive; font-weight: bold; text-indent: 10px;">Description:</h4>
             <h3 style="width: 350px; top: -10px; left: 20px; position: relative; font-family: cursive; font-size: 15px; padding-bottom: 10px;">+ {{ rooms.room_description }}</h3>
             <h4 style="font-family: cursive; font-weight: bold; text-indent: 10px;">Services:</h4>
-  
 
             {% if rooms.Bed_Option1 %}
-            <h6 style="font-family: cursive; text-indent: 30px; font-size: 15px; padding-bottom: 5px;">+ {{ rooms.Bed_Option1 }}</h6>
+              <h6 style="font-family: cursive; text-indent: 30px; font-size: 15px; padding-bottom: 5px;">+ {{ rooms.Bed_Option1 }}</h6>
             {% else %}
-            <h6 style=""></h6>
+              <h6 style=""></h6>
             {% endif %}
 
             {% if rooms.Bed_Option2 %}
-            <h6 style="font-family: cursive; text-indent: 30px; font-size: 15px; padding-bottom: 5px;">+ {{ rooms.Bed_Option2 }}</h6>
+              <h6 style="font-family: cursive; text-indent: 30px; font-size: 15px; padding-bottom: 5px;">+ {{ rooms.Bed_Option2 }}</h6>
             {% else %}
-            <h6 style=""></h6>
+              <h6 style=""></h6>
             {% endif %}
 
             {% if rooms.Bed_Option3 %}
-            <h6 style="font-family: cursive; text-indent: 30px; font-size: 15px; padding-bottom: 5px;">+ {{ rooms.Bed_Option3 }}</h6>
+              <h6 style="font-family: cursive; text-indent: 30px; font-size: 15px; padding-bottom: 5px; position: absolute; top: 174px; left: 140px;">+ {{ rooms.Bed_Option3 }}</h6>
             {% else %}
-            <h6 style=""></h6>
+              <h6 style=""></h6>
             {% endif %}
 
             {% if rooms.Bed_Option4 %}
-            <h6 style="font-family: cursive; text-indent: 30px; font-size: 15px; padding-bottom: 5px;">+ {{ rooms.Bed_Option4 }}</h6>
+              <h6 style="font-family: cursive; text-indent: 30px; font-size: 15px; padding-bottom: 5px; position: absolute; top: 205px; left: 140px;">+ {{ rooms.Bed_Option4 }}</h6>
             {% else %}
-            <h6 style=""></h6>
+              <h6 style=""></h6>
             {% endif %}
 
-            
-            <h4 style="font-family: cursive; font-weight: bold; text-indent: 10px;">Room Capacity:</h4>
-            <h6 style="font-family: cursive; text-indent: 30px; font-size: 15px; padding-bottom: 10px;">+ {{ rooms.Capacity }} People</h6>
+            {% if rooms.Capacity %}
+              <h4 style="font-family: cursive; font-weight: bold; text-indent: 10px;">Room Capacity:</h4>
+              <h6 style="font-family: cursive; text-indent: 30px; font-size: 15px; padding-bottom: 10px;">+ {{ rooms.Capacity }} People</h6>
+            {% else %}
+              <h4 style="font-family: cursive; font-weight: bold; text-indent: 10px;">Room Capacity:</h4>
+              <h6 style="font-family: cursive; text-indent: 30px; font-size: 15px; padding-bottom: 10px;">Contact admin for more information.</h6>
+            {% endif %}
 
+            {% if rooms.reward_points %}
+              <h4 style="font-family: cursive; font-weight: bold; text-indent: 10px;">Reward:</h4>
+              <h6 style="font-family: cursive; text-indent: 30px; font-size: 15px; padding-bottom: 10px;">+ {{ rooms.reward_points }} Pts/Room</h6>
+            {% else %}
+            {% endif %}
 
           </div>
 
@@ -686,7 +694,7 @@ nav.change .menu-col-4, .change .menu-col-3, .change .menu-col-2, .change .menu-
       <!--Subtitle-->
       <h5 style="color: #FAD7A0; text-align: center; position: relative; width: 400px; font-size: 16px; font-family: cursive;">Information</h5>
       <p style="color: #fff; font-family: cursive; text-align: center; width: 400px; padding: 5px 10px;">2568 S King Rd, San Jose, CA 95122</i></p>
-      <p style="text-align: center; position: relative; width: 400px; font-family: cursive; color: #fff; list-style: none; top: -15px;"><a href="mailto:lavshort@gmail.com" style="text-decoration: none; color: #fff;padding: 10px 10px;"><span>&#9993;</span> lavashort@gmail.com</a></p>
+      <p style="text-align: center; position: relative; width: 400px; font-family: cursive; color: #fff; list-style: none; top: -15px;"><a href="mailto:lavshort@gmail.com" style="text-decoration: none; color: #fff;padding: 10px 10px;"><span>&#9993;</span> BookMe@gmail.com</a></p>
       <p style="text-align: center; position: relative; width: 400px; font-family: cursive; color: #fff; top: -25px; list-style: none;"><a href="tel:4089529901" style="text-decoration: none; color: #fff; padding: 15px 10px;"><span>&#9990;</span> +1 (408)-952-9901</a></p>
 
     </div>

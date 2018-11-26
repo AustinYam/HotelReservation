@@ -91,7 +91,6 @@ class SignUpForm(UserCreationForm):
 
         return user
 
-
 class LogInForm(AuthenticationForm):
     username = forms.CharField(widget=forms.TextInput(
         attrs={

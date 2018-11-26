@@ -16,6 +16,285 @@
 
 <!--StyleSheet-->
 <style type="text/css">
+
+nav {
+  background: #fff;
+  position: fixed;
+  box-sizing: border-box;
+  padding: 10px 100px;
+  width: 100%;
+  height: 80px;
+  top: 0px;
+  left: 0;
+  transition: 0.3s;
+  z-index: 10;
+}
+
+nav.change {
+  background: #CD5C5C;
+}
+
+.logo{
+  padding: 0px;
+  height: 10px;
+  float: left;
+  transition: 0.3s;
+  pointer-events: none;
+}
+
+
+nav ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  position: relative;
+  text-align: left;
+  float: right;
+  display: flex;
+  height: 60px;
+  background: #fff;
+  transition: 0.3s;
+}
+
+nav.change ul {
+  background: #CD5C5C;
+}
+
+nav li {
+  display: inline-block;
+
+}
+nav ul li{
+  display: inline-block;
+  list-style: none;
+}
+
+nav ul li a:hover{
+  color: #F9E79F;
+  transform: translate(10px); 
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+ul li:hover{
+  background: #FFA07A;
+}
+
+ul ul{
+  position: absolute;
+  display: none;
+}
+
+ul li:hover ul{
+  display: block;
+}
+
+ul ul li{
+  display: block;
+  background: #fff;
+  transition: 0.3s;
+  width: 100px;
+}
+
+ul .Room ul li, ul .Dinning ul li{
+  width: 200px;
+  transition: 0.3s;
+}
+
+ul .Room ul{
+  height: auto;
+  top: 60px;
+  border-top: 3px solid #F08080;
+  border-bottom: 3px solid #F08080;
+}
+
+ul .Dinning ul{
+  height: auto;
+  top: 60px;
+  border-top: 3px solid #F08080;
+  border-bottom: 3px solid #F08080;
+}
+
+nav.change ul ul li{
+   background: #CD5C5C;
+}
+
+nav a {
+  color: #000;
+  text-decoration: none;
+  display: block;
+  font-size: 20px;
+  font-family: cursive;
+  padding: 10px 15px;
+  transition: 0.3s;
+}
+
+nav.change a{
+  color: #fff;
+}
+
+nav ul li a:focus{
+  outline: none;
+}
+
+nav li:hover {
+  background: #fff;
+  transition: 0.3s;
+}
+
+nav.change li:hover{
+  background: #CD5C5C;
+}
+
+.menu-sub {
+  position: absolute;
+  left: -530px;
+  top: 60px;
+  background: #fff;
+  width: 1430px;
+  height: 300px;
+  display: none;
+  color: #000;
+  padding: 2em;
+  transition: 0.3s ease;
+  border-top: 3px solid #F08080;
+  border-bottom: 3px solid #F08080;
+}
+
+.menu-sub:hover{
+  left: -700px;
+
+}
+
+  .menu-main{
+    top: 10px;
+  }
+
+nav.change .menu-sub{
+  background: #CD5C5C;
+
+  color: #fff;
+}
+
+nav li:hover .menu-sub {
+  display: block;
+}
+
+.menu-sub li {
+  display: block;
+  left: 0;
+  transition: 0.3s;
+}
+
+.menu-sub a {
+  padding: 0;
+  font-size: 15px;
+  font-family: cursive;
+  margin-bottom: .35em;
+}
+
+.menu-sub a:hover {
+  color: #F9E79F;
+  text-decoration: none;
+}
+
+
+.menu-category {
+  font-size: 20px;
+  width: 300px;
+  color: #CD5C5C;
+  position: relative;
+  font-family: cursive;
+}
+
+.change .menu-category{
+  color: #F9E79F;
+}
+
+.menu-category:first-of-type {
+  margin-top: 0;
+}
+
+.menu-col-1{
+  top: 0px;
+  width: 200px;
+  height: 200px;
+  float: left;
+  border-right: 1px solid #F08080;
+}
+
+.menu-col-2 {
+  top: 0px;
+  width: 200px;
+  height: 200px;
+  float: left;
+  padding: 0 40px;
+  border-right: 1px solid #F08080;
+}
+
+.menu-col-3 {
+  top: 0px;
+  width: 250px;
+  height: 200px;
+  float: left;
+  padding: 0 40px;
+  border-right: 1px solid #F08080;
+}
+
+.menu-col-4 {
+  top: 0px;
+  width: 250px;
+  height: 200px;
+  float: left;
+  padding: 0 40px;
+  border-right: 1px solid #F08080;
+}
+
+nav.change .menu-col-4, .change .menu-col-3, .change .menu-col-2, .change .menu-col-1{
+  border-right: 1px solid #fff;
+}
+
+@media(max-width: 768px){
+  nav{
+    width: 100%;
+    height: 70px;
+  }
+  .menu-main{
+    left: 27%;
+    top: 70px;
+  }
+
+  .menu-col-1{
+    padding: 0;
+  }
+
+  .menu-main li a{
+    font-size: 15px;
+  }
+
+  .logo{
+    position: relative;
+    padding: 0;
+    top: -10px;
+    left: 0;
+    width: 100%;
+  }
+
+  .logo a{
+    text-align: center; 
+    font-size: 30px;
+  }
+
+  .menu-sub{
+    top: 49.5px;
+    width: 100%;
+    left: 0;
+  }
+  ul .Room ul li, ul .Dinning ul li{
+    width: 150px;
+    transition: 0.3s;
+  }
+}
 .each-list{
 	width: 350px; 
 	height: 500px; 
@@ -27,6 +306,13 @@
 	margin-bottom: 40px;
 	border-radius: 20px;
 	margin-left: 20px;
+}
+
+.each-list:hover{
+  float: left; 
+  margin-bottom: 40px;
+  border-radius: 20px;
+  margin-left: 20px;
 }
 
 .paginationcover{
@@ -203,7 +489,7 @@
 	background: white;
 	position: absolute;  
 	left: 720px;
-	top: 130px;
+	top: 190px;
 	transform: translate(-50%, -50%);
 	height: 60px;
 	padding: 10px;
@@ -273,24 +559,44 @@
   left: 40%;
   top: 99%;
 }
+.each-list.slide-left {
+      -moz-transition: all 1000ms linear;
+      -webkit-transition: all 1000ms linear;
+      -o-transition: all 1000ms linear;
+      transition: all 1000ms linear;
+      -moz-transform: translate3d(-700px, 0px, 200px);
+      -webkit-transform: translate3d(-700px, 0px, 0px);
+      -o-transform: translate(-700px, 0px);
+      -ms-transform: translate(-700px, 0px);
+      opacity: 0;
+      transform: translate3d(0px, 100px, 0px);
+  }
+
+  .each-list.slide-left.in-view {
+      -moz-transform: translate3d(0px, 0px, 0px);
+      -webkit-transform: translate3d(0px, 0px, 0px); 
+      -o-transform: translate(0px, 0px);
+      -ms-transform: translate(0px, 0px);
+      transform: translate3d(0px, 0px, 0px);
+      opacity: 1;
+  }
+
 </style>
 
 <div class="hotel-list-wrapper">
-	<img src="{% static 'img/hotel-background2.jpg' %}" style="width: 100%; height: 726px; position: absolute; z-index: -1;">
+	<img src="{% static 'img/background.jpg' %}" style="width: 100%; height: 726px; position: absolute; z-index: -1;">
 		<form method="GET" class="search-box" action="{% url 'search' %}" style=" font-family: cursive;">
 				<input name="sorting" class="search-txt" placeholder="Search" value="{{ request.GET.sorting }}" style="">
 				<button class="search-btn" type="submit" style="">
-					          <div class="magnifier-icon"></div>
+					<div class="magnifier-icon"></div>
 			</button>
 		</form>
 		
-	<div class="white-wrapper" style="width: 1237px; height: auto; z-index: 2; background: white; position: absolute; left: 100px; top: 35px; box-shadow: 0 25px 30px rgba(0,0,0,0.5);">
+	<div class="white-wrapper" style="width: 1237px; height: auto; z-index: 2; background: white; position: absolute; left: 100px; top: 235px; box-shadow: 0 25px 30px rgba(0,0,0,0.5); border-radius: 30px;">
 		<h1 style="font-family: cursive; text-align: center;">Hotel List
 			<div style="width: 70px; height: 1px; background: #CD5C5C; position: relative; top: -20px; z-index: 2.5; text-align: center; left: 450px;"></div>
 			<div style="width: 70px; height: 1px; background: #CD5C5C; position: relative; top: -20px; z-index: 2.5; text-align: center; left: 720px;"></div>
 		</h1>
-
-
 
 		{% if users %}
 			{% for hotellist in users %}
@@ -307,42 +613,133 @@
 						<p class="real-decription" style="text-indent: 10px; font-weight: normal;">{{ hotellist.description }}</p>
 
 						<div class="line-separate" style="width: 180px; height: 1px; background: #F39C12; position: absolute; left: 20px; top: 460px;"></div>
-						<!--<img src="https://png.icons8.com/metro/50/000000/single-bed.png" style="width: 20px; height: 20px; position: absolute; left: 25px; top: 465px;">
-						<h6 style="position: absolute; left: 50px; top: 455px; font-size: 15px; font-family: cursive; ">{{ hotellist.single_bed }}</h6>
-						<img src="https://png.icons8.com/metro/50/000000/bedroom.png" style="width: 17px; height: 17px; position: absolute; left: 65px; top: 465px;">
-						<h6 style="position: absolute; left: 90px; top: 455px; font-size: 15px; font-family: cursive; ">{{ hotellist.double_bed }}</h6>-->
+
 					</div>
-					<a href="{% url 'booking_with_pk' pk=hotellist.pk %}"><button class="button3"><span>Book</span></button></a>
+					<a href="{% url 'booking_with_pk' pk=hotellist.pk %}"><button class="button3"><span>See Rooms</span></button></a>
 				</div>
 			{% endfor %}
+
+        <script type="text/javascript">
+    $(document).ready(function() {
+
+      //window and animation items
+      var animation_elements = $.find('.each-list');
+            var web_window = $(window);
+
+            //check to see if any animation containers are currently in view
+            function check_if_in_view() {
+              //get current window information
+              var window_height = web_window.height();
+              var window_top_position = web_window.scrollTop();
+              var window_bottom_position = (window_top_position + window_height);
+
+              $.each(animation_elements, function() {
+
+                var element = $(this);
+                var element_height = $(element).outerHeight();
+                var element_top_position = $(element).offset().top;
+                var element_bottom_position = (element_top_position + element_height);
+
+                if ((element_bottom_position >= window_top_position) && (element_top_position <= window_bottom_position)) {
+                  element.addClass('in-view');
+                } 
+              });
+
+          }
+
+          $(window).on('scroll resize', function() {
+              check_if_in_view()
+          })
+          $(window).trigger('scroll');
+
+        });
+      </script>
 		{% else %}
 			<p style="font-family: cursive; font-size: 20px; text-align: center;">There are nothing here! Please contact with admin</p>
 		{% endif %}
 	</div>
-
-	{% if users.has_other_pages %}
-		<ul class="paginationcover">
-	    	{% if users.has_previous %}
-	      		<li><a class="previous-page-arrow" href="?page={{ users.previous_page_number }}{% if query %}&q={{query}}{% endif %}"><span></span></a></li>
-	    	{% else %}
-	      		<li class="disabled-previous"><span style="text-decoration: none;"></span></li>
-	    	{% endif %}
-	    	
-	    	{% for i in users.paginator.page_range %}
-	      		{% if users.number == i %}
-	        		<li class="paging"><span style="text-decoration: none;">{{ i }}<span class="sr-only">(current)</span></span></li>
-	      		{% else %}
-	        		<li><a class="nothing" style="text-decoration: none;" href="?page={{ i }}{% if query %}&q={{query}}{% endif %}">{{ i }}</a></li>
-	      		{% endif %}
-	    	{% endfor %}
-	    	
-	    	{% if users.has_next %}
-	      		<li><a class="next-page-arrow" href="?page={{ users.next_page_number }}{% if query %}&q={{query}}{% endif %}"><span></span></a></li>
-	    	{% else %}
-	      		<li class="disabled-next"><span style="text-decoration: none;"></span></li>
-	    	{% endif %}
-	  	</ul>
-	{% endif %}
 </div>
 
+<!-- Nav Bar -->
+<nav>
+  <div class="logo"><a href="{% url 'home' %}"><img src="{% static 'img/logo.png' %}" id="Logo" style="width: 170px; height: 120px; top: -40px; position: relative; left: -50px; z-index: 10;"></a></div>
+  <ul class="menu-main">
+      <li class="home"><a href="{% url 'home' %}">Home</a></li>
+<!--
+      <li class="page"><a href="#">Page</a>
+        <div class="menu-sub">
+              <div class="menu-col-1">
+                  <h3 class="menu-category">Generals</h3>
+                  <ul>
+                      <li class="sub-l"><a href="">Link 1</a></li>
+                      <li class="sub-l"><a href="">Link 2</a></li>
+                      <li class="sub-l"><a href="">Link 3</a></li>
+                      <li class="sub-l"><a href="">Link 4</a></li>
+                      <li class="sub-l"><a href="">Link 5</a></li>
+                  </ul>
+              </div>
+
+              <div class="menu-col-2">
+                  <h3 class="menu-category">Fast Services</h3>
+                  <ul>
+                      <li class="sub-l"><a href="">Link 1</a></li>
+                      <li class="sub-l"><a href="">Link 2</a></li>
+                      <li class="sub-l"><a href="">Link 3</a></li>
+                      <li class="sub-l"><a href="">Link 4</a></li>
+                      <li class="sub-l"><a href="">Link 5</a></li>
+                </ul>
+              </div>
+
+              <div class="menu-col-3">
+                  <h3 class="menu-category">About</h3>
+                  <ul>
+                    <li class="sub-l"><a href="">Link 1</a></li>
+                      <li class="sub-l"><a href="">Link 2</a></li>
+                      <li class="sub-l"><a href="">Link 3</a></li>
+                      <li class="sub-l"><a href="">Link 4</a></li>
+                      <li class="sub-l"><a href="">Link 5</a></li>
+                  </ul>
+              </div>
+
+              <div class="menu-col-4">
+                  <h3 class="menu-category">Team Members</h3>
+                  <ul>
+                      <li class="sub-l"><a href="">Link 1</a></li>
+                      <li class="sub-l"><a href="">Link 2</a></li>
+                      <li class="sub-l"><a href="">Link 3</a></li>
+                      <li class="sub-l"><a href="">Link 4</a></li>
+                      <li class="sub-l"><a href="">Link 5</a></li>
+                  </ul>
+              </div>
+          </div>
+      </li>-->
+      <li class="Room"><a href="{% url 'hotel-list' %}">Hotel List</a></li>
+      <li class="ammeties"><a href="{% url 'mybooking' %}">My Booking</a></li>
+
+      <li class="contact"><a href="{% url 'contact' %}">Contact</a></li>
+  </ul>
+  <script>
+
+window.onscroll = function() {
+  spinningLogo()
+};
+
+function spinningLogo() {
+  var Logo = document.getElementById("Logo")
+  if (document.body.scrollTop > 5 || document.documentElement.scrollTop > 5) {
+    Logo.style.width = '170px';
+    Logo.style.height = '120px';
+    Logo.style.transition = '0.5s';
+    Logo.style.transform = 'rotateY(360deg)';
+  } else {
+    Logo.style.background = 'rgba(255,255,255,0)';
+    Logo.style.transform = 'rotateY(0deg)';
+    Logo.style.top = '-40px';
+    Logo.style.transition = '0.5s';
+    Logo.style.width = '170px';
+    Logo.style.height = '120px';
+  }
+}
+</script>
+</nav>
 {% endblock %}

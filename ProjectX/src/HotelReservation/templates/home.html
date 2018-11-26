@@ -1037,6 +1037,7 @@ nav.change .menu-col-4, .change .menu-col-3, .change .menu-col-2, .change .menu-
   top: 300px;
   height: 400px;
   width: 350px;
+  border: 1px solid black;
   background: white;
   border-bottom-right-radius: 20px;
   border-bottom-left-radius: 20px;
@@ -1190,6 +1191,15 @@ nav.change .menu-col-4, .change .menu-col-3, .change .menu-col-2, .change .menu-
   100% {
     transform: translateX(0px); 
     opacity: 1;
+  }
+}
+
+@keyframes globalAnimation{
+  0%{
+    transform: rotate(0deg);
+  }
+  100%{
+    transform: rotate(360deg);
   }
 }
 #map{
@@ -1947,7 +1957,9 @@ nav.change .menu-col-4, .change .menu-col-3, .change .menu-col-2, .change .menu-
     <div class="section" style="transition: 0.5s;">
       <div class="content"></div>
       <div class="none-view">
-          <p class="text-fly">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. </p>
+          <h3 style="font-size: 30px; font-family: cursive; position: absolute; top: 25px; left: 250px; background: white; z-index: 9;">Slack</h3>
+          <div style="width: 200px; height: 1px;  background: linear-gradient(60deg, #FDEDEC, #F5B7B1, #F1948A, #EC7063, #CD5C5C, #FAD7A0); position: absolute; top: 60px; left: 180px;"></div>
+          <p class="text-fly">Share channels with companies and businesses you regularly work with – like clients, vendors, and partners – to bring all the right people into the same room. Hundreds of people are contributing across the world with many stakeholders who need to stay informed. The ease of communication that Slack provides helps support the teams that are delivering value at this pace and scale.</p>
       
       </div>
       <div class="Image-View">
@@ -1958,7 +1970,9 @@ nav.change .menu-col-4, .change .menu-col-3, .change .menu-col-2, .change .menu-
     <div class="section" style="transition: 0.5s;">
       <div class="content"></div>
       <div class="none-view">
-          <p class="text-fly">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. </p>
+          <h3 style="font-size: 30px; font-family: cursive; position: absolute; top: 25px; left: 245px; background: white; z-index: 9;">Facebook</h3>
+          <div style="width: 240px; height: 1px;  background: linear-gradient(60deg, #FDEDEC, #F5B7B1, #F1948A, #EC7063, #CD5C5C, #FAD7A0); position: absolute; top: 60px; left: 180px;"></div>
+          <p class="text-fly">Facebook, Inc. is an American online social media and social networking service company based in Menlo Park, California. Its website was launched on February 4, 2004, by Mark Zuckerberg, along with fellow Harvard College students and roommates Eduardo Saverin, Andrew McCollum, Dustin Moskovitz and Chris Hughes. </p>
       </div>
       <div class="Image-View">
           <img class="img-view" src="{% static 'img/facebook1.png' %}">
@@ -1967,7 +1981,9 @@ nav.change .menu-col-4, .change .menu-col-3, .change .menu-col-2, .change .menu-
     <div class="section" style="transition: 0.5s;">
       <div class="content"></div>
       <div class="none-view">
-          <p class="text-fly">Github benefit is to connect people </p>
+          <h3 style="font-size: 30px; font-family: cursive; position: absolute; top: 25px; left: 250px; background: white; z-index: 9;">Github</h3>
+          <div style="width: 200px; height: 1px;  background: linear-gradient(60deg, #FDEDEC, #F5B7B1, #F1948A, #EC7063, #CD5C5C, #FAD7A0); position: absolute; top: 60px; left: 180px;"></div>
+          <p class="text-fly">GitHub Inc. is a web-based hosting service for version control using Git. It is mostly used for computer code. It offers all of the distributed version control and source code management (SCM) functionality of Git as well as adding its own features. It provides access control and several collaboration features such as bug tracking, feature requests, task management, and wikis for every project.</p>
       </div>
       <div class="Image-View">
           <img class="img-view" src="{% static 'img/github1.png' %}" style="border: 1px solid black;">
@@ -2045,6 +2061,14 @@ nav.change .menu-col-4, .change .menu-col-3, .change .menu-col-2, .change .menu-
   </div>
   <div class="razor" style="width: 50px; height: 50px; transform: skew(-25deg); position: relative; left: 235px; top: -528px; background: #FF6F6F; z-index: 6;"></div>
 
+<div style="width: 400px; height: 400px; position: absolute; top: 1020px; left: 300px; font-size: 20px; border-radius: 30px; font-family: cursive; background: #151515; color: white; text-align: center; padding: 20px; border: 3px solid #F5B041; ">
+  <h1 style="font-family: cursive;">Global Wide</h1>
+  <p>Price guarantee on top-rated hotels worldwide. BookMe official site. No Cancellation Fees. Travel Guides. Earn Free Hotel Nights. Photos & Reviews. Budget Hotels. Last Minute Hotel Deals. Exclusive Deals. Luxury Hotels. Guest Reviews. Types: Hotel, Resort, Motel, Apartment, Vacation rental, B&Bs.</p>
+
+  <div style="width: 75px; height: 75px;border-radius: 50%; background: white; position: relative; top: 40px; borra">
+    <img src="{% static 'img/worldwide.png' %}" style="width: 70px; height: 70px; animation: globalAnimation 4s ease infinite;">
+  </div>
+</div>
 
 <div style="width: 100%; height: 550px; position: relative; top: -560px; left: -50px;">
   <div class="slideshow-container">
@@ -2207,7 +2231,7 @@ nav.change .menu-col-4, .change .menu-col-3, .change .menu-col-2, .change .menu-
 </div>-->
 
 <!--Footer-->
-<footer style="margin: 0; padding: 0; border-top: 4px solid #FAD7A0; position: absolute; background: #151515; width: 100%; height: 376px; top: 3200px;">
+<footer style="margin: 0; padding: 0; border-top: 4px solid #FAD7A0; position: absolute; background: #151515; width: 100%; height: 376px; top: 2400px;">
   <div style="position: absolute; width: 1000px; top: 50px; height: 100px; box-sizing: border-box; left: 240px; float: left; padding: 0 10px;  box-sizing: border-box;">
     <div class="brief-about-us" style=" width: 200px; padding: 5px 0px; left: -20px;top: 4px; position: absolute; ">
       <!--Sub-title-->
@@ -2218,7 +2242,7 @@ nav.change .menu-col-4, .change .menu-col-3, .change .menu-col-2, .change .menu-
     <div class="sub-contact-information" style="border-left: 1px solid #FAD7A0; width: 400px; border-right: 1px solid #FAD7A0; padding: 10px 0px; left: 277px;  position: absolute;">
       <!--Subtitle-->
       <h5 style="color: #FAD7A0; text-align: center; position: relative; width: 400px; font-size: 16px; font-family: cursive;">Information</h5>
-      <p style="color: #fff; font-family: cursive; text-align: center; width: 400px; padding: 5px 10px;">2568 S King Rd, San Jose, CA 95122</i></p>
+      <p style="color: #fff; font-family: cursive; text-align: center; width: 400px; padding: 5px 10px;">1 Washington Sq, San Jose, CA 95192</i></p>
       <p style="text-align: center; position: relative; width: 400px; font-family: cursive; color: #fff; list-style: none; top: -15px;"><a href="mailto:lavshort@gmail.com" style="text-decoration: none; color: #fff;padding: 10px 10px;"><span>&#9993;</span> lavashort@gmail.com</a></p>
       <p style="text-align: center; position: relative; width: 400px; font-family: cursive; color: #fff; top: -25px; list-style: none;"><a href="tel:4089529901" style="text-decoration: none; color: #fff; padding: 15px 10px;"><span>&#9990;</span> +1 (408)-952-9901</a></p>
 
@@ -2289,12 +2313,9 @@ nav.change .menu-col-4, .change .menu-col-3, .change .menu-col-2, .change .menu-
       <br>
       <label for="q">People: </label>
       <br>
-      <select id="q" name="q" required="true" style=" border: 1px solid black; background: white; width: 100px; border-radius: 30px;">
+      <select id="q" name="q" required="true" style=" border: 1px solid black; background: white; width: 100px; border-radius: 30px; outline: none;">
         <option>0</option>
       </select>
-      <!--<label for="q-room">Room: </label>
-      <select id="q-room" name="q-room" required="true">
-      </select>-->
       <br>
 
       <a href="{% url 'hotel-list' %}"></a><button class="button1" id="btnValidateDate" type="submit" style="vertical-align:middle; top: 10px; border-radius: 30px; left: -1px; height: 45px; width: 100px;"><span>Search</span></button>

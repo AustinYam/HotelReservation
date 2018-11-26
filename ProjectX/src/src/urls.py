@@ -44,7 +44,8 @@ urlpatterns = [
     url(r'^booking-room/(?P<pk>[0-9]+)/$', views.booking_room_view, name='booking_with_pk'),
 
     url(r'^reservation-detail/(?P<thehotelid>[0-9]+)/(?P<roomsid>[0-9]+)$', views.reservation_detail_view, name='reservation'),
-    url(r'^storing/(?P<thehotelid>[0-9]+)/(?P<roomid>[0-9]+)/(?P<checkin>(\d{4}-\d{2}-\d{2}))/(?P<checkout>(\d{4}-\d{2}-\d{2}))/(?P<totalcost>\d+\.\d{2})/$', views.storingData, name='storing'),
+    url(r'^storing/(?P<thehotelid>[0-9]+)/(?P<roomid>[0-9]+)/(?P<checkin>(\d{4}-\d{2}-\d{2}))/(?P<checkout>(\d{4}-\d{2}-\d{2}))/(?P<totalcost>\d+)/(?P<pts>\d+)/(?P<required_points>\d+)/(?P<final_result>\d+)/$', views.storingData, name='storing'),
+    url(r'^storingbypoint/(?P<thehotelid>[0-9]+)/(?P<roomid>[0-9]+)/(?P<checkin>(\d{4}-\d{2}-\d{2}))/(?P<checkout>(\d{4}-\d{2}-\d{2}))/(?P<pts>\d+)/(?P<required_points>\d+)/(?P<final_result>\d+)/$', views.storingPoint, name='storingbypoint'),
     url(r'^confirmation/$', views.confirmation, name='thanks'),
     url(r"^mybooking/$", views.mybooking, name="mybooking"),
     url(r'^mybookings/cancel/(?P<id>[0-9]+)$', views.cancelbooking, name='cancelbooking'),

@@ -30,7 +30,19 @@ class HotelList(models.Model):
     def __str__(self):
         return self.hotel_name
 
+class UserProfile(models.Model):
+    user = models.OneToOneField(User, default=None, null=True, on_delete=models.CASCADE)
+    total_reward_points = models.IntegerField(default=0, blank=True)
+    #image1 = models.FileField(upload_to='post_img', blank=True)
+    #full_name = models.CharField(max_length=255, default='', blank=True)
+    #cvv =  models.CharField(max_length=255, default='', blank=True)
+    #card_number = models.CharField(max_length=255, default='', blank=True)
 
+
+def create_profile(sender, **kwargs):
+    if kwargs['created']:
+        user_profile = UserProfile.objects.create(user=kwargs['instance'])
+post_save.connect(create_profile, sender=User)
 
 class Room(models.Model):
     hotel = models.ForeignKey(HotelList, on_delete=models.CASCADE)
@@ -47,20 +59,19 @@ class Room(models.Model):
     room_detail3 = models.TextField(max_length=255, default='', blank=True)
     price = models.DecimalField(max_digits=1000, decimal_places=2, default=0)
     image1 = models.FileField(upload_to='post_img', blank=True)
+    image2 = models.FileField(upload_to='post_img', blank=True)
+    image3 = models.FileField(upload_to='post_img', blank=True)
+    image4 = models.FileField(upload_to='post_img', blank=True)
+    image5 = models.FileField(upload_to='post_img', blank=True)
     TotalRooms = models.CharField(max_length=255, default='')
-    #reward_points = models.IntegerField(default=0)
+    reward_points = models.IntegerField(default=0, blank=True)
+
     class Meta:
         verbose_name_plural = 'Room'
         ordering = ('priorty',)
 
     def __str__(self):
         return self.RoomType
-
-#class CardNumber(models.Model):
- #   user = models.ForeignKey(User, default=None, null=True, on_delete=models.CASCADE)
-  #  full_name = models.CharField(max_length=255, default='')
-   # cvv =  models.CharField(max_length=255, default='')
-   # card_number = models.CharField(max_length=255, default='')
 
 class PhotoForTeam(models.Model):
     full_name = models.CharField(max_length=255, default='')
@@ -82,12 +93,16 @@ class Reservation(models.Model):
     #max_number_of_guests = models.IntegerField(default=0)
     date_in = models.DateField(auto_now_add=False, null=True, blank=True)
     date_out = models.DateField(auto_now=False, null=True, blank=True)
-    total_cost = models.DecimalField(max_digits=1000, decimal_places=2, default=0)
+    total_cost = models.DecimalField(max_digits=1000, decimal_places=2, default=0, blank=True)
+    stored_pts = models.IntegerField(default=0, blank=True)
 
     class Meta:
         verbose_name_plural = 'Reservation'
 
     def __str__(self):
         return self.hotel.hotel_name
+
+
+
 
     
