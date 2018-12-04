@@ -92,14 +92,18 @@ def signup(request):
 
 def hotellist_view(request):
 	users = HotelList.objects.all()
+
+	for hotel_name in Reservation.objects.filter(user=request.user).values_list('hotel__hotel_name', flat=True).distinct():
+		users = HotelList.objects.exclude(hotel_name__in=Reservation.objects.filter(user=request.user).values_list('hotel__hotel_name', flat=True))
+
 	context = {
 		'users':users
-	
 	}
 	return render(request, 'hotellist.html', context)
 
 @login_required(login_url="login")
 def booking_room_view(request, pk):
+	template = 'booking.html'
 	if pk:
 		theuser = request.user
 
@@ -124,6 +128,7 @@ def booking_room_view(request, pk):
 			room.spaceleft = RoomLeft
 			print("Number of available rooms")
 			print(RoomLeft)
+
 	
 		total_single_bed = rooms.filter(RoomType='Single').aggregate(Sum('TotalRooms'))['TotalRooms__sum']
 		total_Queen_bed = rooms.filter(RoomType='Queen').aggregate(Sum('TotalRooms'))['TotalRooms__sum']
@@ -145,7 +150,7 @@ def booking_room_view(request, pk):
 			users = paginator.page(1)
 		except EmptyPage:
 			users = paginator.page(paginator.num_pages)
-	
+		
 	context = {
 		'room':users, 
 		'thehotel':thehotel,
@@ -155,19 +160,20 @@ def booking_room_view(request, pk):
 		'total_Master_Suite_bed':total_Master_Suite_bed,
 		'total_room':total_room
 	}
-	return render(request, 'booking.html', context)
+
+	return render(request, template, context)
 
 @login_required(login_url="login")
 def reservation_detail_view(request, thehotelid, roomsid):
 	user = request.user
-	completed = request.POST.get('switch1', None) 
-	if completed:
-		print("True")
-	else:
-		print("False")
+	point = Reservation.objects.filter(user=request.user).aggregate(Sum('stored_pts'))['stored_pts__sum']
+
+	Hotel = HotelList.objects.get(id = thehotelid)
+	Rooms = Room.objects.get(id= roomsid)
+
+	price = Rooms.price
+
 	if request.method == 'POST':
-
-
 		checkIn = request.POST.get('checkin')
 		checkOut = request.POST.get('checkout')
 
@@ -181,14 +187,7 @@ def reservation_detail_view(request, thehotelid, roomsid):
 			timedeltaSum = Checkout - Checkin
 			StayDuration = timedeltaSum.days
 
-			Hotel = HotelList.objects.get(id = thehotelid)
-			Rooms = Room.objects.get(id= roomsid)
-
-			point = Reservation.objects.filter(user=request.user).aggregate(Sum('stored_pts'))['stored_pts__sum']
-
-			price = Rooms.price
-
-			points = Rooms.reward_points * StayDuration
+			points = ((Rooms.reward_points * (-40))* StayDuration)/(-100)
 		
 			TotalCost = StayDuration * price
 			TotalCost = int(TotalCost)
@@ -207,9 +206,6 @@ def reservation_detail_view(request, thehotelid, roomsid):
 			if date_range:
 				UserProfile.objects.filter(user=request.user).update(total_reward_points=final_result)
 
-			user_point = UserProfile.objects.filter(user=request.user).aggregate(Sum('total_reward_points'))['total_reward_points__sum']
-
-
 		else:
 
 			request.session['checkin'] = checkIn
@@ -221,16 +217,9 @@ def reservation_detail_view(request, thehotelid, roomsid):
 			Checkin = datetime.datetime.strptime(FirstDate, "%m/%d/%Y").date()
 			Checkout = datetime.datetime.strptime(SecDate, "%m/%d/%Y").date()
 
+			print(Checkin)
 			timedeltaSum = Checkout - Checkin
 			StayDuration = timedeltaSum.days
-
-
-			Hotel = HotelList.objects.get(id = thehotelid)
-			Rooms = Room.objects.get(id= roomsid)
-
-			point = Reservation.objects.filter(user=request.user).aggregate(Sum('stored_pts'))['stored_pts__sum']
-
-			price = Rooms.price
 
 			points = Rooms.reward_points * StayDuration
 
@@ -252,9 +241,6 @@ def reservation_detail_view(request, thehotelid, roomsid):
 			if date_range:
 				UserProfile.objects.filter(user=request.user).update(total_reward_points=final_result)
 
-			user_point = UserProfile.objects.filter(user=request.user).aggregate(Sum('total_reward_points'))['total_reward_points__sum']
-
-
 	else:
 		if 'checkin' not in request.session and 'checkout' not in request.session:
 			return HttpResponseRedirect('/home/')
@@ -267,13 +253,6 @@ def reservation_detail_view(request, thehotelid, roomsid):
 
 			timedeltaSum = Checkout - Checkin
 			StayDuration = timedeltaSum.days
-
-			Hotel = HotelList.objects.get(id = thehotelid)
-			Rooms = Room.objects.get(id= roomsid)
-	
-			point = Reservation.objects.filter(user=request.user).aggregate(Sum('stored_pts'))['stored_pts__sum']
-			print(point)
-			price = Rooms.price
 			
 			points = Rooms.reward_points * StayDuration
 
@@ -295,7 +274,7 @@ def reservation_detail_view(request, thehotelid, roomsid):
 			if date_range:
 				UserProfile.objects.filter(user=request.user).update(total_reward_points=final_result)
 
-			user_point = UserProfile.objects.filter(user=request.user).aggregate(Sum('total_reward_points'))['total_reward_points__sum']
+	user_point = UserProfile.objects.filter(user=request.user).aggregate(Sum('total_reward_points'))['total_reward_points__sum']
 
 	context = {
 		'StayDuration': StayDuration, 
@@ -315,6 +294,11 @@ def reservation_detail_view(request, thehotelid, roomsid):
 
 def storingData(request, thehotelid, roomid, checkin, checkout, totalcost, pts, required_points, final_result):
 	if request.method == "POST":
+		FirstDate = request.session['checkin']
+		SecDate =  request.session['checkout']
+
+		Checkin = datetime.datetime.strptime(FirstDate, "%m/%d/%Y").date()
+		Checkout = datetime.datetime.strptime(SecDate, "%m/%d/%Y").date()
 		
 		fullName = request.POST.get('owner')
 		numberOnCard = request.POST.get('number-on-card')
@@ -324,7 +308,7 @@ def storingData(request, thehotelid, roomid, checkin, checkout, totalcost, pts, 
 		hotel = HotelList.objects.get(id=thehotelid)
 		room = Room.objects.get(id=roomid)
 		cost = totalcost
-		reward_pts = pts
+		reward_pts = int(pts)
 
 		newReservation = Reservation()
 		newReservation.hotel = hotel
@@ -345,14 +329,25 @@ def storingData(request, thehotelid, roomid, checkin, checkout, totalcost, pts, 
 		newReservation.stored_pts = reward_pts
 		newReservation.save()
 
-		link = reverse('thanks')
+		date_range = Reservation.objects.filter(user=request.user).filter(date_in__lte=Checkout, date_out__gte=Checkin)
+		if date_range:
+			link = reverse('mybooking')
+		else:
+			link = reverse('thanks')
+		
 		return HttpResponseRedirect(link)
 	else:
 		url = reverse('hotel-list')
-		return url
+		return HttpResponseRedirect(url)
 
 def storingPoint(request, thehotelid, roomid, checkin, checkout, pts, required_points, final_result):
 	if request.method == "POST":
+
+		FirstDate = request.session['checkin']
+		SecDate =  request.session['checkout']
+
+		Checkin = datetime.datetime.strptime(FirstDate, "%m/%d/%Y").date()
+		Checkout = datetime.datetime.strptime(SecDate, "%m/%d/%Y").date()
 		
 		fullName = request.POST.get('owner')
 		numberOnCard = request.POST.get('number-on-card')
@@ -379,18 +374,46 @@ def storingPoint(request, thehotelid, roomid, checkin, checkout, pts, required_p
 		newReservation.date_in = checkin
 		newReservation.date_out = checkout
 
-		if total_reward_points >= 250000:
-			reward_pts = total_reward_points - 100000
+
+		if total_reward_points >= 1150000:
+			reward_pts = ((total_reward_points * 0.8)/100) - 1400000
+			messages.success(request, 'Reduce 80 percent of points!')
+		elif total_reward_points >= 750000:
+			reward_pts = ((total_reward_points * 0.8)/100) - 740000
+			messages.success(request, 'Reduce 80 percent of points!')
+		elif total_reward_points >= 650000:
+			reward_pts = ((total_reward_points * 0.8)/100) - 600000
+			messages.success(request, 'Reduce 80 percent of points!')
+		elif total_reward_points >= 500000:
+			reward_pts = ((total_reward_points * 0.8)/100) - 470000
+			messages.success(request, 'Reduce 80 percent of points!')
+		elif total_reward_points >= 400000:
+			reward_pts = ((total_reward_points * 0.8)/100) - 360000
+			messages.success(request, 'Reduce 80 percent of points!')
+		elif total_reward_points >= 250000:
+			reward_pts = ((total_reward_points * 0.8)/100) - 200000
+			messages.success(request, 'Reduce 80 percent of points!')
+		elif total_reward_points <= 40000:
+			reward_pts = (total_reward_points * 10) - 9000
 		else:
 			if total_reward_points < 0:
 				reward_pts = 0
 			else:
-				reward_pts = total_reward_points - 50000
+				reward_pts = ((total_reward_points * 0.9)/100) - 40000
+				messages.success(request, 'Reduce 90 percent of points!')
 		newReservation.stored_pts = reward_pts
 		newReservation.save()
 
-		link = reverse('thanks')
+		earning_points = UserProfile.objects.filter(user=request.user).update(total_reward_points=reward_pts)
+
+		date_range = Reservation.objects.filter(user=request.user).filter(date_in__lte=Checkout, date_out__gte=Checkin)
+		if date_range:
+			link = reverse('mybooking')
+		else:
+			link = reverse('thanks')
+		
 		return HttpResponseRedirect(link)
+
 	else:
 		url = reverse('hotel-list')
 		return url
@@ -413,18 +436,20 @@ def mybooking(request):
 	date_range = Reservation.objects.filter(user=request.user).filter(date_in__lte=Checkout, date_out__gte=Checkin)
 	if date_range:
 		Reservation.objects.filter(pk__in=date_range.filter(user=request.user).values_list('id', flat=True)[1:]).delete()
+		
 
 	for hotel_name in Reservation.objects.filter(user=request.user).values_list('hotel__hotel_name', flat=True).distinct():
 		Reservation.objects.filter(pk__in=Reservation.objects.filter(user=request.user).filter(hotel__hotel_name=hotel_name).values_list('id', flat=True)[1:]).delete()
 		
 	points = Reservation.objects.filter(user=request.user).aggregate(Sum('stored_pts'))['stored_pts__sum']
 	if points:
-		new_value = points 
+		new_value = points - 0
 		if new_value <= -1:
 			new_value = 0
+			messages.success(request, 'Already Done!')
 	else:
 		new_value = 0
-		
+	
 	earning_points = UserProfile.objects.filter(user=request.user).update(total_reward_points=new_value)
 	earning_points = UserProfile.objects.filter(user=request.user)
 
@@ -437,8 +462,8 @@ def cancelbooking(request, id):
 
 	point = Reservation.objects.filter(user=request.user).aggregate(Sum('stored_pts'))['stored_pts__sum']
 
-	if point:
-		new_value = point - 10000
+	if point > 50000:
+		new_value = point - 50000
 		if new_value <= -1:
 			new_value = 0
 	else:
@@ -447,18 +472,68 @@ def cancelbooking(request, id):
 	earning_points = UserProfile.objects.filter(user=request.user).update(total_reward_points=new_value)
 
 	bookings.delete()
+	messages.success(request, 'Already Deleted!')
+
 	link = reverse('mybooking')
 	return HttpResponseRedirect(link)
 
-
 def search(request):
 	template = 'hotellist.html'
-	query = request.GET.get('sorting')
-	print(query)
+	query = request.POST.get('sorting')
+
 	users = HotelList.objects.all()
+	
+	if request.method == 'GET':
+		SortingCheck = request.GET.get('SortingCheck') 
+		if SortingCheck == 'name':
+			users = HotelList.objects.order_by('hotel_name')
+			
+		elif SortingCheck == 'address':
+			users = HotelList.objects.order_by('address')
+			
+		elif SortingCheck == 'city':
+			users = HotelList.objects.order_by('city')
+			
+		elif SortingCheck == 'state':
+			users = HotelList.objects.order_by('state')
+			
+		else:
+			users = HotelList.objects.all()
+			messages.warning(request, 'Please Do Not Sort for Nothing!!!')
+		messages.success(request, 'Sorting is already done!')
+
+		for hotel_name in Reservation.objects.filter(user=request.user).values_list('hotel__hotel_name', flat=True).distinct():
+			print(hotel_name)
+			if SortingCheck == 'name' and hotel_name:
+				users = HotelList.objects.order_by('hotel_name').exclude(hotel_name__in=Reservation.objects.filter(user=request.user).values_list('hotel__hotel_name', flat=True))
+				
+			elif SortingCheck == 'address' and hotel_name:
+				users = HotelList.objects.order_by('address').exclude(hotel_name__in=Reservation.objects.filter(user=request.user).values_list('hotel__hotel_name', flat=True))
+				
+			elif SortingCheck == 'city' and hotel_name:
+				users = HotelList.objects.order_by('city').exclude(hotel_name__in=Reservation.objects.filter(user=request.user).values_list('hotel__hotel_name', flat=True))
+				
+			elif SortingCheck == 'state' and hotel_name:
+				users = HotelList.objects.order_by('state').exclude(hotel_name__in=Reservation.objects.filter(user=request.user).values_list('hotel__hotel_name', flat=True))
+				
+			else:
+				users = HotelList.objects.exclude(hotel_name__in=Reservation.objects.filter(user=request.user).values_list('hotel__hotel_name', flat=True))
+				messages.warning(request, 'Please Do Not Sort for Nothing!!!')
+		messages.success(request, 'Sorting is already done!')
+		return render(request, template, {'users':users})
+
 	if query:
 		users = HotelList.objects.filter(Q(city__icontains=query) | Q(hotel_name__icontains=query)| Q(address__icontains=query) | Q(zip_code__icontains=query) | Q(room__RoomType__icontains=query) | Q(room__Bed_Option1__icontains=query) | Q(room__Bed_Option2__icontains=query) | Q(room__Bed_Option3__icontains=query) | Q(room__Bed_Option4__icontains=query)).distinct()
 	else:
 		users = HotelList.objects.all()
+		messages.warning(request, 'Please Do Not Sort for Nothing!!!')
 
+	for hotel_name in Reservation.objects.filter(user=request.user).values_list('hotel__hotel_name', flat=True).distinct():
+		if query and hotel_name:
+			users = HotelList.objects.filter(Q(city__icontains=query) | Q(hotel_name__icontains=query)| Q(address__icontains=query) | Q(zip_code__icontains=query) | Q(room__RoomType__icontains=query) | Q(room__Bed_Option1__icontains=query) | Q(room__Bed_Option2__icontains=query) | Q(room__Bed_Option3__icontains=query) | Q(room__Bed_Option4__icontains=query)).exclude(hotel_name__in=Reservation.objects.filter(user=request.user).values_list('hotel__hotel_name', flat=True)).distinct()
+			
+		else:
+			users = HotelList.objects.exclude(hotel_name__in=Reservation.objects.filter(user=request.user).values_list('hotel__hotel_name', flat=True))
+			messages.warning(request, 'Please Do Not Sort for Nothing!!!')
+	messages.success(request, 'Filtering is already done!')
 	return render(request, template, {'users':users, 'query':query})

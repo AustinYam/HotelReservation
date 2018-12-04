@@ -24,7 +24,6 @@ class HotelList(models.Model):
 
     class Meta:
         verbose_name_plural = "Hotels"
-        ordering = ('hotel_name',)
 
 
     def __str__(self):

@@ -525,7 +525,38 @@ nav.change .menu-col-4, .change .menu-col-3, .change .menu-col-2, .change .menu-
   color: white;
   line-height: 25px;
 }
+.success-message{
+  position: fixed; width: 720px; height: 40px; background: #ABEBC6; top: 100px; z-index: 9; left:25%; border-radius: 30px;
+}
+.warming-message{
+  position: fixed; width: 720px; height: 40px; background: #FCF3CF; top: 100px; z-index: 9; left:25%; border-radius: 30px;
+}
 </style>
+<div style="position: absolute; top: 10px; left: 25%;">
+{% if messages %}
+
+      {% for message in messages %}
+
+    <div{% if message.tags == "success" %} class="error success-message"{% endif %} style="font-size: 20px; line-height: 40px; text-align: center; font-family: cursive;">
+        {{ message }}
+    </div>
+    <div{% if message.tags == "warning" %} class="error warning-message"{% endif %} style="font-size: 20px; line-height: 40px; text-align: center; font-family: cursive;">
+
+        {{ message }}
+    </div>
+
+    <script type="text/javascript">
+      window.setTimeout(function() {
+        $(".error").fadeTo(500, 0).slideUp(500, function(){
+          $(this).remove(); 
+        });
+      }, 4000);
+    </script>
+    {% endfor %}
+
+
+{% endif %}
+</div>
 
 <div class="background">
   <div class="frame-for-hotel-name">
@@ -551,6 +582,7 @@ nav.change .menu-col-4, .change .menu-col-3, .change .menu-col-2, .change .menu-
       {% endif %}
     </div>
   </div>
+
 
 <div>
   <div class="frame-for-hotel-name1">

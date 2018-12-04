@@ -338,29 +338,78 @@ nav.change .menu-col-4, .change .menu-col-3, .change .menu-col-2, .change .menu-
 		-webkit-transform: rotateY(360deg); 
 		transform:rotateY(360deg); 
 	} }
+
+    .success-message{
+  position: fixed; width: 720px; height: 40px; background: rgba(171, 235, 198, 1); top: 100px; z-index: 10; left:25%; border-radius: 30px;
+}
+.warning-message{
+  position: fixed; width: 720px; height: 40px; background: rgba(252, 243, 207, 1); top: 100px; z-index: 10; left:25%; border-radius: 30px;
+}
+
+@keyframes movedown { 
+  0% { 
+    -webkit-transform: rotateY(360deg); 
+    transform: translateX(0);
+  }
+  100%{
+    -webkit-transform: rotateY(360deg); 
+    transform: translateX(100);
+  }
 </style>
 <div>
 
+<div style="position: absolute; top: -10px; left: 25%;">
+{% if messages %}
+
+      {% for message in messages %}
+      {% if message.tags == "success" %}
+    <div{% if message.tags == "success" %} class="error success-message"{% endif %} style="font-size: 20px; line-height: 40px; text-align: center; font-family: cursive;">
+        {{ message }}
+    </div>
+    {% endif %}
+    {% if message.tags == "warning" %}
+    <div{% if message.tags == "warning" %} class="error warning-message"{% endif %} style="font-size: 20px; line-height: 40px; text-align: center; font-family: cursive;">
+
+        {{ message }}
+    </div>
+    {% endif %}
+
+    <script type="text/javascript">
+      window.setTimeout(function(e) {
+        $(".error").fadeTo(500, 10).slideUp(500, function(e){
+          $(this).remove(); 
+        });
+      }, 4000);
+    </script>
+    {% endfor %}
+
+
+{% endif %}
+</div>
 	<div style="position: relative; top: 50px;">
 		<h3 style="font-family: cursive; font-size: 50px; text-align: center;">My Booking</h1>
 		<br>
-		<div style="font-family: cursive; width: 50%; border: 1px solid black; border-radius: 30px; height: 200px; left: 25%; position: relative;">
-			<p style="font-size: 19px; position: relative; top: 10px; left: 20px;"><span style="font-weight: bold; font-size: 20px;">Name</span>: {{ user.first_name }} {{ user.last_name }}</p>
+		<div style="font-family: cursive; width: 40%; border: 1px solid black; border-radius: 30px; height: 200px; left: 30%; position: relative;">
+			<p style="font-size: 25px; position: relative; top: 20px; left: 20px; text-align: center;"><span style="font-weight: bold; font-size: 20px;">Name</span>: {{ user.first_name }} {{ user.last_name }}</p>
 
-			<p style="font-size: 19px; position: relative; top: 10px; left: 20px;"><span style="font-weight: bold; font-size: 20px;">Email</span>: {{ user.email }}</p>
+			<p style="font-size: 25px; position: relative; top: 20px; left: 20px; text-align: center;"><span style="font-weight: bold; font-size: 20px;">Email</span>: {{ user.email }}</p>
 
 			<!--<p style="font-size: 19px; position: relative; top: 10px; left: 20px;">{{ user.password }}</p>-->
 
 			{% if earning_points %}
 
 				{% for earning_point in earning_points%}
-				<p style="font-size: 20px; position: relative; top: 10px; left: 20px;"><span style="font-weight: bold; font-size: 20px;">Earned</span>: {{ earning_point.total_reward_points }} <img class="image0" src="{% static 'img/coin-4.png' %}"></p>
+				<p style="font-size: 25px; position: relative; top: 20px; left: 20px; text-align: center;"><span style="font-weight: bold; font-size: 20px;">Earned</span>: {{ earning_point.total_reward_points }} <img class="image0" src="{% static 'img/coin-4.png' %}"></p>
 				{% endfor %}
 			{% endif %}
 
 		</div>
-		
+    {% if booking %}
+    <div style="position: absolute; top: 116%; left: 42%; width: 250px; height: 50px; text-align: center; border: 1px solid black; border-radius: 30px; "><p style="font-family: cursive; text-align: center; line-height: 45px; font-size: 20px;">Booked List</p></div>
+		{% else %}
+    {% endif %}
 		{% if booking %}
+
 
 		{% for bookings in booking %}
 		<div style="width: 100%; position: relative; top: 150px;">
@@ -380,8 +429,14 @@ nav.change .menu-col-4, .change .menu-col-3, .change .menu-col-2, .change .menu-
 				<div class="list-btn">
 					<a id="coin4" href="{% url 'cancelbooking' bookings.id %}"><img class="trash-icon" src="https://png.icons8.com/dotty/50/000000/waste.png"></a>
 				</div>
+
 			</div>
-			
+			 <script type="text/javascript">
+          var coin4 = $('#coin4')
+          coin4.click(function(e){
+            alert("You received 90% of your money back due to our cancellation fee!");
+          });
+        </script>
 		</div>
 		{% endfor %}
 
